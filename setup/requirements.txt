@@ -1,0 +1,13 @@
+tzlocal
+numpy
+pandas
+flask
+pymongo
+htmlmin
+apscheduler
+scipy
+sklearn
+lxml
+beautifulsoup4
+flask_babel
+statsmodels
