@@ -2,6 +2,7 @@ from apscheduler.schedulers.background import BackgroundScheduler
 import os
 import time
 
+
 def refresh():
     ''' Refresh the geographic database for every city every day.'''
     os.system('cd setup; ./addcities.sh')

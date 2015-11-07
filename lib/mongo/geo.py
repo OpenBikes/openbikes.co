@@ -8,20 +8,24 @@ db = client.OpenBikes_Geo
 # 'p': position
 # 'a': altitude
 
+
 def add_city(city):
     ''' Initialize a collection for a city and create a 2D index. '''
     collection = db[city]
     collection.create_index([('p', GEOSPHERE)])
+
 
 def delete_city(city):
     ''' Delete a city entry. '''
     collection = db[city]
     collection.drop()
 
+
 def add_station(city, station, lat, lon, altitude):
     ''' Add a station with it's position to the database. '''
     collection = db[city]
     collection.save({'_id': station, 'p': [lon, lat], 'a': altitude})
+
 
 def close_points(city, pos, number=100000, minDistance=0, maxDistance=np.inf):
     '''
@@ -49,6 +53,7 @@ def close_points(city, pos, number=100000, minDistance=0, maxDistance=np.inf):
     }
     stations = collection.find(query).limit(number)
     return stations
+
 
 def lat_lon(city, station):
     ''' Return the latitude and longitude of a station. '''

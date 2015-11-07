@@ -1,5 +1,7 @@
 # [OpenBikes Website](http://openbikes.co/)
 
+[![License](https://poser.pugx.org/automattic/jetpack/license.svg)](http://www.gnu.org/licenses/gpl-2.0.html)
+
 For working on the project with a local computer, refer to [the installation guide](setup/README.md).
 
 The ``lib`` folder is where all the heavy lifting is done, there are individual ``README.md`` files for each module.
@@ -8,8 +10,8 @@ The ``lib`` folder is where all the heavy lifting is done, there are individual 
 
 The ``manage.py`` script is a command-line tool for adding and removing cities from the data collection process and the website vizualisation. The ``addcities.sh`` script adds all the cities possible. More details can be found [here](lib/providers/README.md).
 
-- ``python3 manage.py add <provider> <city> <city_real_name> <country> <country_real_name>``
-- ``python3 manage.py remove <provider> <city> <city_real_name> <country> <country_real_name>``
+- ``python3 manage.py add <provider> <city> <city_real_name> <country> <country_real_name> <predict>``
+- ``python3 manage.py remove <provider> <city> <city_real_name> <country> <country_real_name> <predict>``
 
 ## Maintenance
 

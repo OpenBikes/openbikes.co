@@ -1,12 +1,14 @@
 from lib import tools
 from datetime import datetime
 
+
 def stations(city):
     # The city parameter is necessary so that everything works
     url = 'http://minaport.ubweb.jp/stations.php'
     data = tools.query_API(url)
     stations = tools.load_xml(data)
     return normalize(stations)
+
 
 def normalize(stations):
     extract = tools.extract_attribute

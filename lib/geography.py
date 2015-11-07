@@ -1,7 +1,8 @@
 from lib import tools
 
+
 def add_altitudes(stations, size=50):
-    ''' Use the Google Maps Elevation API. ''' 
+    ''' Use the Google Maps Elevation API. '''
     base = 'https://maps.googleapis.com/maps/api/elevation/json?'
     key = tools.read_json('config/keys.json')['google-elevation']
     locationsList = ''
@@ -36,6 +37,7 @@ def add_altitudes(stations, size=50):
         })
     return data
 
+
 @tools.MWT(timeout=60*60*24)
 def geocode(address):
     '''
@@ -53,6 +55,7 @@ def geocode(address):
     longitude = float(address['lon'])
     return (latitude, longitude)
 
+
 def convert_to_point(city, address):
     '''
     Convert an address to [lat, lon] with Nominatim, if
@@ -67,6 +70,7 @@ def convert_to_point(city, address):
         point = address
     return point
 
+
 def compute_distances(departure, stations, mode):
     ''' Using the Mapbox Distance API. '''
     # Interrogate the API to get the distance to each station
@@ -78,23 +82,9 @@ def compute_distances(departure, stations, mode):
         ] + [station['p'] for station in stations]
     }
     print(coordinates)
-    # url = '{0}{1}?access_token={2}'.format(base, mode, key)
-    #       base, origin, destinations, mode, key)
-    # data = tools.query_API(url)
-    # distances = tools.load_json(data)['rows'][0]['elements']
-    # candidates = []
-    # for station in zip(stations, distances):
-    #     candidate = {}
-    #     for information in station:
-    #         candidate.update(information)
-    #     candidates.append(candidate)
-    # return candidates
-
-def compute_distances_manual(departure, stations, mode):
-    ''' Just Euclidian distance, useful for debugging. '''
-    d = list(reversed(departure))
-    distance = lambda s: ((s['p'][0] - d[0]) ** 2 + (s['p'][1] - d[1]) ** 2) ** (1/2)
-    distances = [{'duration': distance(station)} for station in stations]
+    url = '{0}{1}?access_token={2}'.format(base, mode, key)
+    data = tools.query_API(url)
+    distances = tools.load_json(data)['rows'][0]['elements']
     candidates = []
     for station in zip(stations, distances):
         candidate = {}
@@ -104,5 +94,15 @@ def compute_distances_manual(departure, stations, mode):
     return candidates
 
 
-
-
+def compute_distances_manual(departure, stations, mode):
+    ''' Just Euclidian distance, useful for debugging. '''
+    d = list(reversed(departure))
+    distances = [{'duration': tools.euclidian_distance(station['p'], d)}
+                 for station in stations]
+    candidates = []
+    for station in zip(stations, distances):
+        candidate = {}
+        for information in station:
+            candidate.update(information)
+        candidates.append(candidate)
+    return candidates

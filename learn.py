@@ -7,6 +7,7 @@ import time
 
 stationsFile = tools.read_json('static/stations.json')
 
+
 def learn(city):
     for station in stationsFile[city]:
         # Get all the data from the database
@@ -17,8 +18,8 @@ def learn(city):
         # Apply a regressor
         forest.fit(dataframe, 'bikes', city, station)
         forest.fit(dataframe, 'spaces', city, station)
-    #timeseries.delete_city(city)
-            
+    # timeseries.delete_city(city)
+
 if __name__ == '__main__':
     scheduler = BackgroundScheduler()
     for city in stationsFile.keys():

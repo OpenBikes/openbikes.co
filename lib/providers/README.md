@@ -101,8 +101,6 @@ Some of the APIs do not return times for the latest update on the station. Guess
 
 #### BIXI
 
-Toronto is bugged and Ottawa doesn't seem to be working.
-
 - Command line argument: ``bixi``
 - [Website](https://montreal.bixi.com/)
 - XML
@@ -112,6 +110,8 @@ Toronto is bugged and Ottawa doesn't seem to be working.
 | Toronto            | Canada     |
 | Montréal           | Canada     |
 | Ottawa             | Canada     |
+
+Toronto is bugged and Ottawa doesn't seem to be working.
 
 #### Keolis
 
@@ -134,9 +134,7 @@ Toronto is bugged and Ottawa doesn't seem to be working.
 |--------------------|------------|
 | Kyoto Minaport     | Japan      |
 
-### Without update times (useless for the moment)
-
-Keep checking!
+### Without update times
 
 #### Divvy
 

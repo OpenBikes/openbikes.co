@@ -1,11 +1,13 @@
 from lib import tools
 
+
 def stations(city):
     # The city parameter is necessary so that everything works
     url = 'https://www.citibikenyc.com/stations/json'
     data = tools.query_API(url)
     stations = tools.load_json(data)
     return normalize(stations)
+
 
 def normalize(stations):
     stations = stations['stationBeanList']

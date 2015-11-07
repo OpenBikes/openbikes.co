@@ -5,15 +5,18 @@ from lib.learning import wrapper
 from copy import deepcopy
 import json
 
+
 def take_bike(situation):
     path = generate_path(situation, 'bikes', 'walking', 'pedestrian')
     route = generate_route(path)
     return [route]
 
+
 def drop_bike(situation):
     path = generate_path(situation, 'spaces', 'cycling', 'bicycle')
     route = generate_route(path)
     return [route]
+
 
 def full_trip(situation):
     ''' We can use the previous functions. '''
@@ -24,8 +27,8 @@ def full_trip(situation):
     # Find the route from the arrival station to the arrival
     secondSituation = deepcopy(situation)
     secondSituation['departure'] = secondSituation['arrival']
-    secondPath = generate_path(secondSituation, 'spaces', 'walking', 'pedestrian',
-                               stationFirst=True)
+    secondPath = generate_path(secondSituation, 'spaces', 'walking',
+                               'pedestrian', stationFirst=True)
     # Find the route between both stations
     firstStation = firstPath['points'][1]
     secondStation = secondPath['points'][0]
@@ -38,7 +41,9 @@ def full_trip(situation):
               generate_route(secondPath)]
     return routes
 
-def generate_path(situation, target, distance, mode, stationFirst=False, nbCandidates=5):
+
+def generate_path(situation, target, distance, mode, stationFirst=False,
+                  nbCandidates=5):
     '''
     Choose the best station around the arrival and then define a trip
     between the departure and the station.
@@ -53,9 +58,8 @@ def generate_path(situation, target, distance, mode, stationFirst=False, nbCandi
     stations = [station for station in
                 geo.close_points(city, arrival, number=nbCandidates)]
     # Get the distances to the stations
-
-    candidates = geography.compute_distances_manual(arrival, stations, distance)
-
+    candidates = geography.compute_distances_manual(arrival, stations,
+                                                    distance)
     # Sort the stations by distance
     candidates.sort(key=lambda station: station['duration'])
     # Find an appropriate solution through the sorted candidates
@@ -75,7 +79,7 @@ def generate_path(situation, target, distance, mode, stationFirst=False, nbCandi
                 trip = reshape(mode, stationPosition, departure)
             break
     return trip
-    
+
 
 def reshape(mode, A, B):
     ''' Format points into a convenient format. '''
@@ -87,11 +91,13 @@ def reshape(mode, A, B):
         ]
     }
 
+
 @tools.MWT(timeout=60*60*24)
 def get_route(url):
     ''' Specific function to perform caching. '''
     data = tools.query_API(url, repeat=True)
     return data
+
 
 def generate_route(trip):
     ''' Build a path using the Mapzen's Valhalla API. '''
@@ -101,7 +107,7 @@ def generate_route(trip):
     key = tools.read_json('config/keys.json')['valhalla']
     request = json.dumps({
         'locations': points,
-        #'costing': mode,
+        # 'costing': mode,
         # For some reasons the biking costing is not close to reality
         'costing': 'pedestrian',
         'directions_options': {

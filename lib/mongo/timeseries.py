@@ -8,6 +8,7 @@ from lib.mongo import geo
 client = MongoClient()
 db = client.OpenBikes
 
+
 # 'u': updates                
 # 'i': information
 # 'm': update time
@@ -18,13 +19,14 @@ db = client.OpenBikes
 # 'w': speed
 # 'c': cloudiness
 
+
 def delete_city(city):
     ''' Destroy a collection. '''
     db.drop_collection(city)
 
-##################
-### Insertions ###
-##################
+
+# Insertions
+
 
 def update_station(station, collection):
     ''' Add the latest update of a station. '''
@@ -39,7 +41,8 @@ def update_station(station, collection):
             'u': []
         })
     # Add the station entry if it doesn't exist and there is data
-    if collection.find({'_id': date, 'u.n': name}, {'_id': 1}).limit(1).count() == 0:
+    if collection.find({'_id': date, 'u.n': name},
+                       {'_id': 1}).limit(1).count() == 0:
         collection.update({'_id': date, 'u.n': {'$nin': [name]}}, {
             '$push': {
                 'u': {
@@ -58,6 +61,7 @@ def update_station(station, collection):
         }
     })
 
+
 def update_city(stations, city):
     ''' Add the latest update from every station in a city. '''
     # Connect to the appropriate collection of the database
@@ -66,9 +70,8 @@ def update_city(stations, city):
     for station in stations:
         update_station(station, collection)
 
-###############
-### Queries ###
-###############
+# Queries
+
 
 def query_station(city, station, year='\d{4}', month='\d{1,2}', day='\d{1,2}'):
     '''
@@ -82,7 +85,6 @@ def query_station(city, station, year='\d{4}', month='\d{1,2}', day='\d{1,2}'):
     pattern = '-'.join((year, month, day))
     cursor = collection.find({'_id': {'$regex': pattern}, 'u.n': station},
                              {'u': {'$elemMatch': {'n': station}}})
-    information = cursor[0]['u'][0]['i']
     # We will modify the index so as to take into account the date
     fmt = '%Y-%m-%d/%H:%M:%S'
     # Create the dataframe with the first date
@@ -99,7 +101,8 @@ def query_station(city, station, year='\d{4}', month='\d{1,2}', day='\d{1,2}'):
     return dataframe
 
 
-def query_city(city, year='\d{4}', month='\d{1,2}', day='\d{1,2}', merge=False):
+def query_city(city, year='\d{4}', month='\d{1,2}', day='\d{1,2}',
+               merge=False):
     '''
     Returns a dictionary of dataframes containing all the updates
     of a given period or day for a city. You can use regular
@@ -118,8 +121,8 @@ def query_city(city, year='\d{4}', month='\d{1,2}', day='\d{1,2}', merge=False):
     for date in cursor:
         # Convert all the updates to a dictionary of dataframes indexed on time
         datesDfs[date['_id']] = {update['n']:
-              tools.dict_to_dataframe(update['i']).set_index('m')
-              for update in date['u'] if len(update['i']) > 0}
+                                 tools.dict_to_dataframe(update['i']).set_index('m')
+                                 for update in date['u'] if len(update['i']) > 0}
     # Now we can merge the dataframes for every station
     stationsDfs = {}
     for date, stations in datesDfs.items():

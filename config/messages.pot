@@ -8,120 +8,87 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2015-10-04 16:56+0200\n"
+"POT-Creation-Date: 2015-11-07 16:07+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 1.3\n"
+"Generated-By: Babel 2.1.1\n"
 
-#: serve.py:37 serve.py:43
+#: serve.py:38 serve.py:46
 msgid "Maps - OpenBikes"
 msgstr ""
 
-#: serve.py:52
+#: serve.py:54
 msgid "API - OpenBikes"
 msgstr ""
 
-#: serve.py:61
-msgid "Offer - OpenBikes"
+#: serve.py:151
+msgid "FAQ - OpenBikes"
 msgstr ""
 
-#: serve.py:69
-msgid "Information - OpenBikes"
+#: serve.py:160
+msgid "About - OpenBikes"
 msgstr ""
 
-#: templates/api.html:14
-msgid "API usage"
-msgstr ""
-
-#: templates/api.html:16
-msgid ""
-"Every city has it's own API. We defined a common format in order to store"
-" the data they provide. For the while our API only returns the latest "
-"data for each city. Once we have more data we will enable aggregation on "
-"historical data."
-msgstr ""
-
-#: templates/api.html:18
-msgid "City current state"
-msgstr ""
-
-#: templates/api.html:24
-msgid "Stations"
-msgstr ""
-
-#: templates/api.html:30
-msgid "Providers"
-msgstr ""
-
-#: templates/api.html:36
-msgid "Cities"
-msgstr ""
-
-#: templates/api.html:42
-msgid "Routing"
-msgstr ""
-
-#: templates/information.html:8
+#: templates/about.html:8 templates/information.html:8
 msgid "is"
 msgstr ""
 
-#: templates/information.html:12
+#: templates/about.html:12 templates/information.html:12
 msgid "Made by students"
 msgstr ""
 
-#: templates/information.html:13
+#: templates/about.html:13 templates/information.html:13
 msgid ""
-"OpenBikes is a project powered by students in statistics and information "
-"decision-making from the Université Paul Sabatier - Toulouse III"
+"OpenBikes is a project powered by students in data science and business "
+"intelligence from the Université Paul Sabatier - Toulouse III"
 msgstr ""
 
-#: templates/information.html:17
+#: templates/about.html:17 templates/information.html:17
 msgid "Modern"
 msgstr ""
 
-#: templates/information.html:18
+#: templates/about.html:18 templates/information.html:18
 msgid ""
-"We are convinced that biking will have a prominent place in the urban "
-"landscape of tomorrow because it is environmentally friendly and "
-"enjoyable. Our goal is to contribute to it."
+"Bike sharing is part of the transport ecosystem of many major cities. We "
+"want to make bike transport a breeze."
 msgstr ""
 
-#: templates/information.html:22
+#: templates/about.html:22 templates/information.html:22
 msgid "Resilient"
 msgstr ""
 
-#: templates/information.html:23
+#: templates/about.html:23 templates/information.html:23
 msgid ""
-"Built on an open-source stack, the backend and frontend use state of the "
-"art technologies and algorithms."
+"Our system is built on open-source tools and state of the art "
+"methodologies."
 msgstr ""
 
-#: templates/information.html:39
+#: templates/about.html:39 templates/information.html:39
 msgid "Our team"
 msgstr ""
 
-#: templates/information.html:51
+#: templates/about.html:51 templates/information.html:51
 msgid "Founder"
 msgstr ""
 
-#: templates/information.html:55
+#: templates/about.html:55 templates/information.html:55
 msgid ""
 "OpenBikes is an excellent opportunity for me to enhance my skills in "
-"mathematics and computer science. I get a real kick out of the prediction"
-" side of OpenBikes, especially the machine learning. I also enjoy "
-"adressing the algorithmic issues we have to face, for example dealing "
-"with data in real-time and managing a large noSQL database."
+"mathematics and computer science. I get a real kick out of making "
+"accurate forecasts. I also enjoy adressing the algorithmic issues we have"
+" to face, for example dealing with data in real-time and managing a large"
+" noSQL database."
 msgstr ""
 
-#: templates/information.html:70
+#: templates/about.html:70 templates/information.html:70
 msgid "Junior Flask Programmer"
 msgstr ""
 
-#: templates/information.html:74
+#: templates/about.html:74 templates/information.html:74
 msgid ""
 "I am a data science student who has a passion for programming and data "
 "analysis. I also have an interest in data visualization and geographical "
@@ -129,198 +96,316 @@ msgid ""
 "a R and Python."
 msgstr ""
 
-#: templates/information.html:93
+#: templates/about.html:93 templates/information.html:93
 msgid "Our tools"
 msgstr ""
 
-#: templates/information.html:139
+#: templates/about.html:139 templates/information.html:139
 msgid "Our goals"
 msgstr ""
 
-#: templates/information.html:149
+#: templates/about.html:149 templates/information.html:149
 msgid ""
 "We wish for OpenBikes to become a reference for the visualization and the"
-" analysis of city bike services accross the world. We also want to build "
-"an advanced prediction model in order to advise users on their trips "
-"accross the city. In order to do this we bring out the best from what we "
-"are learning at university and will aim to win some data science "
-"competitions."
+" analysis of bike sharing services in cities from all across the world. "
+"For this we are building a reliable forecasting model in order to advise "
+"users on their trips across the city. We also want to understand user "
+"behavior in order to help cities manage their bike sharing service."
 msgstr ""
 
-#: templates/map.html:111
+#: templates/api.html:15
+msgid ""
+"The data we collect from various APIs is tranformed into a single format."
+" Because we got this data for free we believe that it's only normal to "
+"redistribute it for other developers. For the while our API is not "
+"limited and not require any key. Later on, when we will enable access to "
+"historical data, things may change."
+msgstr ""
+
+#: templates/api.html:21
+msgid "City current state"
+msgstr ""
+
+#: templates/api.html:26
+msgid ""
+"Returns the state of each station in the queried city. Just like the "
+"maps, this data is refreshed every minute or so. The data follows the "
+"GeoJSON standard format."
+msgstr ""
+
+#: templates/api.html:37
+msgid "Stations"
+msgstr ""
+
+#: templates/api.html:42
+msgid ""
+"Returns a dictionary containing the list of stations of each city. The "
+"data is refreshed every day."
+msgstr ""
+
+#: templates/api.html:53
+msgid "Providers"
+msgstr ""
+
+#: templates/api.html:58
+msgid ""
+"Returns a dictionary containing the list of cities each bike sharing "
+"provider covers. The data is updated every time we add/remove a city."
+msgstr ""
+
+#: templates/api.html:69
+msgid "Countries &amp; cities"
+msgstr ""
+
+#: templates/api.html:74
+msgid ""
+"Returns a dictionary containing the list of cities of each country. The "
+"data is updated every time we add/remove a city."
+msgstr ""
+
+#: templates/api.html:85
+msgid "City centers"
+msgstr ""
+
+#: templates/api.html:90
+msgid ""
+"Returns a dictionary containing the center position of each city. The "
+"format is [lat, lon]."
+msgstr ""
+
+#: templates/api.html:101
+msgid "Names"
+msgstr ""
+
+#: templates/api.html:106
+msgid ""
+"Returns a dictionary containing translations for the names used in the "
+"API."
+msgstr ""
+
+#: templates/api.html:117
+msgid "Predictions"
+msgstr ""
+
+#: templates/api.html:122
+msgid "Returns a dictionary telling if a city has predictions enabled or not."
+msgstr ""
+
+#: templates/faq.html:22
+msgid "Why is my city not on the main page?"
+msgstr ""
+
+#: templates/faq.html:27
+msgid ""
+"There are a lot of cities who provide bike sharing. However, not all of "
+"these cities have linked their bike hubs to a central computer, hence we "
+"do not have access to their data."
+msgstr ""
+
+#: templates/faq.html:35
+msgid "Why have you built OpenBikes when similar applications already exist?"
+msgstr ""
+
+#: templates/faq.html:40
+msgid ""
+"We believe that we compare well to other applications because we are "
+"honest about the data we are using while they are not. For example, there"
+" have already been applications that have used the CityBikes API as a "
+"data provider. However, CityBikes doesn't include timestamps, which makes"
+" it impossible to be sure that their data is in real time or not."
+msgstr ""
+
+#: templates/faq.html:48
+msgid "How do you predict the number of bikes/spaces at a station?"
+msgstr ""
+
+#: templates/faq.html:53
+msgid ""
+"We use a machine learning. We have had the best results with the Random "
+"Forest algorithm."
+msgstr ""
+
+#: templates/faq.html:61
+msgid "Can you summarize how OpenBikes works under the hood?"
+msgstr ""
+
+#: templates/faq.html:66
+msgid ""
+"We have a program that collects data from different cities. When the data"
+" is collected it is transformed so that all our data is uniform "
+"regardless of where it comes from. We run our machine learning algorithm "
+"on all the data we have collected, we do this once a week. We then "
+"connect our predictions to the map."
+msgstr ""
+
+#: templates/faq.html:74
+msgid "Why is the prediction button not on the map of each city?"
+msgstr ""
+
+#: templates/faq.html:79
+msgid ""
+"Quite often the data that we collect does not have associated timestamps,"
+" hence it's impossible to verify if the data is in real time or not. "
+"Without a timestamp we cannot run our prediction models. Some other "
+"applications use the current time as a timestamp but that leads to a lot "
+"of problems and imprecision."
+msgstr ""
+
+#: templates/faq.html:87
+msgid "Can I help?"
+msgstr ""
+
+#: templates/faq.html:92
+msgid ""
+"Of course! We are merely students who do similar side projects during our"
+" spare time. The code for the application is available on GitHub, a lot "
+"of it is documented and you can send us a mail in case you have questions"
+" or suggestions."
+msgstr ""
+
+#: templates/map.html:121
 msgid "Trip recommendation"
 msgstr ""
 
-#: templates/map.html:120
+#: templates/map.html:130
 msgid "Number of people"
 msgstr ""
 
-#: templates/map.html:126 templates/map.html:444
+#: templates/map.html:136 templates/map.html:455
 msgid "I want to..."
 msgstr ""
 
-#: templates/map.html:131
+#: templates/map.html:141
 msgid "Do a trip"
 msgstr ""
 
-#: templates/map.html:137
+#: templates/map.html:147
 msgid "Take a bike"
 msgstr ""
 
-#: templates/map.html:143
+#: templates/map.html:153
 msgid "Put a bike back"
 msgstr ""
 
-#: templates/map.html:149
+#: templates/map.html:159
 msgid "Start"
 msgstr ""
 
-#: templates/map.html:153 templates/map.html:165 templates/map.html:445
-#: templates/map.html:446
+#: templates/map.html:163 templates/map.html:175 templates/map.html:456
+#: templates/map.html:457
 msgid "Where I am"
 msgstr ""
 
-#: templates/map.html:156 templates/map.html:168
+#: templates/map.html:166 templates/map.html:178
 msgid "Enter an address"
 msgstr ""
 
-#: templates/map.html:160
+#: templates/map.html:170
 msgid "Arrival"
 msgstr ""
 
-#: templates/map.html:172
+#: templates/map.html:182
 msgid "When?"
 msgstr ""
 
-#: templates/map.html:177
+#: templates/map.html:187
 msgid "Now"
 msgstr ""
 
-#: templates/map.html:194
+#: templates/map.html:204
 msgid "Find the best option"
 msgstr ""
 
-#: templates/map.html:196
+#: templates/map.html:206
 msgid "Close"
 msgstr ""
 
-#: templates/map.html:271
+#: templates/map.html:282
 msgid "Basic"
 msgstr ""
 
-#: templates/map.html:272
+#: templates/map.html:283
 msgid "Light"
 msgstr ""
 
-#: templates/map.html:273
+#: templates/map.html:284
 msgid "Dark"
 msgstr ""
 
-#: templates/map.html:274
+#: templates/map.html:285
 msgid "Comic"
 msgstr ""
 
-#: templates/map.html:275
+#: templates/map.html:286
 msgid "Crayon"
 msgstr ""
 
-#: templates/map.html:308
+#: templates/map.html:319
 msgid "Locate me"
 msgstr ""
 
-#: templates/map.html:309
+#: templates/map.html:320
 msgid "Meters"
 msgstr ""
 
-#: templates/map.html:310
+#: templates/map.html:321
 msgid "This is you!"
 msgstr ""
 
-#: templates/map.html:320
+#: templates/map.html:331
 msgid "Updated"
 msgstr ""
 
-#: templates/map.html:329
+#: templates/map.html:340
 msgid "Bikes >> Stands"
 msgstr ""
 
-#: templates/map.html:329
+#: templates/map.html:340
 msgid "Bikes > Stands"
 msgstr ""
 
-#: templates/map.html:329
+#: templates/map.html:340
 msgid "Bikes = Stands"
 msgstr ""
 
-#: templates/map.html:329
+#: templates/map.html:340
 msgid "Bikes < Stands"
 msgstr ""
 
-#: templates/map.html:329
+#: templates/map.html:340
 msgid "Bikes << Stands"
 msgstr ""
 
-#: templates/map.html:393
+#: templates/map.html:404
 msgid " bikes"
 msgstr ""
 
-#: templates/map.html:395
+#: templates/map.html:406
 msgid " bike"
 msgstr ""
 
-#: templates/map.html:398
+#: templates/map.html:409
 msgid " stands"
 msgstr ""
 
-#: templates/map.html:400
+#: templates/map.html:411
 msgid " stand"
 msgstr ""
 
-#: templates/map.html:409
+#: templates/map.html:420
 msgid "Closed"
 msgstr ""
 
-#: templates/map.html:440
+#: templates/map.html:451
 msgid "We want to..."
 msgstr ""
 
-#: templates/map.html:441 templates/map.html:442
+#: templates/map.html:452 templates/map.html:453
 msgid "Where we are"
 msgstr ""
 
-#: templates/map.html:617
+#: templates/map.html:627
 msgid "Something went wrong :-("
-msgstr ""
-
-#: templates/offer.html:7
-msgid "Web application"
-msgstr ""
-
-#: templates/offer.html:8
-msgid ""
-"This website aims to be a hub for all our operations. It contains elegant"
-" maps and detailed trip planning."
-msgstr ""
-
-#: templates/offer.html:19
-msgid "Mobile application"
-msgstr ""
-
-#: templates/offer.html:20 templates/offer.html:32 templates/offer.html:44
-#: templates/offer.html:56
-msgid "Incoming."
-msgstr ""
-
-#: templates/offer.html:31
-msgid "Helping cities"
-msgstr ""
-
-#: templates/offer.html:43
-msgid "Tailored analysis"
-msgstr ""
-
-#: templates/offer.html:55
-msgid "Data access"
 msgstr ""
 
 #: templates/includes/footer.html:5
@@ -328,7 +413,7 @@ msgid "Colophon"
 msgstr ""
 
 #: templates/includes/footer.html:7
-msgid "OpenBikes is a website developped by students from"
+msgid "OpenBikes is a website developed by students from"
 msgstr ""
 
 #: templates/includes/footer.html:10
@@ -348,11 +433,11 @@ msgid "API"
 msgstr ""
 
 #: templates/includes/navigation.html:15
-msgid "OFFER"
+msgid "FAQ"
 msgstr ""
 
 #: templates/includes/navigation.html:16
-msgid "INFORMATION"
+msgid "ABOUT"
 msgstr ""
 
 #: templates/includes/navigation.html:18

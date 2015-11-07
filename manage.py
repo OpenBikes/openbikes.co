@@ -14,6 +14,7 @@ parser.add_argument('city')
 parser.add_argument('cityRealName')
 parser.add_argument('country')
 parser.add_argument('countryRealName')
+parser.add_argument('predict')
 
 # Parse the command line arguments
 parameters = parser.parse_args()
@@ -23,6 +24,7 @@ city = parameters.city
 cityRealName = parameters.cityRealName
 country = parameters.country
 countryRealName = parameters.countryRealName
+predict = parameters.predict
 
 # Load the files
 stationsFile = tools.read_json('static/stations.json')
@@ -30,6 +32,7 @@ providersFile = tools.read_json('static/providers.json')
 centersFile = tools.read_json('static/centers.json')
 citiesFile = tools.read_json('static/cities.json')
 namesFile = tools.read_json('static/names.json')
+predictionsFile = tools.read_json('static/predictions.json')
 
 if option in ('add', 'insert'):
     geo.add_city(city)
@@ -46,7 +49,7 @@ if option in ('add', 'insert'):
         longitudes.append(station['lon'])
         names.append(station['name'])
         geo.add_station(city, station['name'],
-        station['lat'], station['lon'], station['alt'])
+                        station['lat'], station['lon'], station['alt'])
     # City/Stations file
     stationsFile[city] = names
     # Provider/City file
@@ -69,30 +72,80 @@ if option in ('add', 'insert'):
     # Name/RealName file
     namesFile[city] = cityRealName
     namesFile[country] = countryRealName
+    # Predictions file
+    predictionsFile[city] = predict
     # Notification
-    print ('{} has been added.'.format(city))
+    print('{} has been added.'.format(city))
 elif option in ('delete', 'remove'):
-    geo.delete_city(city)
+    try:
+        geo.delete_city(city)
+    except:
+        None
     # geoJson file
-    os.remove('static/geojson/{}.geojson'.format(city))
+    try:
+        os.remove('static/geojson/{}.geojson'.format(city))
+    except:
+        None
     # Update file
-    os.remove('static/updates/{}.txt'.format(city))
+    try:
+        os.remove('static/updates/{}.txt'.format(city))
+    except:
+        None
     # Geographical database
-    geo.delete_city(city)
+    try:
+        geo.delete_city(city)
+    except:
+        None
     # City/Stations file
-    del stationsFile[city]
+    try:
+        del stationsFile[city]
+    except:
+        None
     # Provider/City file
-    providersFile[provider].remove(city)
-    if provider not in providersFile.keys():
-        del providersFile[provider]
+    try:
+        providersFile[provider].remove(city)
+    except:
+        None
+    try:
+        if len(providersFile[provider]) == 0:
+            del providersFile[provider]
+    except:
+        None
+    try:
+        if len(providersFile[provider]) == 0:
+            del providersFile[provider]
+    except:
+        None
     # City/Center file
-    del centersFile[city]
+    try:
+        del centersFile[city]
+    except:
+        None
     # Country/City file
-    citiesFile[country].remove(city)
-    if len(citiesFile[country]) == 0:
-        del citiesFile[country]
+    try:
+        citiesFile[country].remove(city)
+    except:
+        None
+    try:
+        if len(citiesFile[country]) == 0:
+            del citiesFile[country]
+    except:
+        None
     # City/RealName file
-    del namesFile[city]
+    try:
+        del namesFile[city]
+    except:
+        None
+    try:
+        if country not in citiesFile:
+            del namesFile[country]
+    except:
+        None
+    # Predictions file
+    try:
+        del predictionsFile[city]
+    except:
+        None
     # Notification
     print('{} has been removed.'.format(city))
 else:
@@ -104,3 +157,4 @@ tools.dump_json(providersFile, 'static/providers.json')
 tools.dump_json(centersFile, 'static/centers.json')
 tools.dump_json(citiesFile, 'static/cities.json')
 tools.dump_json(namesFile, 'static/names.json')
+tools.dump_json(predictionsFile, 'static/predictions.json')

@@ -1,6 +1,7 @@
 from sklearn.ensemble import RandomForestRegressor
 from lib import tools
 
+
 def fit(dataframe, target, city, station):
     ''' Train the random forest to predict bikes or spaces. '''
     features = [column for column in dataframe.columns
@@ -10,6 +11,7 @@ def fit(dataframe, target, city, station):
     regressor = RandomForestRegressor(n_estimators=12, n_jobs=-1, max_depth=10)
     regressor.fit(X, Y)
     tools.save_predictor(regressor, 'forest', target, city, station)
+
 
 def predict(features, target, city, station):
     '''

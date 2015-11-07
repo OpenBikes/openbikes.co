@@ -1,0 +1,108 @@
+{% include 'includes/header.html' %}
+{% include 'includes/navigation.html' %}
+<style>
+    .panel-body {
+        line-height: 140%;
+    }
+</style>
+<body>
+<div align="center" class="mtb">
+    <h1 class="navbar-title">Frequently Asked Questions</h1>
+    <br>
+<br>
+<br>
+<br>
+<br>
+    <div class="row">
+        <br><br><br>
+        <div class="panel-group">
+            <div class="panel panel-info">
+                <div class="panel-heading"> 
+                    <h1 class="panel-title">
+                        <a href="#item1" data-toggle="collapse"> {{ _("Why is my city not on the main page?") }} </a>
+                    </h1>
+                </div>
+                <div id="item1" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        {{ _("There are a lot of cities who provide bike sharing. However, not all of these cities have linked their bike hubs to a central computer, hence we do not have access to their data.") }}
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel panel-info">
+                <div class="panel-heading"> 
+                    <h1 class="panel-title">
+                        <a href="#item2" data-toggle="collapse"> {{ _("Why have you built OpenBikes when similar applications already exist?") }} </a>
+                    </h1>
+                </div>
+                <div id="item2" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        {{ _("We believe that we compare well to other applications because we are honest about the data we are using while they are not. For example, there have already been applications that have used the CityBikes API as a data provider. However, CityBikes doesn't include timestamps, which makes it impossible to be sure that their data is in real time or not.") }}
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel panel-info">
+                <div class="panel-heading"> 
+                    <h1 class="panel-title">
+                        <a href="#item3" data-toggle="collapse"> {{ _("How do you predict the number of bikes/spaces at a station?") }} </a>
+                    </h1>
+                </div>
+                <div id="item3" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        {{ _("We use a machine learning. We have had the best results with the Random Forest algorithm.") }}
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel panel-info">
+                <div class="panel-heading"> 
+                    <h1 class="panel-title">
+                        <a href="#item4" data-toggle="collapse"> {{ _("Can you summarize how OpenBikes works under the hood?") }} </a>
+                    </h1>
+                </div>
+                <div id="item4" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        {{ _("We have a program that collects data from different cities. When the data is collected it is transformed so that all our data is uniform regardless of where it comes from. We run our machine learning algorithm on all the data we have collected, we do this once a week. We then connect our predictions to the map.") }}
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel panel-info">
+                <div class="panel-heading"> 
+                    <h1 class="panel-title">
+                        <a href="#item5" data-toggle="collapse"> {{ _("Why is the prediction button not on the map of each city?") }} </a>
+                    </h1>
+                </div>
+                <div id="item5" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        {{ _("Quite often the data that we collect does not have associated timestamps, hence it's impossible to verify if the data is in real time or not. Without a timestamp we cannot run our prediction models. Some other applications use the current time as a timestamp but that leads to a lot of problems and imprecision.") }}
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel panel-info">
+                <div class="panel-heading"> 
+                    <h1 class="panel-title">
+                        <a href="#item6" data-toggle="collapse"> {{ _("Can I help?") }} </a>
+                    </h1>
+                </div>
+                <div id="item6" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        {{ _("Of course! We are merely students who do similar side projects during our spare time. The code for the application is available on GitHub, a lot of it is documented and you can send us a mail in case you have questions or suggestions.") }}
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+{% include 'includes/footer.html' %}
+</body>
+</html>

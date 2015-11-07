@@ -6,8 +6,13 @@ from lib.providers import (
     niceride,
     bixi,
     keolis,
-    machikado
+    machikado,
+    divvy,
+    bikechattanooga,
+    santander,
+    bayarea
 )
+
 
 def collect(provider, city):
     return eval(provider).stations(city)

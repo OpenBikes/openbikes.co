@@ -8,9 +8,11 @@
 }
 </style>
 <body>
+
 <div align="center" class="mtb">
+    <h1 class="navbar-title">API</h1>
     <div class="row">
-        <p>The data we collect from various APIs is tranformed into a single format. Because we got this data for free we believe that it's only normal to redistribute it for other developers. For the while our API is not limited and not require any key. Later on, when we will enable access to historical data, things may change.</p>
+        <p>{{ _("The data we collect from various APIs is tranformed into a single format. Because we got this data for free we believe that it's only normal to redistribute it for other developers. For the while our API is not limited and not require any key. Later on, when we will enable access to historical data, things may change.") }}</p>
         <br><br><br>
         <div class="panel-group">
             <div class="panel panel-primary">
@@ -112,23 +114,28 @@
             <div class="panel panel-primary">
                 <div class="panel-heading"> 
                     <h1 class="panel-title">
-                        <a href="#item7" data-toggle="collapse"> {{ _("Routing") }} </a>
+                        <a href="#item7" data-toggle="collapse"> {{ _("Predictions") }} </a>
                     </h1>
                 </div>
                 <div id="item7" class="panel-collapse collapse">
                     <div class="panel-body">
-                        {{ _("Returns polyline objects (a Google standard format) and navigation comments based on a user query. There are 3 modes: ") }}<p class="text-primary">takeBike</p><p class="text-success">dropBike</p><p class="text-danger">fullTrip</p>{{ _("These are illustrated in the following examples") }}. The idea is that a user will always want to do one of three things (pick a bike up, drop a bike off or pick up bike and drop it off somewhere else). The other parameters are the departure and the arrival (in [lat, lon] format), the time of departure (in epoch milliseconds, which can be in the past) and the number of people. In the case of solely picking up a bike or dropping one off, the departure and the arrival have to be equal to perform the action at one point, although this is redundant it allows more flexibility. In the case of a full trip the departure and the arrival should be different, the object returned will be a list of successive paths to do by foot or by bike.
+                        {{ _("Returns a dictionary telling if a city has predictions enabled or not.") }}
                     </div>
                     <ul class="list-group">
-                        <li class="list-group-item snippet">openbikes.co/api/routing/mode=dropBike&amp;city=New-York&amp;departure=[40.76727,-73.99392]&amp;arrival=[40.71911,-74.0066]&amp;time=[1442935490422]&amp;people=3</li>
-                        <li class="list-group-item snippet">openbikes.co/api/routing/mode=takeBike&amp;city=Toulouse&amp;departure=[43.5639677,1.4655774]&amp;arrival=[43.6044328,1.443463]&amp;time=[1442935490355]&amp;people=1</li>
-                        <li class="list-group-item snippet">openbikes.co/api/routing/mode=fullTrip&amp;city=Dublin&amp;departure=[53.34956,-6.27819]&amp;arrival=[53.33412,-6.26543]&amp;time=[1442935491010]&amp;people=2</li>
+                        <li class="list-group-item snippet">openbikes.co/api/names</li>
                     </ul>
                 </div>
             </div>
+
         </div>
     </div>
 </div>
+<br>
+<br>
+<br>
+<br>
+<br>
+
 {% include 'includes/footer.html' %}
 </body>
 </html>

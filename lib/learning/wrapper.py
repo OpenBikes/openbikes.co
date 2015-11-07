@@ -3,6 +3,7 @@ from lib.learning import (
     forest
 )
 
+
 def predict(method, time, target, city, station):
     variables = {
         'time': time

@@ -9,33 +9,36 @@ import pickle
 from zipfile import ZipFile
 import time
 
+
 def json_to_geojson(json):
     ''' Convert to a format readable by Leaflet. '''
     geojson = {
         'type': 'FeatureCollection',
         'features': [
-        {
-            'type': 'Feature',
-            'geometry' : {
-                'type': 'Point',
-                'coordinates': [entry['lon'],
-                                entry['lat']]
+            {
+                'type': 'Feature',
+                'geometry': {
+                    'type': 'Point',
+                    'coordinates': [entry['lon'], entry['lat']]
                 },
-            'properties' : entry,
-        } for entry in json]
+                'properties': entry,
+            } for entry in json]
     }
     return geojson
 
+
 def epoch_to_datetime(epoch, divisor=1):
-    ''' Convert a UNIX timestamp to ISO formatted time. ''' 
+    ''' Convert a UNIX timestamp to ISO formatted time. '''
     time = datetime.fromtimestamp(round(epoch / divisor))
     return time
+
 
 def iso_account_AM_PM(isoDate):
     ''' Account for the AM/PM notation of an ISO formatted date '''
     timestamp = datetime.strptime(isoDate, '%Y-%m-%d %I:%M:%S %p')
     iso = timestamp.isoformat()
     return iso
+
 
 def query_API(url, repeat=False):
     ''' Send a query to a URL and decode the bytes it returns. '''
@@ -52,21 +55,27 @@ def query_API(url, repeat=False):
             except:
                 response = None
 
+
 def dump_json(dictionary, fileName):
+    ''' Saves a dictionary to a JSON file. '''
     with open(fileName, 'w') as outfile:
         json.dump(dictionary, outfile)
 
+
 def read_json(file):
-    ''' Open a JSON file and load it. '''
+    ''' Open a JSON file and loads it as a dictionary. '''
     with open(file) as infile:
         dictionary = load_json(infile.read())
         return dictionary
 
+
 def load_json(string):
     return json.loads(string)
 
+
 def load_xml(string):
     return BeautifulSoup(string, 'lxml')
+
 
 def extract_element(element, child):
     '''
@@ -78,10 +87,12 @@ def extract_element(element, child):
     else:
         return value.string
 
+
 def extract_attribute(element, attribute):
     ''' Extract an attribute from an XML element. '''
     value = element.get(attribute)
     return value
+
 
 def remove_special_characters(string):
     ''' Remove special characters such as accents. '''
@@ -90,6 +101,7 @@ def remove_special_characters(string):
     cleanText = cleanBytes.decode('utf-8')
     return cleanText
 
+
 def dict_to_dataframe(dict):
     ''' Converts a dictionary into a dataframe. '''
     # Extract the information
@@ -97,18 +109,20 @@ def dict_to_dataframe(dict):
     # Return it as a dataframe where every row is an update
     return dataframe
 
+
 def convert_time(time):
     ''' Convert the time the user chose into a Datetime object. '''
     # It's either now
-    if len(time) == 1:   
+    if len(time) == 1:
         newTime = time[0] / 1000
     # Or defined by the user
-    else:   
+    else:
         newTime = epoch_to_datetime(time[0], divisor=1000)
         hour, minute = time[1].split(':')
         newTime = newTime.replace(hour=int(hour), minute=int(minute))
         newTime = newTime.timestamp()
     return round(newTime)
+
 
 def save_predictor(predictor, method, target, city, station):
     ''' Save a predictor with pickle. '''
@@ -130,16 +144,18 @@ def save_predictor(predictor, method, target, city, station):
     # Destroy it
     os.remove('{0}.pkl'.format(path))
 
+
 def load_predictor(method, target, city, station):
     ''' Load a predictor with pickle. '''
     path = 'predictors/{0}/{1}/{2}/{3}'.format(method, target, city,
-                                                   station.replace('/', '_'))
+                                               station.replace('/', '_'))
     with ZipFile('{0}.zip'.format(path)) as zf:
         zf.extractall()
     with open('{0}.pkl'.format(path), 'rb') as infile:
         os.remove('{0}.pkl'.format(path))
         predictor = pickle.load(infile)
         return predictor
+
 
 def normalize_string(string):
     ''' Clean a string for caching purposes. '''
@@ -148,6 +164,12 @@ def normalize_string(string):
     string = string.rstrip()
     string = ' '.join(string.split())
     return string
+
+
+def euclidian_distance(p1, p2):
+    a = (p1[0] - p2[0]) ** 2
+    b = (p1[1] - p2[1]) ** 2
+    return (a + b) ** (1 / 2)
 
 
 class MWT(object):
@@ -179,8 +201,7 @@ class MWT(object):
                 if (time.time() - v[1]) > self.timeout:
                     raise KeyError
             except KeyError:
-                v = self.cache[key] = (f(*args,**kwargs), time.time())
+                v = self.cache[key] = (f(*args, **kwargs), time.time())
             return v[0]
         func.func_name = f.__name__
-
         return func

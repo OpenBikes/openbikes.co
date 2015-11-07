@@ -1,5 +1,6 @@
 import pandas as pd
 
+
 def rename_columns(dataframe):
     '''
     The data is stored in MongoDB with shortcuts for the attributes in order
@@ -12,6 +13,7 @@ def rename_columns(dataframe):
     dataframe.rename(columns=shortcuts, inplace=True)
     return dataframe
 
+
 def temporal_features(timestamp):
     ''' Extract relevant time information from a list of timestamps. '''
     features = {
@@ -22,6 +24,7 @@ def temporal_features(timestamp):
         # Holiday?
     }
     return features
+
 
 def prepare(dataframe):
     ''' Extract features and label them as categorical or numerical. '''

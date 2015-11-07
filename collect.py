@@ -8,17 +8,18 @@ import json
 
 providers = tools.read_json('static/providers.json')
 centers = tools.read_json('static/centers.json')
+predictions = tools.read_json('static/predictions.json')
 
-def update(provider, city):
+
+def update(provider, city, predict):
     # Get the information for the city
     try:
         stations = wrapper.collect(provider, city)
     except:
         return
-    # Get the weather report
-    position = centers[city]
     # Update the database
-    timeseries.update_city(stations, city)
+    if predict == 'Yes':
+        timeseries.update_city(stations, city)
     # Save the data for the map
     geojson = tools.json_to_geojson(stations)
     with open('static/geojson/{0}.geojson'.format(city), 'w') as outfile:
@@ -32,8 +33,9 @@ if __name__ == '__main__':
     for provider, cities in providers.items():
         for city in cities:
             time.sleep(3)
-            update(provider, city)
-            scheduler.add_job(update, 'interval', seconds=60, args=[provider, city],
+            update(provider, city, predictions[city])
+            scheduler.add_job(update, 'interval', seconds=60,
+                              args=[provider, city, predictions[city]],
                               misfire_grace_time=50, coalesce=True)
     scheduler.start()
     while True:
