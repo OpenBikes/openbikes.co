@@ -1,10 +1,13 @@
+import os
+os.chdir('..')
+
 from lib.providers import wrapper
 from lib import geography
 from lib.mongo import geo
 from lib import tools
 import argparse
 import numpy as np
-import os
+
 
 # Define the command line arguments
 parser = argparse.ArgumentParser(description='Add or remove a city.')

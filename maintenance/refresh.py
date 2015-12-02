@@ -1,5 +1,7 @@
-from apscheduler.schedulers.background import BackgroundScheduler
 import os
+os.chdir('..')
+
+from apscheduler.schedulers.background import BackgroundScheduler
 import time
 
 

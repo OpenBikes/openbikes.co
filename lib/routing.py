@@ -68,9 +68,9 @@ def generate_path(situation, target, distance, mode, stationFirst=False,
         # Calculate what time it would be when reaching the candidate station
         currentTime = time + candidate['duration']
         currentTime = tools.epoch_to_datetime(time)
+        # Check if the prediction is satisfying
         prediction = wrapper.predict('forest', currentTime, target,
                                      city, candidate['_id'])
-        # Check if the prediction is satisfying
         if prediction >= people:
             stationPosition = list(reversed(candidate['p']))
             if stationFirst is False:
@@ -95,7 +95,7 @@ def reshape(mode, A, B):
 @tools.MWT(timeout=60*60*24)
 def get_route(url):
     ''' Specific function to perform caching. '''
-    data = tools.query_API(url, repeat=True)
+    data = tools.query_API(url, repeat=False)
     return data
 
 

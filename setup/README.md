@@ -13,11 +13,9 @@ Whatever you do, run ``addcities.sh`` if you want things to work. Then you will 
 
 ## Server
 
-Simply run ``setup.sh``, the script is heavily commented.
+Refer to the ``setup.sh`` script.
 
-## Personal computers
-
-### Linux
+## Linux
 
 - [Install MongoDB](http://docs.mongodb.org/master/administration/install-on-linux/).
 - Install Python3 if you do not have it. You can install the necessary libraries with the system's Python but this is never recommended. You have two more secure options:
@@ -29,7 +27,7 @@ Simply run ``setup.sh``, the script is heavily commented.
 - ``pip install -r requirements.txt`` for installing the Python libraries. 
 - ``./addcities.sh`` for adding the cities to the geographical database and generating necessary files for the website.
 
-### Mac
+## Mac
 
 - Installing MongoDB with Brew is recommended, however it's a bit complicated to figure out how to make it work properly:
 	- ``brew update``
@@ -48,4 +46,6 @@ Simply run ``setup.sh``, the script is heavily commented.
 - ``pip install -r requirements.txt`` for installing the Python libraries. 
 - ``./addcities.sh`` for adding the cities to the geographical database and generating necessary files for the website.
 
-### Windows
+## Windows
+
+To do.

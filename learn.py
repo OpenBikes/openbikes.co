@@ -6,6 +6,7 @@ from lib import tools
 import time
 
 stationsFile = tools.read_json('static/stations.json')
+predictions = tools.read_json('static/predictions.json')
 
 
 def learn(city):
@@ -23,9 +24,10 @@ def learn(city):
 if __name__ == '__main__':
     scheduler = BackgroundScheduler()
     for city in stationsFile.keys():
-        learn(city)
-        scheduler.add_job(learn, 'interval', weeks=2, args=[city],
-                          misfire_grace_time=60*60*24*7, coalesce=True)
+        if predictions[city] == 'Yes':
+            learn(city)
+            scheduler.add_job(learn, 'interval', weeks=2, args=[city],
+                              misfire_grace_time=60*60*24*7, coalesce=True)
     scheduler.start()
     while True:
         time.sleep(10e-1000000)
