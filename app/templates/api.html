@@ -1,0 +1,157 @@
+{% include 'includes/header.html' %}
+{% include 'includes/navigation.html' %}
+<style>
+.snippet {
+    background: #3F3F3F;
+    color: white;
+    font-family: consolas;
+}
+</style>
+<body>
+
+<div align="center" class="mtb">
+    <h1 class="navbar-title">API</h1>
+    <div class="row">
+        <p>{{ _("The data we collect from various APIs is tranformed into a single format. Because we got this data for free we believe that it's only normal to redistribute it for other developers. For the while our API is not limited and not require any key. Later on, when we will enable access to historical data, things may change.") }}</p>
+        <br><br><br>
+        <div class="panel-group">
+            <div class="panel panel-primary">
+                <div class="panel-heading"> 
+                    <h1 class="panel-title">
+                        <a href="#item1" data-toggle="collapse"> {{ _("City current state") }} </a>
+                    </h1>
+                </div>
+                <div id="item1" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        {{ _("Returns the state of each station in the queried city. Just like the maps, this data is refreshed every minute or so. The data follows the GeoJSON standard format.") }}
+                    </div>
+                    <ul class="list-group">
+                        <li class="list-group-item snippet">openbikes.co/api/city/Toulouse</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="panel panel-primary">
+                <div class="panel-heading"> 
+                    <h1 class="panel-title">
+                        <a href="#item2" data-toggle="collapse"> {{ _("Stations") }} </a>
+                    </h1>
+                </div>
+                <div id="item2" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        {{ _("Returns a dictionary containing the list of stations of each city. The data is refreshed every day.") }}
+                    </div>
+                    <ul class="list-group">
+                        <li class="list-group-item snippet">openbikes.co/api/stations</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="panel panel-primary">
+                <div class="panel-heading"> 
+                    <h1 class="panel-title">
+                        <a href="#item3" data-toggle="collapse"> {{ _("Providers") }} </a>
+                    </h1>
+                </div>
+                <div id="item3" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        {{ _("Returns a dictionary containing the list of cities each bike sharing provider covers. The data is updated every time we add/remove a city.") }}
+                    </div>
+                    <ul class="list-group">
+                        <li class="list-group-item snippet">openbikes.co/api/providers</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="panel panel-primary">
+                <div class="panel-heading"> 
+                    <h1 class="panel-title">
+                        <a href="#item4" data-toggle="collapse"> {{ _("Countries &amp; cities") }} </a>
+                    </h1>
+                </div>
+                <div id="item4" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        {{ _("Returns a dictionary containing the list of cities of each country. The data is updated every time we add/remove a city.") }}
+                    </div>
+                    <ul class="list-group">
+                        <li class="list-group-item snippet">openbikes.co/api/cities</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="panel panel-primary">
+                <div class="panel-heading"> 
+                    <h1 class="panel-title">
+                        <a href="#item5" data-toggle="collapse"> {{ _("City centers") }} </a>
+                    </h1>
+                </div>
+                <div id="item5" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        {{ _("Returns a dictionary containing the center position of each city. The format is [lat, lon].") }}
+                    </div>
+                    <ul class="list-group">
+                        <li class="list-group-item snippet">openbikes.co/api/centers</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="panel panel-primary">
+                <div class="panel-heading"> 
+                    <h1 class="panel-title">
+                        <a href="#item6" data-toggle="collapse"> {{ _("Names") }} </a>
+                    </h1>
+                </div>
+                <div id="item6" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        {{ _("Returns a dictionary containing translations for the names used in the API.") }}
+                    </div>
+                    <ul class="list-group">
+                        <li class="list-group-item snippet">openbikes.co/api/names</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="panel panel-primary">
+                <div class="panel-heading"> 
+                    <h1 class="panel-title">
+                        <a href="#item7" data-toggle="collapse"> {{ _("Predictions") }} </a>
+                    </h1>
+                </div>
+                <div id="item7" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        {{ _("Returns a dictionary informing if a city has predictions enabled or not.") }}
+                    </div>
+                    <ul class="list-group">
+                        <li class="list-group-item snippet">openbikes.co/api/predictions</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="panel panel-primary">
+                <div class="panel-heading"> 
+                    <h1 class="panel-title">
+                        <a href="#item8" data-toggle="collapse"> {{ _("Updates") }} </a>
+                    </h1>
+                </div>
+                <div id="item7" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        {{ _("Returns a dictionary that contains the last update time of a city.") }}
+                    </div>
+                    <ul class="list-group">
+                        <li class="list-group-item snippet">openbikes.co/api/updates</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+{% include 'includes/footer.html' %}
+</body>
+</html>

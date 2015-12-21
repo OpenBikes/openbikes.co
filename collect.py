@@ -1,42 +1,51 @@
-from apscheduler.schedulers.background import BackgroundScheduler
-from lib.providers import wrapper
-from lib.mongo import timeseries
-from lib import tools
+import asyncio
+from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from datetime import datetime
-import time
-import json
+from collecting.providers import *
+from mongo.timeseries import insert
+from common import toolbox as tb
 
-providers = tools.read_json('static/providers.json')
-centers = tools.read_json('static/centers.json')
-predictions = tools.read_json('static/predictions.json')
+settings = tb.read_json('common/settings.json')
+# Where to save the geojson files
+geojsonFolder = settings['folders']['geojson']
+# Where to place the updated timestamps
+informationFolder = settings['folders']['information']
+# Seconds for rescheduling
+refresh = settings['collecting']['refresh']
+# List of data providers
+providers = tb.read_json('{}/providers.json'.format(informationFolder))
+# Define which cities can be predicted or not
+predictions = tb.read_json('{}/predictions.json'.format(informationFolder))
 
 
 def update(provider, city, predict):
-    # Get the information for the city
+    ''' Update the data for a city. '''
+    # Get the current formatted data for a city
     try:
-        stations = wrapper.collect(provider, city)
+        stations = eval(provider).stations(city)
     except:
         return
-    # Update the database
+    # Update the database if the city can be predicted
     if predict == 'Yes':
-        timeseries.update_city(stations, city)
+        insert.city(city, stations)
     # Save the data for the map
-    geojson = tools.json_to_geojson(stations)
-    with open('static/geojson/{0}.geojson'.format(city), 'w') as outfile:
-        json.dump(geojson, outfile)
-    # Tell the server the city's data was updated
-    with open('static/updates/{0}.txt'.format(city), 'w') as outfile:
-        outfile.write(datetime.now().isoformat())
+    geojson = tb.json_to_geojson(stations)
+    tb.write_json(geojson, '{0}/{1}.geojson'.format(geojsonFolder, city))
+    # Refresh the latest update time
+    updates = tb.read_json('{}/updates.json'.format(informationFolder))
+    updates[city] = datetime.now().isoformat()
+    tb.write_json(updates, '{}/updates.json'.format(informationFolder))
 
 if __name__ == '__main__':
-    scheduler = BackgroundScheduler()
+    scheduler = AsyncIOScheduler()
     for provider, cities in providers.items():
         for city in cities:
-            time.sleep(3)
             update(provider, city, predictions[city])
-            scheduler.add_job(update, 'interval', seconds=60,
+            scheduler.add_job(update, 'interval', seconds=refresh,
                               args=[provider, city, predictions[city]],
-                              misfire_grace_time=50, coalesce=True)
+                              misfire_grace_time=refresh, coalesce=True)
     scheduler.start()
-    while True:
-        time.sleep(10e-1000000)
+    try:
+        asyncio.get_event_loop().run_forever()
+    except (KeyboardInterrupt, SystemExit):
+        pass

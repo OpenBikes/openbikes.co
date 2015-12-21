@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+    <head>
+        <meta charset='utf-8'/>
+        <title>{{ city_name }} - Openbikes</title>
+        <link rel="shortcut icon" href="/static/img/favicon.ico"/>
+        <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no'/>
+        <!-- Leaflet -->
+        <script src='https://api.tiles.mapbox.com/mapbox.js/v2.1.9/mapbox.js'></script>
+        <link href='https://api.tiles.mapbox.com/mapbox.js/v2.1.9/mapbox.css' rel='stylesheet'/>
+        <!-- Color converter -->
+        <script src="/static/js/map/color2color.min.js"></script>
+        <!-- Custom button plugin -->
+        <script src="/static/js/map/L.Control.Button.js"></script>
+        <!-- jQuery -->
+        <script src="/static/js/map/jquery.js"></script>
+        <!-- Livestamp -->
+        <script src="/static/js/map/moment.js"></script>
+        <script src="/static/js/map/livestamp.js"></script>
+        <!-- Bootstrap -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+        <!-- Time picker -->
+        <link href="/static/css/map/bootstrap-datetimepicker.min.css" rel="stylesheet">
+        <script src="/static/js/map/bootstrap-datetimepicker.min.js"></script>
+        <!-- Locate -->
+        <link href="/static/css/map/L.Control.Locate.min.css" rel="stylesheet">
+        <script src="/static/js/map/L.Control.Locate.min.js"></script>
+        <!-- Google polyline decoder -->
+        <script src="/static/js/map/Polyline.encoded.js"></script>
+        <!-- Custom style -->
+        <link href="/static/css/style.css" rel="stylesheet">
+        <!-- Full screen -->
+        <script src='//api.tiles.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v0.0.2/Leaflet.fullscreen.min.js'></script>
+        <link href='//api.tiles.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v0.0.2/leaflet.fullscreen.css' rel='stylesheet' />
+        <!-- Font awesome -->
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
+        <!-- Home button -->
+        <link href="/static/css/map/leaflet.zoomhome.css" rel="stylesheet">
+        <script src="/static/js/map/leaflet.zoomhome.min.js"></script>
+        <!-- Leaflet label -->
+        <link href="/static/css/map/leaflet.label.css" rel="stylesheet">
+        <script src="/static/js/map/leaflet.label.js"></script>
+        <!-- Map style -->
+        <link href="/static/css/map/style.css" rel="stylesheet">
+    </head>
+    {% include 'includes/navigation.html' %}
+    <body>
+        <!-- Loading image -->
+        <div class="loading"></div>
+        <script type="text/javascript">
+            $(window).load(function() {
+                $(".loading").fadeOut("slow");
+            });
+        </script>
+        <!-- Create the map -->
+        <div id="map" class="col-xs-12"></div>
+        <!-- Add the routing button -->
+        {% if predict == 'Yes' %}
+            <div>
+                <button id="searchButton" type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#routeModal">
+                    <i class="fa fa-bicycle"></i>
+                </button>
+                <div class="modal fade" id="routeModal" tabindex="-1" role="dialog" aria-labelledby="routeModalLabel">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title" id="routeModalLabel">{{ _("Trip recommendation") }}</h4>
+                            </div>
+                        <div class="modal-body">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <form method="post">
+                                            <div class="form-group">
+                                                <label class="control-label" for="people">
+                                                    {{ _("Number of people") }}
+                                                </label>
+                                                <input class="form-control" id="people" type="number" name="people" min="1" max="12" onChange="sentenceBeginning(this);"/>
+                                            </div>
+                                            <div class="form-group">
+                                                <label id="sentenceBeginning" class="control-label">
+                                                    {{ _("I want to...") }}
+                                                </label>
+                                                <div class="radio">
+                                                    <label class="radio">
+                                                    <input name="mode" type="radio" id="tripInput" value="fullTrip" onClick="trip();"/>
+                                                    {{ _("Do a trip") }}
+                                                    </label>
+                                                </div>
+                                                <div class="radio">
+                                                    <label class="radio">
+                                                    <input name="mode" type="radio" id="takeBikeInput" value="takeBike" onClick="takeBike();"/>
+                                                    {{ _("Take a bike") }}
+                                                    </label>
+                                                </div>
+                                                <div class="radio">
+                                                    <label class="radio">
+                                                    <input name="mode" type="radio" id="dropBikeInput" value="dropBike" onClick="dropBike();"/>
+                                                    {{ _("Put a bike back") }}
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label" for="departure">
+                                                {{ _("Start") }}
+                                                </label>
+                                                <div class="checkbox">
+                                                    <label class="checkbox">
+                                                    <input type="checkbox" value="hereDeparture" id="hereDepartureInput" onClick="somewhereElse(this);"/><p id="hereDepartureText" style="display: inline;">{{ _("Where I am") }}</p>
+                                                    </label>
+                                                </div>
+                                                <input class="form-control" id="departureInput" name="departureInput" type="text" placeholder="{{ _("Enter an address") }}" required/>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label" for="arrival">
+                                                {{ _("Arrival") }}
+                                                </label>
+                                                <div class="checkbox">
+                                                    <label class="checkbox">
+                                                    <input type="checkbox" value="hereArrival" id="hereArrivalInput" onClick="somewhereElse(this);"/>
+                                                    <p id="hereArrivalText" style="display: inline;">{{ _("Where I am") }}</p>
+                                                    </label>
+                                                </div>
+                                                <input class="form-control" id="arrivalInput" name="arrivalInput" type="text" placeholder="{{ _("Enter an address") }}" required/>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label ">
+                                                {{ _("When?") }}
+                                                </label>
+                                                <div class="checkbox">
+                                                    <label class="checkbox">
+                                                    <input id="timeNow" name="now" type="checkbox" value="Maintenant" onClick="nowChange(this);"/>
+                                                    {{ _("Now") }}
+                                                    </label>
+                                                </div>
+                                                <div class='input-group date' id='time'>
+                                                    <input type='text' id='timeInput' class="form-control"/>
+                                                    <span class="input-group-addon">
+                                                        <span class="glyphicon glyphicon-time"></span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-primary" type="button" name="submit" onClick="route();">
+                                {{ _("Find the best option") }}
+                            </button>
+                            <button id="closeModal" class="btn btn-default" type="button" class="btn btn-default" data-dismiss="modal">{{ _("Close") }}</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+        <!-- Language pack for livestamp-->
+        <script>
+            if (lang == 'fr') {
+                moment.locale('fr', {
+                    months : "janvier_février_mars_avril_mai_juin_juillet_août_septembre_octobre_novembre_décembre".split("_"),
+                    monthsShort : "janv._févr._mars_avr._mai_juin_juil._août_sept._oct._nov._déc.".split("_"),
+                    weekdays : "dimanche_lundi_mardi_mercredi_jeudi_vendredi_samedi".split("_"),
+                    weekdaysShort : "dim._lun._mar._mer._jeu._ven._sam.".split("_"),
+                    weekdaysMin : "Di_Lu_Ma_Me_Je_Ve_Sa".split("_"),
+                    longDateFormat : {
+                        LT : "HH:mm",
+                        LTS : "HH:mm:ss",
+                        L : "DD/MM/YYYY",
+                        LL : "D MMMM YYYY",
+                        LLL : "D MMMM YYYY LT",
+                        LLLL : "dddd D MMMM YYYY LT"
+                    },
+                    calendar : {
+                        sameDay: "[Aujourd'hui à] LT",
+                        nextDay: '[Demain à] LT',
+                        nextWeek: 'dddd [à] LT',
+                        lastDay: '[Hier à] LT',
+                        lastWeek: 'dddd [dernier à] LT',
+                        sameElse: 'L'
+                    },
+                    relativeTime : {
+                        future : "dans %s",
+                        past : "il y a %s",
+                        s : "quelques secondes",
+                        m : "une minute",
+                        mm : "%d minutes",
+                        h : "une heure",
+                        hh : "%d heures",
+                        d : "un jour",
+                        dd : "%d jours",
+                        M : "un mois",
+                        MM : "%d mois",
+                        y : "une année",
+                        yy : "%d années"
+                    },
+                    ordinalParse : /\d{1,2}(er|ème)/,
+                    ordinal : function (number) {
+                        return number + (number === 1 ? 'er' : 'ème');
+                    },
+                    meridiemParse: /PD|MD/,
+                    isPM: function (input) {
+                        return input.charAt(0) === 'M';
+                    },
+                    meridiem : function (hours, minutes, isLower) {
+                        return hours < 12 ? 'PD' : 'MD';
+                    },
+                    week : {
+                        dow : 1,
+                        doy : 4
+                    }
+                });
+            }
+        </script>
+
+
+
+        <script type="text/javascript">
+            // Load the map style
+            L.mapbox.accessToken = 'pk.eyJ1IjoibGVtYXgiLCJhIjoidnNDV1kzNCJ9.iH26jLhEuimYd6vLOO6v1g';
+            var map = L.mapbox.map('map', 'mapbox.outdoors', {
+                maxZoom: 20,
+                fullscreenControl: true,
+                zoomControl: false
+            })
+            var layers = {
+                "{{ _("Basic") }}": L.mapbox.tileLayer('mapbox.outdoors').addTo(map),
+                "{{ _("Light") }}": L.mapbox.tileLayer('mapbox.light'),
+                "{{ _("Dark") }}": L.mapbox.tileLayer('mapbox.dark'),
+                "{{ _("Comic") }}": L.mapbox.tileLayer('mapbox.comic'),
+                "{{ _("Crayon") }}": L.mapbox.tileLayer('mapbox.pencil')
+            }
+            L.control.layers(
+                layers,
+                null,
+                {position: 'topleft'}
+            ).addTo(map);
+            // Initial location
+            map.setView({{ center }}, 14);
+            var zoomBar = L.Control.zoomHome();
+            zoomBar.addTo(map);
+            L.control.locate({
+                position: 'topleft',
+                drawCircle: true,
+                follow: true,
+                setView: true,
+                keepCurrentZoomLevel: true,
+                remainActive: true,
+                markerClass: L.circleMarker,
+                circleStyle: {},
+                markerStyle: {},
+                followCircleStyle: {},
+                followMarkerStyle: {},
+                icon: 'fa fa-child',
+                iconLoading: 'fa fa-spinner fa-spin',  // class for loading icon
+                circlePadding: [0, 0], // padding around accuracy circle, value is passed to setBounds
+                metric: true,
+                onLocationError: function(err) {alert(err.message)},  // define an error callback function
+                onLocationOutsideMapBounds:  function(context) { // called when outside map boundaries
+                        alert(context.options.strings.outsideMapBoundsMsg);
+                },
+                showPopup: true, // display a popup when the user click on the inner marker
+                strings: {
+                    title: "{{ _("Locate me") }}",  // title of the locate control
+                    metersUnit: "{{ _("Meters") }}",
+                    popup: "{{ _("This is you!") }}",
+                    outsideMapBoundsMsg: "You seem located outside the boundaries of the map" // default message for onLocationOutsideMapBounds
+                },
+                locateOptions: {}
+            }).addTo(map);
+            // Add the timestamp pane
+            var timestamp = L.control({position: 'bottomright'});
+            timestamp.onAdd = function (map) {
+                var div = L.DomUtil.create('div', 'legend');
+                // Add last update information "2015-08-11T22:13:19.979650"
+                div.innerHTML += '<div>{{ _("Updated") }} <b><span id="timestamp"></span></b></div>';
+                return div;
+            };
+            timestamp.addTo(map);
+            // Add the legend pane
+            var legend = L.control({position: 'bottomright'});
+            legend.onAdd = function (map) {
+                var div = L.DomUtil.create('div', 'legend');
+                var grades = [0, 0.25, 0.5, 0.75, 1];
+                var labels = ["{{ _("Bikes >> Stands") }}", "{{ _("Bikes > Stands") }}", "{{ _("Bikes = Stands") }}", "{{ _("Bikes < Stands") }}", "{{ _("Bikes << Stands") }}"];
+                // Add title
+                div.innerHTML += '<p><div class="legend-title">{{ city_name }}</div></p>';
+                // Loop through color intensities and generate a label with a colored square
+                for (var i = 0; i < grades.length; i++) {
+                    div.innerHTML +=
+                        '<i style="background:' + getColor(grades[i], 'OPEN') + '"></i> ' + labels[i] + '<br>';
+                }
+                
+                return div;
+            };
+            legend.addTo(map);
+            // Obtaining the duration since the last update
+            function updateTimestamp() {      
+                $.getJSON('/update', {
+                    city: "{{ city }}"
+                }, function(data) {
+                    $('#timestamp').livestamp(data.timestamp);
+                });
+                return false;
+            };
+            // Transform a value from 0 to 1 into a color
+            function getColor(value, status){
+                if (status == 'OPEN'){
+                    var hue = (120 + value * 80).toString();
+                    var saturation = '100%';
+                    var luminosity = '' + (35 + value * 60)  + '%';
+                    var hsl = 'hsl(' + [hue, saturation, luminosity].join(',') + ')';
+                    return color2color(hsl, 'hex');
+                } else {
+                    return '#980000'
+                }
+            };
+            // Marker properties
+            function markerOptions(stands, total, status){
+                var ratio = (stands / total).toFixed(1);
+                return {
+                    radius: 10,
+                    fillColor: getColor(ratio, status),
+                    color: '#000',
+                    weight: 2.5,
+                    opacity: 1,
+                    fillOpacity: 0.8
+                }
+            };
+            // Main function
+            var markers = null;
+            function loadMarkers(){
+                $.getJSON("{{ geojson }}", function(geojson){
+                    var popupOptions = {
+                        'maxWidth': '500',
+                        'className' : 'label',
+                        'closeButton': false
+                    };
+                    markers = L.geoJson(geojson, {
+                        onEachFeature: function (feature, layer) {
+                            var properties = feature.properties
+                            var name = properties.name
+                            var bikes = properties.bikes
+                            var stands = properties.stands
+                            var status = properties.status
+                            var total = bikes + stands
+                            if (status == 'OPEN') {
+                                if (bikes >= 2) {
+                                    var bikesText = "{{ _(" bikes") }}"
+                                } else {
+                                    var bikesText = "{{ _(" bike") }}"
+                                }
+                                if (stands >= 2) {
+                                    var standsText = "{{ _(" stands") }}"
+                                } else {
+                                    var standsText = "{{ _(" stand") }}"
+                                }
+                                var popupText =
+                                    "<h1 align='center'>" + name + '</h1>' +
+                                    '<p align=center><b>' + bikes + '</b>' + bikesText + '</p>' +
+                                    '<p align=center><b>' + stands + '</b>' + standsText + '</p>';
+                            } else {
+                                var popupText =
+                                "<h1 align='center'>" + name + '</h1>' +
+                                '<p align=center>' + "{{ _("Closed") }}" + '</p>';
+                            }
+                            layer.bindPopup(popupText, popupOptions);
+                        },
+                        pointToLayer: function (feature, latlng) {
+                            var properties = feature.properties
+                            var name = properties.name
+                            var bikes = properties.bikes
+                            var stands = properties.stands
+                            var status = properties.status
+                            var total = bikes + stands
+                            return L.circleMarker(latlng, markerOptions(stands, total, status));
+                        }
+                    });
+                markers.addTo(map);
+                })
+            };
+            // Regularly refresh the markers and update the delay timer
+            loadMarkers();
+            updateTimestamp();
+            window.setInterval(function(){
+                map.removeLayer(markers);
+                loadMarkers();
+                updateTimestamp();
+            }, 60000);
+        </script>
+        <!-- Modal routing window -->
+        <script>
+            function sentenceBeginning(element) {
+                var people = element.value;
+                if (people != 1) {
+                    document.getElementById("sentenceBeginning").innerHTML = "{{ _("We want to...") }}";
+                    document.getElementById("hereDepartureText").innerHTML = "{{ _("Where we are") }}";
+                    document.getElementById("hereArrivalText").innerHTML = "{{ _("Where we are") }}";
+                } else {
+                    document.getElementById("sentenceBeginning").innerHTML = "{{ _("I want to...") }}";
+                    document.getElementById("hereDepartureText").innerHTML = "{{ _("Where I am") }}";
+                    document.getElementById("hereArrivalText").innerHTML = "{{ _("Where I am") }}";
+                }
+            }
+            function trip() {
+                document.getElementById('departureInput').disabled = true;
+                document.getElementById('arrivalInput').disabled = false;
+                document.getElementById('hereDepartureInput').disabled = false;
+                document.getElementById('hereDepartureInput').checked = true;
+                document.getElementById('hereArrivalInput').disabled = true;
+                document.getElementById('hereArrivalInput').checked = false;
+            }
+            function takeBike() {
+                document.getElementById('departureInput').disabled = true;
+                document.getElementById('arrivalInput').disabled = true;
+                document.getElementById('hereDepartureInput').disabled = false;
+                document.getElementById('hereDepartureInput').checked = true;
+                document.getElementById('hereArrivalInput').disabled = false;
+                document.getElementById('hereArrivalInput').checked = true;
+            }
+            function dropBike() {
+                document.getElementById('departureInput').disabled = true;
+                document.getElementById('arrivalInput').disabled = true;
+                document.getElementById('hereDepartureInput').disabled = false;
+                document.getElementById('hereDepartureInput').checked = true;
+                document.getElementById('hereArrivalInput').disabled = false;
+                document.getElementById('hereArrivalInput').checked = true;
+            }
+            function somewhereElse(element) {
+                var checkbox = element.id;
+                if (checkbox == 'hereDepartureInput') {
+                    if (document.getElementById('departureInput').disabled == true) {
+                        document.getElementById('departureInput').disabled = false;
+                    } else {
+                        document.getElementById('departureInput').disabled = true;
+                    }
+                    if (document.getElementById('tripInput').checked == true) {
+                        if (document.getElementById('hereDepartureInput').checked == false) {
+                            document.getElementById('hereArrivalInput').disabled = false;
+                        } else {
+                            document.getElementById('hereArrivalInput').disabled = true;
+                        }
+                    }
+                } else {
+                    if (document.getElementById('arrivalInput').disabled == true) {
+                        document.getElementById('arrivalInput').disabled = false;
+                    } else {
+                        document.getElementById('arrivalInput').disabled = true;
+                    }
+                    if (document.getElementById('tripInput').checked == true) {
+                        if (document.getElementById('hereArrivalInput').checked == false) {
+                            document.getElementById('hereDepartureInput').disabled = false;
+                        } else {
+                            document.getElementById('hereDepartureInput').disabled = true;
+                        }
+                    }
+                }
+            }
+            function nowChange(element) {
+                var now = element.checked;
+                if (now == true) {
+                    document.getElementById('timeInput').disabled = true;
+                } else {
+                    document.getElementById('timeInput').disabled = false;
+                }
+            }
+            $(function () {
+                $('#time').datetimepicker({
+                    format : 'LT',
+                    format : 'HH:mm'
+                });
+            });
+            // Default
+            document.getElementById('people').value = 1;
+            $("#tripInput").trigger("click");
+            document.getElementById("departureInput").disabled = true;
+            $("#timeNow").trigger("click");
+            // User current position
+            var geoOptions = {
+                enableHighAccuracy: false,
+                timeout: 5000,
+                // No cache
+                maximumAge: 0 
+            };
+            var userPos = null;
+            function geoSuccess(pos) {
+                var userLat = pos.coords.latitude;
+                var userLon = pos.coords.longitude;
+                userPos = [userLat, userLon];
+            };
+            function geoError(err) {
+                navigator.geolocation.getCurrentPosition(geoSuccess, geoError, geoOptions);
+            };
+            navigator.geolocation.getCurrentPosition(geoSuccess, geoError, geoOptions);
+            // Routing configuration
+            var searchButton = new L.Control.Button(L.DomUtil.get('searchButton'));
+            searchButton.addTo(map);
+            function route() {
+                // Number of people
+                var people = document.getElementById('people').value;
+                // Mode
+                var mode = $('input[name=mode]:checked').val();
+                // Adresses
+                var departure = null;
+                if (document.getElementById('hereDepartureInput').checked == true) {
+                    departure = userPos;
+                } else {
+                    departure = document.getElementById('departureInput').value;
+                }
+                var arrival = null;
+                if (document.getElementById('hereArrivalInput').checked == true) {
+                    arrival = userPos;
+                } else {
+                    arrival = document.getElementById('arrivalInput').value;
+                }   
+                // Time
+                var time = null;
+                if (document.getElementById('timeNow').checked == true) {
+                    time = [Date.now()];
+                } else {
+                    time = [Date.now(), document.getElementById('timeInput').value];
+                }
+                // JSONify the data to send it to Python
+                var info = {
+                    "people": people,
+                    "city": "{{ city }}",
+                    "mode": mode,
+                    "departure": departure,
+                    "arrival": arrival,
+                    "time": time
+                }
+                $("#closeModal").trigger("click");
+                $.ajax({
+                    type: "POST",
+                    async: true,
+                    contentType: "application/json; charset=utf-8",
+                    url: "/route",
+                    data: JSON.stringify(info),
+                    success: function(data) {
+                        var routes = data.routes;
+                        var pathColor = null;
+                        for (var i = 0; i < routes.length; i++) {
+                            if (routes[i]['mode'] == 'bicycling') {
+                                pathColor = 'red';
+                                pathIcon = '<i class="fa fa-bicycle"></i>' 
+                            } else {
+                                pathColor = 'blue';
+                                pathIcon = '<i class="fa fa-male"></i>'
+                            }
+                            // Decode Google polyline
+                            var polyline = L.Polyline.fromEncoded(routes[i]['polyline']);
+                            //var maneuvers = routes[i]['maneuvers'];
+                            var nodes = polyline.getLatLngs();
+                            // Extract the latitudes and longitudes into an array
+                            var path = [];
+                            for (var j = 0; j < nodes.length; j++) {
+                                var lat = nodes[j]['lat'];
+                                var lon = nodes[j]['lng'];
+                                path.push([lat, lon]);
+                            }
+                            // Add the path to the map
+                            L.polyline(path, {
+                                color: pathColor,
+                                weight: 10,
+                                opacity: .7,
+                                lineJoin: 'round'
+                            }).bindLabel('<h4 style="padding-top: 8px">' + pathIcon + '</h4>').addTo(map);
+                        }
+                    },
+                    error: function() {
+                        alert("{{ _("Something went wrong :-(") }}"); 
+                    }
+                });
+            };
+        </script>
+    </body>
+</html>

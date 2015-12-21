@@ -1,0 +1,72 @@
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div align="center" class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div align="center" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li><a id="index" href="#"><i class="fa fa-map-o"></i> {{ _("MAPS") }}</a></li>
+                <li><a id="api" href="#"><i class="fa fa-database"></i> {{ _("API") }}</a></li>
+                <li><a id="faq" href="#"><i class="fa fa-question-circle"></i> {{ _("FAQ") }}</a></li>
+                <li><a id="about" href="#"><i class="fa fa-info-circle"></i> {{ _("ABOUT") }}</a></li>
+                <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-globe"></i> {{ _("Language") }}<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a id="en" href="#">English</a></li>
+                        <li><a id="fr" href="#">Français</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+    function intersection(x, y) {
+        x.sort();
+        y.sort();
+        var i = j = 0;
+        var value = 0;
+        while (i < x.length && j < y.length) {
+            if (x[i] < y[j]) i++;
+            else if (y[j] < x[i]) j++;
+            else {
+                value = i;
+                return value;
+            }
+        }
+        return value;
+    }
+    var languages = ['en', 'fr'];
+    var args = window.location.href.split('/');
+    var index = intersection(languages, args);
+    var lang = null
+    if (index == 0) {
+        lang = 'en';
+    } else {
+        lang = languages[index];
+    }
+    $('#index').click(function(){ window.location.href = ["/", lang].join(''); return false; });
+    $('#api').click(function(){ window.location.href = ["/", lang, "/api"].join(''); return false; });
+    $('#faq').click(function(){ window.location.href = ["/", lang, "/faq"].join('');; return false; });
+    $('#about').click(function(){ window.location.href = ["/", lang, "/about"].join('');; return false; });
+
+    function changeLang(lang_code) {
+        lang = lang_code;
+        var newArgs = window.location.href.split('/');
+        if (newArgs.length == 5) {
+            newArgs[newArgs.length-2] = lang;
+        } else {
+            newArgs[newArgs.length-1] = lang;
+        }
+        var newUrl = newArgs.join('/');
+        window.location.href = newUrl;
+    }
+    $('#en').click(function(){ changeLang('en'); });
+    $('#fr').click(function(){ changeLang('fr'); });
+</script>

@@ -48,16 +48,26 @@ sudo pip3 install -r setup/requirements.txt
 
 # Add the cities
 cd setup
-sudo ./addcities.sh
+sudo ./refresh_cities.sh
 cd ..
 
 # Create the upstart script to collect data
-sudo cp setup/ob-collect.conf /etc/init/
+sudo cp setup/scripts/ob-collect.conf /etc/init/
 # Start it
 sudo start ob-collect
 
+# Create the upstart script to train predictors
+sudo cp setup/scripts/ob-learn.conf /etc/init/
+# Start it
+sudo start ob-learn
+
+# Create the upstart script to restart the robots
+sudo cp setup/scripts/ob-restart.conf /etc/init/
+# Start it
+sudo start ob-restart
+
 # Configure and enable a virtual host
-sudo cp setup/OpenBikes.conf /etc/apache2/sites-available/
+sudo cp setup/scripts/OpenBikes.conf /etc/apache2/sites-available/
 sudo a2ensite OpenBikes
 sudo service apache2 reload
 sudo service apache2 restart

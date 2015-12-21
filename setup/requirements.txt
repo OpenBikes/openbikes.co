@@ -1,13 +1,14 @@
 tzlocal
 numpy
 pandas
-flask
+flask 
+flask_babel
 pymongo
 htmlmin
 apscheduler
+asyncio
 scipy
 sklearn
 lxml
 beautifulsoup4
-flask_babel
 statsmodels

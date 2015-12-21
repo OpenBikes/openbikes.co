@@ -1,5 +1,3 @@
-*.pyc
 keys.json
+*.pyc
 *.zip
-PASSWORDS.md
-TODO.md
