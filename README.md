@@ -23,7 +23,7 @@ Contains the statistical algorithms for predicting the number of bikes/stands.
 Contains the code for managing the two databases:
 
 - A timeseries database which stores every update for every single bike station.
-- A geographical database for performing geographical queries.
+- A geographical database for performing spatial queries.
 
 ### [routing](routing/README.md)
 
