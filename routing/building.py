@@ -4,7 +4,7 @@ from mongo.geo import query
 from learning import *
 
 
-def choose(situation, target, distance, mode, stationFirst, nbCandidates=5):
+def choose_station(situation, address, target, distance, mode, stationFirst, nbCandidates=5):
     '''
     Choose the best station around the arrival and then define a trip
     between the departure and the station.
@@ -13,15 +13,13 @@ def choose(situation, target, distance, mode, stationFirst, nbCandidates=5):
     people = situation['people']
     time = tb.convert_time(situation['time'])
     # Will convert the positions to (lat, lon) if they are textual addresses
-    departure = geography.convert_to_point(city, situation['departure'])
-    arrival = geography.convert_to_point(city, situation['arrival'])
+    point = geography.convert_to_point(city, address)
     # Find the close stations with MongoDB
     stations = [station for station in
-                query.close_points(city, arrival, number=nbCandidates)]
+                query.close_points(city, point, number=nbCandidates)]
     # Get the distances to the stations
 
-    candidates = geography.compute_distances_manual(arrival, stations,
-                                                    distance)
+    candidates = geography.compute_distances_manual(point, stations, distance)
 
     # Sort the stations by distance
     candidates.sort(key=lambda station: station['duration'])

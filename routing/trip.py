@@ -1,16 +1,16 @@
 from copy import deepcopy
 from common import toolbox as tb
-from routing.building import choose, turn_by_turn
+from routing.building import choose_station, turn_by_turn
 
 
 def take_bike(situation):
-    path = choose(situation, 'bikes', 'walking', 'walking', False)
+    path = choose(situation, situation['start'], 'bikes', 'walking', 'walking', False)
     route = turn_by_turn(path)
     return [route]
 
 
 def drop_bike(situation):
-    path = choose(situation, 'spaces', 'bicycling', 'bicycling', False)
+    path = choose(situation, situation['start'], 'spaces', 'bicycling', 'bicycling', False)
     route = turn_by_turn(path)
     return [route]
 
@@ -20,11 +20,11 @@ def full_trip(situation):
     # Find the route from the departure to the departure station
     situationOne = deepcopy(situation)
     situationOne['arrival'] = situationOne['departure']
-    firstPath = choose(situationOne, 'bikes', 'walking', 'walking', False)
+    firstPath = choose(situationOne, situation['start'], 'bikes', 'walking', 'walking', False)
     # Find the route from the arrival station to the arrival
     situationTwo = deepcopy(situation)
     situationTwo['departure'] = situationTwo['arrival']
-    secondPath = choose(situationTwo, 'spaces', 'walking', 'walking', True)
+    secondPath = choose(situationTwo, situation['end'], 'spaces', 'walking', 'walking', True)
     # Find the route between both stations
     firstStation = firstPath['points'][1]
     secondStation = secondPath['points'][0]

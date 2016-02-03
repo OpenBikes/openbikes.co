@@ -25,18 +25,13 @@ def index():
 
 @app.route('/<lang_code>/api')
 def api():
-    cities = tb.read_json('{}/cities.json'.format(informationFolder))
-    names = tb.read_json('{}/names.json'.format(informationFolder))
-    return minify(render_template('api.html', title=gettext('API - OpenBikes'),
-                                  cities_file=cities, stations_file=stations))
+    return minify(render_template('api.html', title=gettext('API - OpenBikes')))
 
 
 @app.route('/<lang_code>/faq')
 def faq():
-    return minify(render_template('faq.html',
-                                  title=gettext('FAQ - OpenBikes')))
+    return minify(render_template('faq.html', title=gettext('FAQ - OpenBikes')))
 
 @app.route('/<lang_code>/about')
 def about():
-    return minify(render_template('about.html',
-                                  title=gettext('About - OpenBikes')))
+    return minify(render_template('about.html', title=gettext('About - OpenBikes')))

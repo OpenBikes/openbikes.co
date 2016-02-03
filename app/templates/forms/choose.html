@@ -1,0 +1,34 @@
+<div class="modal fade" id="modalChoose" tabindex="-1" role="dialog" aria-labelledby="routeModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="routeModalLabel">{{ _("Prediction - Choose an option") }}</h4>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <div>
+                        <p>
+                            <button id="toggleDropBike" type="button" onclick="$('#modalChoose').modal('toggle'); $('#modalDropBike').modal('toggle');" class="btn btn-info btn-block" data-toggle="modal">
+                                {{ _("Drop a bike off") }}
+                            </button>
+                        </p>
+                        <p>
+                            <button id="togglePickBike" type="button" onclick="$('#modalChoose').modal('toggle'); $('#modalPickBike').modal('toggle');" class="btn btn-info btn-block" data-toggle="modal">
+                                {{ _("Pick up a bike") }}
+                            </button>
+                        </p>
+                        <p>
+                            <button id="toggleTrip" type="button" onclick="$('#modalChoose').modal('toggle'); $('#modalTrip').modal('toggle');" class="btn btn-primary btn-block">
+                                {{ _("Make a trip") }}
+                            </button>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="closeModal" class="btn btn-default" type="button" class="btn btn-default" data-dismiss="modal">{{ _("Close") }}</button>
+            </div>
+        </div>
+    </div>
+</div>

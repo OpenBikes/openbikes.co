@@ -1,3 +1,4 @@
+{% import "macros.html" as m %}
 <!DOCTYPE html>
     <head>
         <meta charset='utf-8'/>
@@ -57,107 +58,18 @@
         <!-- Add the routing button -->
         {% if predict == 'Yes' %}
             <div>
-                <button id="searchButton" type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#routeModal">
+                <button id="toggleChoose" type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#modalChoose">
                     <i class="fa fa-bicycle"></i>
                 </button>
-                <div class="modal fade" id="routeModal" tabindex="-1" role="dialog" aria-labelledby="routeModalLabel">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                <h4 class="modal-title" id="routeModalLabel">{{ _("Trip recommendation") }}</h4>
-                            </div>
-                        <div class="modal-body">
-                            <div class="container-fluid">
-                                <div class="row">
-                                    <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <form method="post">
-                                            <div class="form-group">
-                                                <label class="control-label" for="people">
-                                                    {{ _("Number of people") }}
-                                                </label>
-                                                <input class="form-control" id="people" type="number" name="people" min="1" max="12" onChange="sentenceBeginning(this);"/>
-                                            </div>
-                                            <div class="form-group">
-                                                <label id="sentenceBeginning" class="control-label">
-                                                    {{ _("I want to...") }}
-                                                </label>
-                                                <div class="radio">
-                                                    <label class="radio">
-                                                    <input name="mode" type="radio" id="tripInput" value="fullTrip" onClick="trip();"/>
-                                                    {{ _("Do a trip") }}
-                                                    </label>
-                                                </div>
-                                                <div class="radio">
-                                                    <label class="radio">
-                                                    <input name="mode" type="radio" id="takeBikeInput" value="takeBike" onClick="takeBike();"/>
-                                                    {{ _("Take a bike") }}
-                                                    </label>
-                                                </div>
-                                                <div class="radio">
-                                                    <label class="radio">
-                                                    <input name="mode" type="radio" id="dropBikeInput" value="dropBike" onClick="dropBike();"/>
-                                                    {{ _("Put a bike back") }}
-                                                    </label>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="control-label" for="departure">
-                                                {{ _("Start") }}
-                                                </label>
-                                                <div class="checkbox">
-                                                    <label class="checkbox">
-                                                    <input type="checkbox" value="hereDeparture" id="hereDepartureInput" onClick="somewhereElse(this);"/><p id="hereDepartureText" style="display: inline;">{{ _("Where I am") }}</p>
-                                                    </label>
-                                                </div>
-                                                <input class="form-control" id="departureInput" name="departureInput" type="text" placeholder="{{ _("Enter an address") }}" required/>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="control-label" for="arrival">
-                                                {{ _("Arrival") }}
-                                                </label>
-                                                <div class="checkbox">
-                                                    <label class="checkbox">
-                                                    <input type="checkbox" value="hereArrival" id="hereArrivalInput" onClick="somewhereElse(this);"/>
-                                                    <p id="hereArrivalText" style="display: inline;">{{ _("Where I am") }}</p>
-                                                    </label>
-                                                </div>
-                                                <input class="form-control" id="arrivalInput" name="arrivalInput" type="text" placeholder="{{ _("Enter an address") }}" required/>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="control-label ">
-                                                {{ _("When?") }}
-                                                </label>
-                                                <div class="checkbox">
-                                                    <label class="checkbox">
-                                                    <input id="timeNow" name="now" type="checkbox" value="Maintenant" onClick="nowChange(this);"/>
-                                                    {{ _("Now") }}
-                                                    </label>
-                                                </div>
-                                                <div class='input-group date' id='time'>
-                                                    <input type='text' id='timeInput' class="form-control"/>
-                                                    <span class="input-group-addon">
-                                                        <span class="glyphicon glyphicon-time"></span>
-                                                    </span>
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button class="btn btn-primary" type="button" name="submit" onClick="route();">
-                                {{ _("Find the best option") }}
-                            </button>
-                            <button id="closeModal" class="btn btn-default" type="button" class="btn btn-default" data-dismiss="modal">{{ _("Close") }}</button>
-                        </div>
-                    </div>
+                {% include 'forms/choose.html' %}
+                {% include 'forms/drop_bike.html' %}
+                {% include 'forms/pick_bike.html' %}
+                {% include 'forms/trip.html' %}
                 </div>
             </div>
         {% endif %}
-        <!-- Language pack for livestamp-->
         <script>
+            // Language pack for livestamp
             if (lang == 'fr') {
                 moment.locale('fr', {
                     months : "janvier_février_mars_avril_mai_juin_juillet_août_septembre_octobre_novembre_décembre".split("_"),
@@ -292,12 +204,12 @@
                     div.innerHTML +=
                         '<i style="background:' + getColor(grades[i], 'OPEN') + '"></i> ' + labels[i] + '<br>';
                 }
-                
+
                 return div;
             };
             legend.addTo(map);
             // Obtaining the duration since the last update
-            function updateTimestamp() {      
+            function updateTimestamp() {
                 $.getJSON('/update', {
                     city: "{{ city }}"
                 }, function(data) {
@@ -389,100 +301,12 @@
                 loadMarkers();
                 updateTimestamp();
             }, 60000);
-        </script>
-        <!-- Modal routing window -->
-        <script>
-            function sentenceBeginning(element) {
-                var people = element.value;
-                if (people != 1) {
-                    document.getElementById("sentenceBeginning").innerHTML = "{{ _("We want to...") }}";
-                    document.getElementById("hereDepartureText").innerHTML = "{{ _("Where we are") }}";
-                    document.getElementById("hereArrivalText").innerHTML = "{{ _("Where we are") }}";
-                } else {
-                    document.getElementById("sentenceBeginning").innerHTML = "{{ _("I want to...") }}";
-                    document.getElementById("hereDepartureText").innerHTML = "{{ _("Where I am") }}";
-                    document.getElementById("hereArrivalText").innerHTML = "{{ _("Where I am") }}";
-                }
-            }
-            function trip() {
-                document.getElementById('departureInput').disabled = true;
-                document.getElementById('arrivalInput').disabled = false;
-                document.getElementById('hereDepartureInput').disabled = false;
-                document.getElementById('hereDepartureInput').checked = true;
-                document.getElementById('hereArrivalInput').disabled = true;
-                document.getElementById('hereArrivalInput').checked = false;
-            }
-            function takeBike() {
-                document.getElementById('departureInput').disabled = true;
-                document.getElementById('arrivalInput').disabled = true;
-                document.getElementById('hereDepartureInput').disabled = false;
-                document.getElementById('hereDepartureInput').checked = true;
-                document.getElementById('hereArrivalInput').disabled = false;
-                document.getElementById('hereArrivalInput').checked = true;
-            }
-            function dropBike() {
-                document.getElementById('departureInput').disabled = true;
-                document.getElementById('arrivalInput').disabled = true;
-                document.getElementById('hereDepartureInput').disabled = false;
-                document.getElementById('hereDepartureInput').checked = true;
-                document.getElementById('hereArrivalInput').disabled = false;
-                document.getElementById('hereArrivalInput').checked = true;
-            }
-            function somewhereElse(element) {
-                var checkbox = element.id;
-                if (checkbox == 'hereDepartureInput') {
-                    if (document.getElementById('departureInput').disabled == true) {
-                        document.getElementById('departureInput').disabled = false;
-                    } else {
-                        document.getElementById('departureInput').disabled = true;
-                    }
-                    if (document.getElementById('tripInput').checked == true) {
-                        if (document.getElementById('hereDepartureInput').checked == false) {
-                            document.getElementById('hereArrivalInput').disabled = false;
-                        } else {
-                            document.getElementById('hereArrivalInput').disabled = true;
-                        }
-                    }
-                } else {
-                    if (document.getElementById('arrivalInput').disabled == true) {
-                        document.getElementById('arrivalInput').disabled = false;
-                    } else {
-                        document.getElementById('arrivalInput').disabled = true;
-                    }
-                    if (document.getElementById('tripInput').checked == true) {
-                        if (document.getElementById('hereArrivalInput').checked == false) {
-                            document.getElementById('hereDepartureInput').disabled = false;
-                        } else {
-                            document.getElementById('hereDepartureInput').disabled = true;
-                        }
-                    }
-                }
-            }
-            function nowChange(element) {
-                var now = element.checked;
-                if (now == true) {
-                    document.getElementById('timeInput').disabled = true;
-                } else {
-                    document.getElementById('timeInput').disabled = false;
-                }
-            }
-            $(function () {
-                $('#time').datetimepicker({
-                    format : 'LT',
-                    format : 'HH:mm'
-                });
-            });
-            // Default
-            document.getElementById('people').value = 1;
-            $("#tripInput").trigger("click");
-            document.getElementById("departureInput").disabled = true;
-            $("#timeNow").trigger("click");
             // User current position
             var geoOptions = {
                 enableHighAccuracy: false,
                 timeout: 5000,
                 // No cache
-                maximumAge: 0 
+                maximumAge: 0
             };
             var userPos = null;
             function geoSuccess(pos) {
@@ -495,56 +319,30 @@
             };
             navigator.geolocation.getCurrentPosition(geoSuccess, geoError, geoOptions);
             // Routing configuration
-            var searchButton = new L.Control.Button(L.DomUtil.get('searchButton'));
+            var searchButton = new L.Control.Button(L.DomUtil.get('toggleChoose'));
             searchButton.addTo(map);
-            function route() {
-                // Number of people
-                var people = document.getElementById('people').value;
-                // Mode
-                var mode = $('input[name=mode]:checked').val();
-                // Adresses
-                var departure = null;
-                if (document.getElementById('hereDepartureInput').checked == true) {
-                    departure = userPos;
-                } else {
-                    departure = document.getElementById('departureInput').value;
+            // Routing function
+            function route(formId, mode) {
+                var situation = {};
+                var formArray = $(formId).serializeArray();
+                for (i = 0; i < formArray.length; i++) {
+                    situation[formArray[i].name] = formArray[i].value;
                 }
-                var arrival = null;
-                if (document.getElementById('hereArrivalInput').checked == true) {
-                    arrival = userPos;
-                } else {
-                    arrival = document.getElementById('arrivalInput').value;
-                }   
-                // Time
-                var time = null;
-                if (document.getElementById('timeNow').checked == true) {
-                    time = [Date.now()];
-                } else {
-                    time = [Date.now(), document.getElementById('timeInput').value];
-                }
-                // JSONify the data to send it to Python
-                var info = {
-                    "people": people,
-                    "city": "{{ city }}",
-                    "mode": mode,
-                    "departure": departure,
-                    "arrival": arrival,
-                    "time": time
-                }
-                $("#closeModal").trigger("click");
+                situation['mode'] = mode;
+                situation['city'] = "{{ city }}";
                 $.ajax({
                     type: "POST",
                     async: true,
                     contentType: "application/json; charset=utf-8",
                     url: "/route",
-                    data: JSON.stringify(info),
+                    data: JSON.stringify(situation),
                     success: function(data) {
                         var routes = data.routes;
                         var pathColor = null;
                         for (var i = 0; i < routes.length; i++) {
                             if (routes[i]['mode'] == 'bicycling') {
                                 pathColor = 'red';
-                                pathIcon = '<i class="fa fa-bicycle"></i>' 
+                                pathIcon = '<i class="fa fa-bicycle"></i>'
                             } else {
                                 pathColor = 'blue';
                                 pathIcon = '<i class="fa fa-male"></i>'
@@ -570,7 +368,7 @@
                         }
                     },
                     error: function() {
-                        alert("{{ _("Something went wrong :-(") }}"); 
+                        alert("{{ _("Something went wrong :-(") }}");
                     }
                 });
             };

@@ -1,8 +1,9 @@
 tzlocal
 numpy
 pandas
-flask 
-flask_babel
+flask
+flask-babel
+flask-wtforms
 pymongo
 htmlmin
 apscheduler

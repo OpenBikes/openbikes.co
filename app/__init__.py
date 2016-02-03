@@ -2,6 +2,9 @@ from flask import Flask, request, g
 
 app = Flask(__name__)
 
+# Setup the application
+app.config.from_object('config')
+
 # Add the top level to the import path
 import sys
 sys.path.append('..')
@@ -21,5 +24,5 @@ def get_locale():
     return g.get('current_lang', 'en')
 
 # Import the views
-from app.views import main, map, api, error 
+from app.views import main, map, api, error
 app.register_blueprint(api.apibp)
