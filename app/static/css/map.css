@@ -9,6 +9,7 @@ html, body, #map {
 }
 .legend {
     line-height: 18px;
+    width: 100%;
     color: #555;
     padding: 6px 8px;
     background: white;
@@ -16,6 +17,8 @@ html, body, #map {
     box-shadow: 0 0 15px rgba(0,0,0,0.2);
     border-radius: 5px;
 }
+
+
 .legend i {
     width: 18px;
     height: 18px;
