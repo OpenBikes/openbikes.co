@@ -43,6 +43,7 @@
         <script src="/static/js/map/leaflet.label.js"></script>
         <!-- Map style -->
         <link href="/static/css/map/style.css" rel="stylesheet">
+        <link href="/static/css/map/map.css" rel="stylesheet">
     </head>
     {% include 'includes/navigation.html' %}
     <body>
@@ -202,9 +203,12 @@
                 // Loop through color intensities and generate a label with a colored square
                 for (var i = 0; i < grades.length; i++) {
                     div.innerHTML +=
-                        '<i style="background:' + getColor(grades[i], 'OPEN') + '"></i> ' + labels[i] + '<br>';
+                        '<i style="background:' + getColor(grades[i], 'OPEN') + '"></i>' + labels[i] + '<br>';
                 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> cbc3931d7b35d1dfde921e7b8ede9d9be32aa6d0
                 return div;
             };
             legend.addTo(map);
