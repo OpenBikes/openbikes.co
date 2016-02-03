@@ -32,10 +32,9 @@ def choose_station(situation, address, target, distance, mode, stationFirst, nbC
         variables = munging.temporal_features(forecast)
         features = [variables['hour'], variables['minute'],
                     variables['weekday']]
-        # Check if the prediction is satisfying
+        # Make a prediction
         settings = tb.read_json('common/settings.json')
         method = eval(settings['learning']['method'])
-        # Make a prediction
         prediction = method.predict(features, target, city, candidate['_id'])
         bias = tb.read_json('common/settings.json')['learning']['bias']
         if target == 'bikes':

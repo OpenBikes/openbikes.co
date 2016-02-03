@@ -27,11 +27,6 @@ def index():
 
 @app.route('/<lang_code>/api')
 def api():
-<<<<<<< HEAD
-=======
-    cities = tb.read_json('{}/cities.json'.format(informationFolder))
-    names = tb.read_json('{}/names.json'.format(informationFolder))
->>>>>>> cbc3931d7b35d1dfde921e7b8ede9d9be32aa6d0
     return minify(render_template('api.html', title=gettext('API - OpenBikes')))
 
 
