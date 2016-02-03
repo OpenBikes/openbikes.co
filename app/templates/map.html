@@ -202,13 +202,8 @@
                 div.innerHTML += '<p><div class="legend-title">{{ city_name }}</div></p>';
                 // Loop through color intensities and generate a label with a colored square
                 for (var i = 0; i < grades.length; i++) {
-                    div.innerHTML +=
-                        '<i style="background:' + getColor(grades[i], 'OPEN') + '"></i>' + labels[i] + '<br>';
+                    div.innerHTML += '<i style="background:' + getColor(grades[i], 'OPEN') + '"></i>' + labels[i] + '<br>';
                 }
-<<<<<<< HEAD
-
-=======
->>>>>>> cbc3931d7b35d1dfde921e7b8ede9d9be32aa6d0
                 return div;
             };
             legend.addTo(map);
