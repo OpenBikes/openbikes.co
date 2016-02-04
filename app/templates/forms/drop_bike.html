@@ -1,3 +1,10 @@
+
+<style>
+.pac-container {
+    z-index: 1051 !important;
+}
+</style>
+
 <div class="modal fade" id="modalDropBike" tabindex="-1" role="dialog" aria-labelledby="routeModalLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -10,14 +17,9 @@
                     <div class="row">
                         <form class="formDropBike" method="post">
                             {{ m.render_field(formDropBike.start) }}
-                            {{ m.render_field(formDropBike.time) }}
-                            <!-- <div class='input-group date' id='time'>
-                                <input type='text' id='timeInput' class="form-control"/>
-                                <span class="input-group-addon">
-                                    <span class="glyphicon glyphicon-time"></span>
-                                </span>
-                            </div> -->
+                            {{ m.render_field_errors_date(formDropBike.time) }}
                             {{ m.render_field(formDropBike.people) }}
+                            <div id="dtBoxDropBike"></div>
                             {{ formDropBike.csrf_token }}
                         </form>
                     </div>
@@ -32,3 +34,21 @@
         </div>
     </div>
 </div>
+
+<!-- DateTimePicker settings -->
+<script type='text/javascript'>
+ $(document).ready(setDateTime("#dtBoxDropBike"));
+</script>
+
+<script type='text/javascript'>
+function initializeAdresseDep() {
+    var input = document.getElementById('start');
+    var options = {
+        types: ['geocode'],
+        componentRestrictions: {country: 'fr'}
+    };
+    autocomplete = new google.maps.places.Autocomplete(input, options);
+}
+google.maps.event.addDomListener(window, 'load', initializeAdresseDep);
+</script>
+

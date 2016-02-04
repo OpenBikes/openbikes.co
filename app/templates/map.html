@@ -20,9 +20,6 @@
         <!-- Bootstrap -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-        <!-- Time picker -->
-        <link href="/static/css/map/bootstrap-datetimepicker.min.css" rel="stylesheet">
-        <script src="/static/js/map/bootstrap-datetimepicker.min.js"></script>
         <!-- Locate -->
         <link href="/static/css/map/L.Control.Locate.min.css" rel="stylesheet">
         <script src="/static/js/map/L.Control.Locate.min.js"></script>
@@ -43,7 +40,11 @@
         <script src="/static/js/map/leaflet.label.js"></script>
         <!-- Map style -->
         <link href="/static/css/map/style.css" rel="stylesheet">
-        <link href="/static/css/map/map.css" rel="stylesheet">
+        <!-- DateTime picker -->
+        <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/datetimepicker/latest/DateTimePicker.min.css"></link>
+        <script type="text/javascript" src="//cdn.jsdelivr.net/datetimepicker/latest/DateTimePicker.min.js"></script>
+        <!-- Géolocalisation de l'addresse -->
+        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
     </head>
     {% include 'includes/navigation.html' %}
     <body>
@@ -53,6 +54,24 @@
             $(window).load(function() {
                 $(".loading").fadeOut("slow");
             });
+        </script>
+        <!-- DateTimePicker Function -->
+        <script type="text/javascript">
+        function setDateTime(boxId){
+                // Paramètres du DateTimePicker
+                $(boxId).DateTimePicker({
+                    fullMonthNames : ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Aout", "Septembre", "Octobre", "Novembre", "Décembre"],
+                    shortDayNames: ["Dim", "Lun", "Mar", "Mer", "Jeu", "Ven", "Sam"],
+                    fullDayNames : ["Lundi","Mardi","Mercredi","Jeudi","Vendredi","Samedi","Dimanche"],
+                    shortMonthNames : ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Aout", "Septembre", "Octobre", "Novembre", "Décembre"],
+                    titleContentDateTime : "Choissisez la date et l'horaire de départ",
+                    setButtonContent : "Appliquer",
+                    clearButtonContent : "Effacer",
+                    minuteInterval : 5,
+                    buttonsToDisplay : ["HeaderCloseButton", "SetButton"],
+                    dateTimeFormat : "dd-MM-yyyy HH:mm"
+                });
+             };
         </script>
         <!-- Create the map -->
         <div id="map" class="col-xs-12"></div>

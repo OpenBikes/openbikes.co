@@ -26,3 +26,17 @@
     	</ul>
   	{% endif %}
 {% endmacro %}
+
+<!-- Macro permettant de générer un input pour choisir une datetime avec affichage d'erreurs -->
+{% macro render_field_errors_date(field) %}
+	<div class="field">
+		<input type="text" id="datepicker" data-field="datetime" name="{{ field.name }}" placeholder="Départ le" autocomplete="off">
+	</div>
+  	{% if field.errors %}
+    	<ul>
+	    	{% for error in field.errors %}
+	      		<li class="form-error">{{ error }}</li>
+	    	{% endfor %}
+    	</ul>
+  	{% endif %}
+{% endmacro %}
