@@ -63,12 +63,8 @@ def write_json(dictionary, filename):
 def read_json(file):
     ''' Open a JSON file and loads it as a dictionary. '''
     with open(file) as infile:
-        dictionary = load_json(infile.read())
+        dictionary = json.loads(infile.read())
         return dictionary
-
-
-def load_json(string):
-    return json.loads(string)
 
 
 def load_xml(string):
@@ -110,15 +106,10 @@ def dict_to_dataframe(dict):
 
 def convert_time(time):
     ''' Convert the time the user chose into a Datetime object. '''
-    # It's either now
-    if len(time) == 1:
-        newTime = time[0] / 1000
-    # Or defined by the user
-    else:
-        newTime = epoch_to_datetime(time[0], divisor=1000)
-        hour, minute = time[1].split(':')
-        newTime = newTime.replace(hour=int(hour), minute=int(minute))
-        newTime = newTime.timestamp()
+    hour, minute = time.split(':')
+    newTime = newTime.replace(hour=int(hour), minute=int(minute))
+    newTime = newTime.timestamp()
+    print(newTime)
     return round(newTime)
 
 

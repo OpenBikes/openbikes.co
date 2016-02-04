@@ -3,6 +3,7 @@ from htmlmin import minify
 import json
 from common import toolbox as tb
 from routing import trip
+from app.forms import DropBike
 from app.views import informationFolder
 from app import app
 
@@ -15,7 +16,8 @@ def map(city):
     geojson = str(url_for('static', filename='geojson/{}.geojson'.format(city)))
     return minify(render_template('map.html', city=city, city_name=names[city],
                                   center=centers[city], geojson=geojson,
-                                  predict=predictions[city]))
+                                  predict=predictions[city],
+                                  formDropBike=DropBike()))
 
 
 @app.route('/update')
@@ -28,17 +30,12 @@ def update():
 
 @app.route('/route', methods=['POST'])
 def route():
-    data = json.loads(request.data.decode())
-    situation = {
-        'city': data['city'],
-        'departure': data['departure'],
-        'arrival': data['arrival'],
-        'people': int(data['people']),
-        'time': data['time']
-    }
-    mode = data['mode']
+    situation = json.loads(request.data.decode())
+    situation['people'] = int(situation['people'])
+    print(situation)
+    mode = situation['mode']
     # Build the paths according to the travelling mode
-    if mode == 'fullTrip':
+    if 'fullTrip' in situation.keys():
         routes = trip.full_trip(situation)
     elif mode == 'takeBike':
         routes = trip.take_bike(situation)
