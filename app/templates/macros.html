@@ -15,7 +15,7 @@
 
 <!-- Generate a form field with WTForms -->
 {% macro render_field(field, userAuthInfo) %}
-	<div class="field">
+	<div class="form-group">
 		{{ field(name_=field.name, id=field.name, placeholder=field.description, class_="field", value=userAuthInfo) }}
 	</div>
   	{% if field.errors %}
