@@ -4,7 +4,7 @@ from mongo.geo import query
 from learning import *
 
 
-def choose(situation, address, target, distance, mode, stationFirst, nbCandidates=5):
+def choose(situation, address, target, distance, mode, stationFirst, nbCandidates=10):
     '''
     Choose the best station around the arrival and then define a trip
     between the departure and the station.
@@ -15,12 +15,9 @@ def choose(situation, address, target, distance, mode, stationFirst, nbCandidate
     # Will convert the positions to (lat, lon) if they are textual addresses
     point = geography.convert_to_point(address)
     # Find the close stations with MongoDB
-    stations = [station for station in
-                query.close_points(city, point, number=nbCandidates)]
+    stations = [station for station in query.close_points(city, point, number=nbCandidates)]
     # Get the distances to the stations
-
-    candidates = geography.compute_distances_manual(point, stations, distance)
-
+    candidates = geography.compute_distances(point, stations, distance, time)
     # Sort the stations by distance
     candidates.sort(key=lambda station: station['duration'])
     # Find an appropriate solution through the sorted candidates
@@ -30,8 +27,7 @@ def choose(situation, address, target, distance, mode, stationFirst, nbCandidate
         forecast = tb.epoch_to_datetime(time + candidate['duration'])
         # Extract features from the forecasted time
         variables = munging.temporal_features(forecast)
-        features = [variables['hour'], variables['minute'],
-                    variables['weekday']]
+        features = [variables['hour'], variables['minute'], variables['weekday']]
         # Make a prediction
         settings = tb.read_json('common/settings.json')
         method = eval(settings['learning']['method'])
@@ -49,13 +45,6 @@ def choose(situation, address, target, distance, mode, stationFirst, nbCandidate
     return trip
 
 
-@tb.MWT(timeout=60*60*24)
-def get_route(url):
-    ''' Convenience function in order to perform caching. '''
-    response = tb.query_API(url)
-    return response
-
-
 def turn_by_turn(trip):
     ''' Build a path using the Google Directions API. '''
     mode = trip['mode']
@@ -67,13 +56,9 @@ def turn_by_turn(trip):
     destination = points[1]
     base = 'https://maps.googleapis.com/maps/api/directions/json'
     key = tb.read_json('common/keys.json')['google-distance']
-    url = '{0}?origin={1}&destination={2}&mode={3}&key={4}'.format(base,
-                                                                   origin,
-                                                                   destination,
-                                                                   'walking',
-                                                                   key)
+    url = '{0}?origin={1}&destination={2}&mode={3}&key={4}'.format(base, origin, destination, 'walking', key)
     # Query the API
-    response = get_route(url)
+    response = tb.query_API_cached(url)
     trip = tb.load_json(response)
     return {
         'mode': mode,

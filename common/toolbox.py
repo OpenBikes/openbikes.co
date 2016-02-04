@@ -38,22 +38,6 @@ def iso_account_AM_PM(isoDate):
     return iso
 
 
-def query_API(url, repeat=False):
-    ''' Send a query to a URL and decode the bytes it returns. '''
-    if repeat is False:
-        with urlopen(url) as response:
-            return response.read().decode('utf-8')
-    # Possibility to continuously re-qeury the API if it failed
-    else:
-        response = None
-        while response is None:
-            try:
-                with urlopen(url) as response:
-                    return response.read().decode('utf-8')
-            except:
-                response = None
-
-
 def write_json(dictionary, filename):
     ''' Saves a dictionary to a JSON file. '''
     with open(filename, 'w') as outfile:
@@ -155,3 +139,26 @@ class MWT(object):
             return v[0]
         func.func_name = f.__name__
         return func
+
+
+def query_API(url, repeat=False):
+    ''' Send a query to a URL and decode the bytes it returns. '''
+    if repeat is False:
+        with urlopen(url) as response:
+            return response.read().decode('utf-8')
+    # Possibility to continuously re-qeury the API if it failed
+    else:
+        response = None
+        while response is None:
+            try:
+                with urlopen(url) as response:
+                    return response.read().decode('utf-8')
+            except:
+                response = None
+
+
+@MWT(timeout=60*60*24)
+def query_API_cached(url):
+    ''' Convenience function in order to perform caching. '''
+    response = query_API(url)
+    return response

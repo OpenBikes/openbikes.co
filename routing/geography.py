@@ -40,7 +40,7 @@ def euclidian_distance(p1, p2):
 
 
 def compute_distances_manual(departure, stations, mode):
-    ''' Just Euclidian distance, good approximation nonetheless. '''
+    ''' Just Euclidian distance, useful for testing. '''
     d = list(reversed(departure))
     distances = [{'duration': euclidian_distance(station['p'], d)}
                  for station in stations]
@@ -51,3 +51,19 @@ def compute_distances_manual(departure, stations, mode):
             candidate.update(information)
         candidates.append(candidate)
     return candidates
+
+
+def compute_distances(departure, stations, mode, time):
+    ''' Using the Google Distance Matrix API. '''
+    base = 'https://maps.googleapis.com/maps/api/distancematrix/json?'
+    key = tb.read_json('common/keys.json')['google-distance']
+    origin = '{lat},{lon}'.format(lat=departure[0], lon=departure[1])
+    destinations = '|'.join(['{lat},{lon}'.format(lat=station['p'][1], lon=station['p'][0])
+                             for station in stations])
+    url = '{0}mode={1}&key={2}&origins={3}&destinations={4}&time={5}'.format(base, mode, key, origin, destinations, time)
+    response = tb.query_API_cached(url)
+    distances = tb.load_json(response)['rows'][0]['elements']
+    # Add the distances to the stations
+    for i, station in enumerate(stations):
+        stations[i]['duration'] = distances[i]['duration']['value']
+    return stations
