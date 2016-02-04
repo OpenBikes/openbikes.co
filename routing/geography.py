@@ -19,14 +19,13 @@ def geocode(address):
     return (latitude, longitude)
 
 
-def convert_to_point(city, address):
+def convert_to_point(address):
     '''
     Convert an address to [lat, lon] with Nominatim, if
     the input is already [lat, lon] then don't do anything
     (the user decided to use his current position).
     '''
     if isinstance(address, str):
-        address = '{0} {1}'.format(city, address)
         query = tb.normalize_string(address)
         point = geocode(query)
     else:

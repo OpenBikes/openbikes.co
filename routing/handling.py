@@ -1,6 +1,6 @@
 from copy import deepcopy
 from common import toolbox as tb
-from routing.building import choose_station, turn_by_turn
+from routing.building import choose, turn_by_turn
 
 
 def take_bike(situation):

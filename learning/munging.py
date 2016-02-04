@@ -2,10 +2,10 @@ import pandas as pd
 
 
 def split(dataframe, target):
-    ''' Split the data into a training set and a prediction set. '''
+    ''' Split the features from the target. '''
     features = [column for column in dataframe.columns
                 if column not in ['bikes', 'spaces']]
-    X = dataframe[features].reshape(1, -1)
+    X = dataframe[features]
     Y = dataframe[target].reshape(-1, 1)
     return X, Y
 
@@ -37,7 +37,7 @@ def temporal_features(timestamp):
 
 def prepare(dataframe):
     ''' Extract features and label them as categorical or numerical. '''
-    # Drop the duplicates
+    # Just to be sure, drop the duplicates
     dataframe = dataframe.groupby(dataframe.index).first()
     # Rename the columns
     dataframe = rename_columns(dataframe)

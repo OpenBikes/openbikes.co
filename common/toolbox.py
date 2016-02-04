@@ -63,11 +63,17 @@ def write_json(dictionary, filename):
 def read_json(file):
     ''' Open a JSON file and loads it as a dictionary. '''
     with open(file) as infile:
-        dictionary = json.loads(infile.read())
+        dictionary = load_json(infile.read())
         return dictionary
 
 
+def load_json(string):
+    ''' Convenience wrapper for the json library. '''
+    return json.loads(string)
+
+
 def load_xml(string):
+    ''' Convenience wrapper for the BeautifulSoup library. '''
     return BeautifulSoup(string, 'lxml')
 
 
@@ -94,23 +100,6 @@ def remove_special_characters(string):
     cleanBytes = text.encode('ascii', 'ignore')
     cleanText = cleanBytes.decode('utf-8')
     return cleanText
-
-
-def dict_to_dataframe(dict):
-    ''' Converts a dictionary into a dataframe. '''
-    # Extract the information
-    dataframe = pandas.DataFrame(dict)
-    # Return it as a dataframe where every row is an update
-    return dataframe
-
-
-def convert_time(time):
-    ''' Convert the time the user chose into a Datetime object. '''
-    hour, minute = time.split(':')
-    newTime = newTime.replace(hour=int(hour), minute=int(minute))
-    newTime = newTime.timestamp()
-    print(newTime)
-    return round(newTime)
 
 
 def normalize_string(string):

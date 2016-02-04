@@ -4,16 +4,16 @@ from mongo.geo import query
 from learning import *
 
 
-def choose_station(situation, address, target, distance, mode, stationFirst, nbCandidates=5):
+def choose(situation, address, target, distance, mode, stationFirst, nbCandidates=5):
     '''
     Choose the best station around the arrival and then define a trip
     between the departure and the station.
     '''
     city = situation['city']
     people = situation['people']
-    time = tb.convert_time(situation['time'])
+    time = situation['time']
     # Will convert the positions to (lat, lon) if they are textual addresses
-    point = geography.convert_to_point(city, address)
+    point = geography.convert_to_point(address)
     # Find the close stations with MongoDB
     stations = [station for station in
                 query.close_points(city, point, number=nbCandidates)]
@@ -42,16 +42,16 @@ def choose_station(situation, address, target, distance, mode, stationFirst, nbC
         if prediction + bias >= people:
             stationPosition = list(reversed(candidate['p']))
             if stationFirst is False:
-                trip = tb.reshape(mode, departure, stationPosition)
+                trip = tb.reshape(mode, point, stationPosition)
             else:
-                trip = tb.reshape(mode, stationPosition, departure)
+                trip = tb.reshape(mode, stationPosition, point)
             break
     return trip
 
 
 @tb.MWT(timeout=60*60*24)
 def get_route(url):
-    ''' Specific function to perform caching. '''
+    ''' Convenience function in order to perform caching. '''
     response = tb.query_API(url)
     return response
 

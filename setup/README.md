@@ -3,13 +3,15 @@
 Whatever you do, run ``addcities.sh`` if you want things to work. Then you will be able to run ``collect.py`` and ``serve.py``. You also have to add a ``keys.json`` file in the ``config/`` folder for the various APIs, the required keys and the links to get them are the following:
 
 	{
-		"valhalla": https://mapzen.com/projects/valhalla,
+		"google-directions": https://mapzen.com/projects/valhalla,
 		"google-elevation": https://developers.google.com/maps/documentation/elevation/intro,
-		"mapbox-distance": https://www.mapbox.com/developers/api/distance/,
+		"google-distance": https://www.mapbox.com/developers/api/distance/,
 		"jcdecaux": https://developer.jcdecaux.com/#/opendata/vls?page=getstarted,
 		"keolis": https://data.keolis-rennes.com/fr/accueil.html,
 		"lacub": http://data.bordeaux-metropole.fr/apicub
 	}
+
+If your Google Developers account is properly setup you'll only require one API key for all Google API services.
 
 ## Server
 
@@ -24,7 +26,7 @@ Refer to the ``setup.sh`` script.
 		- ``virtualenv venv``
 		- ``source venv/bin/activate``
 	- With [Anaconda](https://store.continuum.io/cshop/anaconda/), which acts as a big virtual envirnoment containing everything. Once it is [installed](http://docs.continuum.io/anaconda/install) the Python commands such as ``pip` in the shell will be linked to Anaconda's Python interpreter
-- ``pip install -r requirements.txt`` for installing the Python libraries. 
+- ``pip install -r requirements.txt`` for installing the Python libraries.
 - ``./addcities.sh`` for adding the cities to the geographical database and generating necessary files for the website.
 
 ## Mac
@@ -43,7 +45,7 @@ Refer to the ``setup.sh`` script.
 		- ``virtualenv venv``
 		- ``source venv/bin/activate``
 	- With [Anaconda](https://store.continuum.io/cshop/anaconda/), which acts as a big virtual envirnoment containing everything. Once it is [installed](http://docs.continuum.io/anaconda/install) the Python commands such as ``pip` in the shell will be linked to Anaconda's Python interpreter
-- ``pip install -r requirements.txt`` for installing the Python libraries. 
+- ``pip install -r requirements.txt`` for installing the Python libraries.
 - ``./addcities.sh`` for adding the cities to the geographical database and generating necessary files for the website.
 
 ## Windows

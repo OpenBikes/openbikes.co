@@ -2,7 +2,7 @@ from flask import jsonify, render_template, url_for, request
 from htmlmin import minify
 import json
 from common import toolbox as tb
-from routing import trip
+from routing import handling
 from app.forms import DropBike
 from app.views import informationFolder
 from app import app
@@ -24,6 +24,7 @@ def map(city):
 
 @app.route('/update')
 def update():
+    ''' Refresh the map with the latest geoJSON file. '''
     city = request.args.get('city', 0, type=str)
     updates = tb.read_json('{}/updates.json'.format(informationFolder))
     update = updates[city]
@@ -32,17 +33,17 @@ def update():
 
 @app.route('/route', methods=['POST'])
 def route():
+    ''' Handle the trips chosen by the users. '''
     situation = json.loads(request.data.decode())
     situation['people'] = int(situation['people'])
     situation['time'] = datetime.datetime.strptime(
-        situation['time'], '%d-%m-%Y %H:%M')
-    print(situation)
+        situation['time'], '%d-%m-%Y %H:%M').timestamp()
     mode = situation['mode']
     # Build the paths according to the travelling mode
-    if 'fullTrip' in situation.keys():
-        routes = trip.full_trip(situation)
+    if mode == 'fullTrip':
+        routes = handling.full_trip(situation)
     elif mode == 'takeBike':
-        routes = trip.take_bike(situation)
+        routes = handling.take_bike(situation)
     elif mode == 'dropBike':
-        routes = trip.drop_bike(situation)
+        routes = handling.drop_bike(situation)
     return jsonify({'routes': routes})

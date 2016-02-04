@@ -1,6 +1,5 @@
 from datetime import datetime
 import pandas as pd
-from common import toolbox as tb
 from mongo.timeseries import db
 
 
@@ -17,9 +16,9 @@ from mongo.timeseries import db
 
 def station(city, station, threshold):
     '''
-    Returns a dictionary of dataframes containing all the updates
-    of a given period or day for a station, up to a given threshold.
-    The threshold is a Python datetime object
+    Returns a dictionary of dataframes containing all the updates of a given
+    period or day for a station, up to a given threshold. The threshold is a
+    Python datetime object.
     '''
     # Connect to the appropriate collection of the database
     collection = db[city]
@@ -30,13 +29,13 @@ def station(city, station, threshold):
     # We will modify the index so as to take into account the date
     fmt = '%Y-%m-%d/%H:%M:%S'
     # Create the dataframe with the first date
-    dataframe = tb.dict_to_dataframe(cursor[0]['u'][0]['i']).set_index('m')
+    dataframe = pd.DataFrame(cursor[0]['u'][0]['i']).set_index('m')
     dataframe.index = dataframe.index.map(
         lambda i: datetime.strptime('/'.join((cursor[0]['_id'], i)), fmt))
     # Add the updates from every other date
     for date in cursor[1:]:
         try:
-            df = tb.dict_to_dataframe(date['u'][0]['i']).set_index('m')
+            df = pd.DataFrame(date['u'][0]['i']).set_index('m')
             df.index = df.index.map(
                 lambda i: datetime.strptime('/'.join((date['_id'], i)), fmt))
             dataframe = pd.concat((dataframe, df))
@@ -64,7 +63,7 @@ def city(city, year='\d{4}', month='\d{1,2}', day='\d{1,2}'):
     for date in cursor:
         # Convert all the updates to a dictionary of dataframes indexed on time
         datesDfs[date['_id']] = {
-            update['n']: tb.dict_to_dataframe(update['i']).set_index('m')
+            update['n']: pd.DataFrame(update['i']).set_index('m')
             for update in date['u']
             if len(update['i']) > 0
         }
