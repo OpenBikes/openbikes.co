@@ -49,11 +49,15 @@
                 <div class="container-fluid">
                     <div class="row">
                         <form class="formDropBike" method="post">
-                            {{ m.render_field(formDropBike.start) }}
-                            {{ m.render_field_errors_date(formDropBike.time) }}
-                            <div id="dtBoxDropBike"></div> <br>
-                            {{ m.render_field(formDropBike.people) }}
-                            {{ formDropBike.csrf_token }}
+                            <div class="form-group">
+                                {{ m.render_field(formDropBike.start, "flag-checkered") }} 
+                                <br>
+                                {{ m.render_field_errors_date(formDropBike.time) }}
+                                <div id="dtBoxDropBike"></div>
+                                <br>
+                                {{ m.render_field(formDropBike.people, "child") }}
+                                {{ formDropBike.csrf_token }}
+                            </div>
                         </form>
                     </div>
                 </div>
