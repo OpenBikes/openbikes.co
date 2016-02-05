@@ -1,23 +1,88 @@
-<div class="modal fade" id="modalTrip" tabindex="-1" role="dialog" aria-labelledby="routeModalLabel">
+
+<style>
+.pac-container {
+    z-index: 1051 !important;
+}
+</style>
+
+<style>
+.dtpicker-buttonCont .dtpicker-button {
+    display: block;
+    padding: .6em 0;
+    width: 47%;
+    background: #66b2ff;
+    color: #FFF;
+    text-align: center;
+    font-size: 1.3em;
+    cursor: pointer;
+}
+
+.dtpicker-header .dtpicker-title {
+    color: #384452;
+    text-align: center;
+    font-size: 18px;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 700;
+}
+
+.dtpicker-bg {
+    width: 100%;
+    height: 100%;
+}
+
+.dtpicker-header .dtpicker-value {
+    padding: .8em .2em .2em;
+    color: #384452;
+    text-align: center;
+    font-size: 1.4em;
+}
+</style>
+
+<div class="modal fade" id="modalFullTrip" tabindex="-1" role="dialog" aria-labelledby="routeModalLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="routeModalLabel">{{ _("Trip recommendation") }}</h4>
+                <h4 class="modal-title" id="routeModalLabel">{{ _("Make a trip") }}</h4>
             </div>
             <div class="modal-body">
                 <div class="container-fluid">
                     <div class="row">
-                        Trip
+                        <form class="formFullTrip" method="post">
+                            <div class="form-group">
+                                {{ m.render_field(formFullTrip.start, "startFT", "map-marker") }} 
+                                <br>
+                                {{ m.render_field(formFullTrip.end, "endFT", "flag-checkered") }} 
+                                <br>
+                                {{ m.render_field_errors_date(formFullTrip.time) }}
+                                <div id="dtBoxFullTrip"></div>
+                                <br>
+                                {{ m.render_field(formFullTrip.people, "peopleFT", "users") }}
+                                {{ formFullTrip.csrf_token }}
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-primary" type="button" name="submit" onClick="route();">
-                    {{ _("Back to the options") }}
+                <button class="btn btn-primary" type="button" name="submit" onClick="$('#modalFullTrip').modal('toggle'); route('form.formFullTrip', 'fullTrip');">
+                    {{ _("Let us search for the best trip possible") }} <i class="fa fa-rocket"></i>
                 </button>
                 <button id="closeModal" class="btn btn-default" type="button" class="btn btn-default" data-dismiss="modal">{{ _("Close") }}</button>
             </div>
         </div>
     </div>
 </div>
+
+<script type='text/javascript'>
+function initializeAdresseDep(id) {
+    var input = document.getElementById(id);
+    var options = {
+        types: ['geocode'],
+        componentRestrictions: {country: 'fr'}
+    };
+    autocomplete = new google.maps.places.Autocomplete(input, options);
+}
+google.maps.event.addDomListener(window, 'load', initializeAdresseDep("startFT"));
+google.maps.event.addDomListener(window, 'load', initializeAdresseDep("endFT"));
+</script>

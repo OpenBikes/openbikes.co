@@ -1,6 +1,6 @@
 from datetime import datetime
 from common import toolbox as tb
-from collecting.providers import keys
+from common.providers import keys
 
 
 def stations(city):
@@ -27,3 +27,5 @@ def normalize(stations):
                                     '%Y-%m-%dT%H:%M:%S').isoformat()
     }
     return [normalized(station) for station in stations]
+
+print(stations('toulouse'))

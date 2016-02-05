@@ -3,7 +3,7 @@ from htmlmin import minify
 import json
 from common import toolbox as tb
 from routing import handling
-from app.forms import DropBike
+from app.forms import DropBike, PickBike, FullTrip
 from app.views import informationFolder
 from app import app
 import datetime
@@ -19,7 +19,7 @@ def map(city):
     return minify(render_template('map.html', city=city, city_name=names[city],
                                   center=centers[city], geojson=geojson,
                                   predict=predictions[city],
-                                  formDropBike=DropBike()))
+                                  formDropBike=DropBike(), formPickBike=PickBike(), formFullTrip=FullTrip()))
 
 
 @app.route('/update')

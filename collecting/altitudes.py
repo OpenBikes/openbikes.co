@@ -21,7 +21,7 @@ def add(stations, size=50):
         locations += '{lat},{lon}|'.format(lat=station['lat'],
                                            lon=station['lon'])
         counter += 1
-        if counter > size:
+        if counter >= size:
             locations += ';'
             counter = 1
     for loc in locations.split(';'):
@@ -35,6 +35,6 @@ def add(stations, size=50):
         altitudes.extend(package)
     # Tidy everything up for database insertion
     data = [{'name': station[0]['name'], 'lat': station[0]['lat'],
-            'lon': station[0]['lon'], 'alt': station[1]['elevation']}
+             'lon': station[0]['lon'], 'alt': station[1]['elevation']}
             for station in zip(stations, altitudes)]
     return data

@@ -14,9 +14,9 @@
 {% endmacro %}
 
 <!-- Generate a form field with WTForms -->
-{% macro render_field(field, logo) %}
+{% macro render_field(field, id, logo) %}
 	<div class="input-group">
-	{{ field(name_=field.name, id=field.name, placeholder=field.description, class="form-control", class_="field") }}
+	{{ field(name_= field.name, id=id, placeholder=field.description, class_="form-control") }}
 	<span class="input-group-addon"><i class="fa fa-{{ logo }}"></i></span></span>
 	</div>
   	{% if field.errors %}
@@ -31,7 +31,7 @@
 <!-- Macro permettant de générer un input pour choisir une datetime avec affichage d'erreurs -->
 {% macro render_field_errors_date(field) %}
 	<div class="input-group">
-		<input type="text" id="datepicker" data-field="datetime" class="form-control" name="{{ field.name }}" placeholder="Departure time" autocomplete="off">
+		<input type="text" id="{{ field.name }}" data-field="datetime" class="form-control" name="{{ field.name }}" placeholder="{{ field.description }}" autocomplete="off">
 		<span class="input-group-addon"><i class="fa fa-clock-o"></i></span>
 	</div>
   	{% if field.errors %}

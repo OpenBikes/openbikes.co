@@ -9,17 +9,17 @@
                 <div class="container-fluid">
                     <div>
                         <p>
-                            <button id="toggleDropBike" type="button" onclick="$('#modalChoose').modal('toggle'); $('#modalDropBike').modal('toggle');" class="btn btn-info btn-block" data-toggle="modal">
+                            <button id="toggleDropBike" type="button" onclick="$('#modalChoose').modal('toggle'); $('#modalDropBike').modal('toggle'); setDateTime('#dtBoxDropBike');" class="btn btn-info btn-block" data-toggle="modal">
                                 {{ _("Drop a bike off") }}
                             </button>
                         </p>
                         <p>
-                            <button id="togglePickBike" type="button" onclick="$('#modalChoose').modal('toggle'); $('#modalPickBike').modal('toggle');" class="btn btn-info btn-block" data-toggle="modal">
+                            <button id="togglePickBike" type="button" onclick="$('#modalChoose').modal('toggle'); $('#modalPickBike').modal('toggle'); setDateTime('#dtBoxPickBike');" class="btn btn-info btn-block" data-toggle="modal">
                                 {{ _("Pick up a bike") }}
                             </button>
                         </p>
                         <p>
-                            <button id="toggleTrip" type="button" onclick="$('#modalChoose').modal('toggle'); $('#modalTrip').modal('toggle');" class="btn btn-primary btn-block">
+                            <button id="toggleTrip" type="button" onclick="$('#modalChoose').modal('toggle'); $('#modalFullTrip').modal('toggle'); setDateTime('#dtBoxFullTrip');" class="btn btn-primary btn-block">
                                 {{ _("Make a trip") }}
                             </button>
                         </p>
