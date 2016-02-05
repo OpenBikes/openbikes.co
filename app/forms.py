@@ -11,8 +11,6 @@ class DropBike(Form):
                       description=gettext('Where are you ?'))
     time = TextField(validators=[Required],
                      description=gettext('Departure time'))
-    # people = IntegerField(validators=[Required, NumberRange(0, 12)],
-    #                       description=gettext('Number of people'))
     people = SelectField(description='Number of people', choices=[
         (str(i), str(i)) for i in range(1, 9)
     ], validators=[Required])
