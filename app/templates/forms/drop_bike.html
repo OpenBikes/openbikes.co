@@ -50,12 +50,12 @@
                     <div class="row">
                         <form class="formDropBike" method="post">
                             <div class="form-group">
-                                {{ m.render_field(formDropBike.start, "flag-checkered") }} 
+                                {{ m.render_field(formDropBike.start, "startDB", "map-marker") }} 
                                 <br>
                                 {{ m.render_field_errors_date(formDropBike.time) }}
-                                <div id="dtBoxDropBike"></div>
+                                <div id="dtBoxDropBike" name="dtBoxDropBike"></div>
                                 <br>
-                                {{ m.render_field(formDropBike.people, "users") }}
+                                {{ m.render_field(formDropBike.people, "peopleBD", "users") }}
                                 {{ formDropBike.csrf_token }}
                             </div>
                         </form>
@@ -72,20 +72,15 @@
     </div>
 </div>
 
-<!-- DateTimePicker settings -->
-<script type='text/javascript'>
- $(document).ready(setDateTime("#dtBoxDropBike"));
-</script>
 
 <script type='text/javascript'>
-function initializeAdresseDep() {
-    var input = document.getElementById('start');
+function initializeAdresseDep(id) {
+    var input = document.getElementById(id);
     var options = {
         types: ['geocode'],
         componentRestrictions: {country: 'fr'}
     };
     autocomplete = new google.maps.places.Autocomplete(input, options);
 }
-google.maps.event.addDomListener(window, 'load', initializeAdresseDep);
+google.maps.event.addDomListener(window, 'load', initializeAdresseDep("startDB"));
 </script>
-

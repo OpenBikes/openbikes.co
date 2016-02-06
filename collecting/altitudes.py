@@ -35,6 +35,6 @@ def add(stations, size=50):
         altitudes.extend(package)
     # Tidy everything up for database insertion
     data = [{'name': station[0]['name'], 'lat': station[0]['lat'],
-            'lon': station[0]['lon'], 'alt': station[1]['elevation']}
+             'lon': station[0]['lon'], 'alt': station[1]['elevation']}
             for station in zip(stations, altitudes)]
     return data

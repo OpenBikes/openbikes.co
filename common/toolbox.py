@@ -157,7 +157,7 @@ def query_API(url, repeat=False):
                 response = None
 
 
-@MWT(timeout=60*60*24)
+@MWT(timeout=60 * 60 * 24)
 def query_API_cached(url):
     ''' Convenience function in order to perform caching. '''
     response = query_API(url)

@@ -57,21 +57,42 @@
         </script>
         <!-- DateTimePicker Function -->
         <script type="text/javascript">
-        function setDateTime(boxId){
-                // Paramètres du DateTimePicker
-                $(boxId).DateTimePicker({
-                    fullMonthNames : ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Aout", "Septembre", "Octobre", "Novembre", "Décembre"],
-                    shortDayNames: ["Dim", "Lun", "Mar", "Mer", "Jeu", "Ven", "Sam"],
-                    fullDayNames : ["Lundi","Mardi","Mercredi","Jeudi","Vendredi","Samedi","Dimanche"],
-                    shortMonthNames : ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Aout", "Septembre", "Octobre", "Novembre", "Décembre"],
-                    titleContentDateTime : "Choissisez la date et l'horaire de départ",
-                    setButtonContent : "Appliquer <i class='fa fa-check-square-o'></i>",
-                    clearButtonContent : "Effacer",
-                    minuteInterval : 5,
-                    buttonsToDisplay : ["HeaderCloseButton", "SetButton"],
-                    dateTimeFormat : "dd-MM-yyyy HH:mm"
-                });
-             };
+        if (lang =='fr') {
+            console.log('Datapicker français')
+            function setDateTime(boxId){
+                    // Paramètres du DateTimePicker
+                    $(boxId).DateTimePicker({
+                        fullMonthNames : ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Aout", "Septembre", "Octobre", "Novembre", "Décembre"],
+                        shortDayNames: ["Dim", "Lun", "Mar", "Mer", "Jeu", "Ven", "Sam"],
+                        fullDayNames : ["Lundi","Mardi","Mercredi","Jeudi","Vendredi","Samedi","Dimanche"],
+                        shortMonthNames : ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Aout", "Septembre", "Octobre", "Novembre", "Décembre"],
+                        titleContentDateTime : "Choissisez la date et l'horaire de départ",
+                        setButtonContent : "Appliquer <i class='fa fa-check-square-o'></i>",
+                        clearButtonContent : "Effacer",
+                        minuteInterval : 5,
+                        buttonsToDisplay : ["HeaderCloseButton", "SetButton"],
+                        dateTimeFormat : "dd-MM-yyyy HH:mm"
+                    });
+                 };
+        }
+        else {
+            console.log('Datapicker anglais')
+            function setDateTime(boxId){
+                    // Paramètres du DateTimePicker
+                    $(boxId).DateTimePicker({
+                        fullMonthNames : ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+                        shortDayNames: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+                        fullDayNames : ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+                        shortMonthNames : ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+                        titleContentDateTime : "Choose the date and time of departure",
+                        setButtonContent : "Apply <i class='fa fa-check-square-o'></i>",
+                        clearButtonContent : "Delete",
+                        minuteInterval : 5,
+                        buttonsToDisplay : ["HeaderCloseButton", "SetButton"],
+                        dateTimeFormat : "dd-MM-yyyy HH:mm"
+                    });
+                 };
+        }
         </script>
         <!-- Create the map -->
         <div id="map" class="col-xs-12"></div>
@@ -91,6 +112,7 @@
         <script>
             // Language pack for livestamp
             if (lang == 'fr') {
+                // Moment
                 moment.locale('fr', {
                     months : "janvier_février_mars_avril_mai_juin_juillet_août_septembre_octobre_novembre_décembre".split("_"),
                     monthsShort : "janv._févr._mars_avr._mai_juin_juil._août_sept._oct._nov._déc.".split("_"),

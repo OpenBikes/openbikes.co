@@ -1,7 +1,7 @@
 from common import toolbox as tb
 
 
-@tb.MWT(timeout=60*60*24)
+@tb.MWT(timeout=60 * 60 * 24)
 def geocode(address):
     '''
     Return the latitude and longitude of an address
@@ -60,7 +60,9 @@ def compute_distances(departure, stations, mode, time):
     origin = '{lat},{lon}'.format(lat=departure[0], lon=departure[1])
     destinations = '|'.join(['{lat},{lon}'.format(lat=station['p'][1], lon=station['p'][0])
                              for station in stations])
-    url = '{0}mode={1}&key={2}&origins={3}&destinations={4}&time={5}'.format(base, mode, key, origin, destinations, time)
+    url = '{0}mode={1}&key={2}&origins={3}&destinations={4}&time={5}'.format(
+        base, mode, key, origin, destinations, time)
+    print(url)
     response = tb.query_API_cached(url)
     distances = tb.load_json(response)['rows'][0]['elements']
     # Add the distances to the stations
