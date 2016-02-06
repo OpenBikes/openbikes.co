@@ -162,3 +162,10 @@ python3 add.py bikechattanooga Chattanooga Chattanooga USA USA No
 
 python3 remove.py santander London UK
 python3 add.py santander London London UK UK No
+
+####################
+### Citybikewien ###
+####################
+
+python3 remove.py citybikewien Wien Germany
+python3 add.py citybikewien Wien Wien Germany Allemagne No
