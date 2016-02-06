@@ -169,3 +169,10 @@ python3 add.py santander London London UK UK No
 
 python3 remove.py citybikewien Vienna Austria
 python3 add.py citybikewien Vienna Wien Austria Österreich No
+
+###############
+### Velocea ###
+###############
+
+python3 remove.py velocea Vannes France
+python3 add.py velocea Vannes Vannes France France Yes

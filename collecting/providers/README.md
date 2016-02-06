@@ -185,3 +185,13 @@ Toronto is bugged and Ottawa doesn't seem to be working.
 | City               | Country    |
 |--------------------|------------|
 | Wien               | Germany    |
+
+#### Vannes
+
+- Command line argument: ``velocea``
+- [Website](https://www.velocea.fr/cartoV2/libProxyCarto.asp)
+- JSON
+
+| City               | Country    |
+|--------------------|------------|
+| Vannes             | France     |

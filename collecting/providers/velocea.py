@@ -13,7 +13,8 @@ def stations(city):
 
 def clean(s):
     s = s.replace("+", " ")
-    print(s)
+    s = s.replace("%c3%b4", "ô")
+    s = s.replace("%c3%a9", "é")
     return s
 
 
@@ -23,8 +24,8 @@ def normalize(stations):
     normalized = lambda station: {
         'name': clean(station['name']),
         'address': clean(station['name']),
-        'lat': station['lat'],
-        'lon': station['lng'],
+        'lat': float(station['lat']),
+        'lon': float(station['lng']),
         'status': 'OPEN' if station['disp'] == '1' else 'CLOSED',
         'bikes': int(station['ab']),
         'stands': int(station['ap']),
