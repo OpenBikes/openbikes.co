@@ -118,8 +118,8 @@ python3 add.py niceride Minneapolis Minneapolis USA USA Yes
 #python3 remove.py bixi Ottawa Canada
 #python3 add.py bixi Ottawa Ottawa Canada Canada No
 
-#python3 remove.py bixi Montréal Canada
-#python3 add.py bixi Montréal Montréal Canada Canada No
+python3 remove.py bixi Montréal Canada
+python3 add.py bixi Montréal Montréal Canada Canada No
 
 ##############
 ### Keolis ###
@@ -167,5 +167,5 @@ python3 add.py santander London London UK UK No
 ### Citybikewien ###
 ####################
 
-python3 remove.py citybikewien Wien Germany
-python3 add.py citybikewien Wien Wien Germany Allemagne No
+python3 remove.py citybikewien Vienna Austria
+python3 add.py citybikewien Vienna Wien Austria Österreich No

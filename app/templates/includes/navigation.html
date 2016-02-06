@@ -57,12 +57,11 @@
     $('#about').click(function(){ window.location.href = ["/", lang, "/about"].join('');; return false; });
 
     function changeLang(lang_code) {
-        lang = lang_code;
         var newArgs = window.location.href.split('/');
         if (newArgs.length == 5) {
-            newArgs[newArgs.length-2] = lang;
+            newArgs[newArgs.length-2] = lang_code;
         } else {
-            newArgs[newArgs.length-1] = lang;
+            newArgs[newArgs.length-1] = lang_code;
         }
         var newUrl = newArgs.join('/');
         window.location.href = newUrl;

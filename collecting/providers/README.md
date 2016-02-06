@@ -174,4 +174,14 @@ Toronto is bugged and Ottawa doesn't seem to be working.
 
 | City               | Country    |
 |--------------------|------------|
-| London             | UK        |
+| London             | UK         |
+
+#### Citybikewien
+
+- Command line argument: ``citybikewien``
+- [Website](http://dynamisch.citybikewien.at/citybike_xml.php)
+- XML
+
+| City               | Country    |
+|--------------------|------------|
+| Wien               | Germany    |

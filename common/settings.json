@@ -8,7 +8,7 @@
     	"refresh": 60
     },
     "learning": {
-    	"timespan": 30,
+    	"timespan": 15,
     	"refresh": 15,
     	"method": "tree",
         "bias": 2

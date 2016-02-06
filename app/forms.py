@@ -34,7 +34,7 @@ class FullTrip(Form):
     start = TextField(validators=[Required, Length(5)],
                       description=gettext('Where are you ?'))
     end = TextField(validators=[Required, Length(5)],
-                    description=gettext('Where you want to go ?'))
+                    description=gettext('Where do you want to go ?'))
     time = TextField(validators=[Required, Length(5, 5)],
                      description='Departure time')
     people = SelectField(description='Number of people', choices=[

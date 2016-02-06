@@ -32,9 +32,12 @@ def update(provider, city, predict):
     geojson = tb.json_to_geojson(stations)
     tb.write_json(geojson, '{0}/{1}.geojson'.format(geojsonFolder, city))
     # Refresh the latest update time
-    updates = tb.read_json('{}/updates.json'.format(informationFolder))
-    updates[city] = datetime.now().isoformat()
-    tb.write_json(updates, '{}/updates.json'.format(informationFolder))
+    try:
+        updates = tb.read_json('{}/updates.json'.format(informationFolder))
+        updates[city] = datetime.now().isoformat()
+        tb.write_json(updates, '{}/updates.json'.format(informationFolder))
+    except:
+        return
 
 if __name__ == '__main__':
     scheduler = AsyncIOScheduler()

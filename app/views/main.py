@@ -1,9 +1,23 @@
-from flask import render_template
+from flask import render_template, request, g
 from flask.ext.babel import gettext
 from htmlmin import minify
 from common import toolbox as tb
 from app.views import informationFolder
 from app import app
+from app import babel
+
+
+@app.before_request
+def before():
+    if request.view_args and 'lang_code' in request.view_args:
+        g.current_lang = request.view_args['lang_code']
+        request.view_args.pop('lang_code')
+
+
+@babel.localeselector
+def get_locale():
+    ''' Default to english if no lang_code is set. '''
+    return g.get('current_lang', 'en')
 
 
 @app.route('/')

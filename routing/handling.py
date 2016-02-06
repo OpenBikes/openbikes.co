@@ -19,11 +19,11 @@ def full_trip(situation):
     ''' We can use the previous functions. '''
     # Find the route from the departure to the departure station
     situationOne = deepcopy(situation)
-    situationOne['arrival'] = situationOne['departure']
+    situationOne['end'] = situationOne['start']
     firstPath = choose(situationOne, situation['start'], 'bikes', 'walking', 'walking', False)
     # Find the route from the arrival station to the arrival
     situationTwo = deepcopy(situation)
-    situationTwo['departure'] = situationTwo['arrival']
+    situationTwo['start'] = situationTwo['end']
     secondPath = choose(situationTwo, situation['end'], 'spaces', 'walking', 'walking', True)
     # Find the route between both stations
     firstStation = firstPath['points'][1]
