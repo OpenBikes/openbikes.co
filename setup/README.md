@@ -77,8 +77,7 @@ touch OpenBikes/config/keys.json
 cd OpenBikes
 git reset --hard
 git pull origin master
-cd ..
-sudo chmod -R 777 OpenBikes/
+sudo chown max -R .
 ```
 
 ### Data collection robot
