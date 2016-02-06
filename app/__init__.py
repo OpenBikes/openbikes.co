@@ -16,3 +16,6 @@ babel = Babel(app)
 # Import the views
 from app.views import main, map, api, error
 app.register_blueprint(api.apibp)
+
+if __name__ == "__main__":
+    app.run()

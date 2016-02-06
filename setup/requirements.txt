@@ -3,7 +3,7 @@ numpy
 pandas
 flask
 flask-babel
-flask-wtforms
+flask-wtf
 pymongo
 htmlmin
 apscheduler
