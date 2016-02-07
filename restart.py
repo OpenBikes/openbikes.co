@@ -13,7 +13,7 @@ if __name__ == '__main__':
     refresh()
     scheduler = BackgroundScheduler()
     scheduler.add_job(refresh, 'interval', days=7,
-                      misfire_grace_time=60*60*24*7, coalesce=True)
+                      misfire_grace_time=60 * 60 * 24 * 7, coalesce=True)
     scheduler.start()
     while True:
         time.sleep(10e-100000000)

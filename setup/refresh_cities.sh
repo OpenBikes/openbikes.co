@@ -176,3 +176,10 @@ python3 add.py citybikewien Vienna Wien Austria Österreich No
 
 python3 remove.py velocea Vannes France
 python3 add.py velocea Vannes Vannes France France Yes
+
+################
+### Velobleu ###
+################
+
+python3 remove.py velobleu Nice France
+python3 add.py velobleu Nice Nice France France Yes
