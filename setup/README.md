@@ -25,7 +25,7 @@ Refer to the ``setup.sh`` script.
 		- ``pip3 install virtualenv``
 		- ``virtualenv venv``
 		- ``source venv/bin/activate``
-	- With [Anaconda](https://store.continuum.io/cshop/anaconda/), which acts as a big virtual envirnoment containing everything. Once it is [installed](http://docs.continuum.io/anaconda/install) the Python commands such as ``pip` in the shell will be linked to Anaconda's Python interpreter
+	- With [Anaconda](https://store.continuum.io/cshop/anaconda/), which acts as a big virtual environment containing everything. Once it is [installed](http://docs.continuum.io/anaconda/install) the Python commands such as ``pip` in the shell will be linked to Anaconda's Python interpreter
 - ``pip install -r requirements.txt`` for installing the Python libraries.
 - ``./addcities.sh`` for adding the cities to the geographical database and generating necessary files for the website.
 

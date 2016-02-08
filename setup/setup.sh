@@ -41,6 +41,14 @@ sudo git clone https://github.com/MaxHalford/OpenBikes
 sudo chmod -R 777 OpenBikes/
 cd OpenBikes
 
+# Install the MongoDB C driver
+git clone https://github.com/mongodb/mongo-c-driver.git
+cd mongo-c-driver
+git checkout
+./autogen.sh --with-libbson=bundled
+make
+sudo make install
+
 # Install the necessary Python libraries (takes some time)
 sudo apt-get install libblas-dev liblapack-dev libatlas-base-dev gfortran
 sudo apt-get install python3-lxml
