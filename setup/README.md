@@ -1,6 +1,6 @@
 # Installation guide
 
-Whatever you do, run ``addcities.sh`` if you want things to work. Then you will be able to run ``collect.py`` and ``serve.py``. You also have to add a ``keys.json`` file in the ``config/`` folder for the various APIs, the required keys and the links to get them are the following:
+Whatever you do, run ``setup/refresh_cities.sh`` from the root if you want things to work. Then you will be able to run ``collect.py`` and ``serve.py``. You also have to add a ``keys.json`` file in the ``config/`` folder for the various APIs, the required keys and the links to get them are the following:
 
 	{
 		"google-directions": https://mapzen.com/projects/valhalla,
@@ -13,55 +13,18 @@ Whatever you do, run ``addcities.sh`` if you want things to work. Then you will 
 
 If your Google Developers account is properly setup you'll only require one API key for all Google API services.
 
-## Server
-
-Refer to the ``setup.sh`` script.
-
-## Linux
-
-- [Install MongoDB](http://docs.mongodb.org/master/administration/install-on-linux/).
-- Install Python3 if you do not have it. You can install the necessary libraries with the system's Python but this is never recommended. You have two more secure options:
-	- With a [virtual environment](http://docs.python-guide.org/en/latest/dev/virtualenvs/) which will create a folder containing a Python interpreter which you can "activate" to avoid using the system's Python interpreter:
-		- ``pip3 install virtualenv``
-		- ``virtualenv venv``
-		- ``source venv/bin/activate``
-	- With [Anaconda](https://store.continuum.io/cshop/anaconda/), which acts as a big virtual environment containing everything. Once it is [installed](http://docs.continuum.io/anaconda/install) the Python commands such as ``pip` in the shell will be linked to Anaconda's Python interpreter
-- ``pip install -r requirements.txt`` for installing the Python libraries.
-- ``./addcities.sh`` for adding the cities to the geographical database and generating necessary files for the website.
-
-## Mac
-
-- Installing MongoDB with Brew is recommended, however it's a bit complicated to figure out how to make it work properly:
-	- ``brew update``
-	- ``brew install mongodb``
-	- ``sudo mkdir -p /data/db``
-	- ``sudo chown <USERNAME> /data/db``
-	- ``ln -sfv /usr/local/opt/mongodb/*.plist ~/Library/LaunchAgents``
-	- ``launchctl load ~/Library/LaunchAgents/homebrew.mxcl.mongodb.plist``
-	- Just to make sure reboot your computer.
-- Install Python3 if you do not have it. You can install the necessary libraries with the system's Python but this is never recommended. You have two more secure options:
-	- With a [virtual environment](http://docs.python-guide.org/en/latest/dev/virtualenvs/) which will create a folder containing a Python interpreter which you can "activate" to avoid using the system's Python interpreter:
-		- ``pip3 install virtualenv``
-		- ``virtualenv venv``
-		- ``source venv/bin/activate``
-	- With [Anaconda](https://store.continuum.io/cshop/anaconda/), which acts as a big virtual envirnoment containing everything. Once it is [installed](http://docs.continuum.io/anaconda/install) the Python commands such as ``pip` in the shell will be linked to Anaconda's Python interpreter
-- ``pip install -r requirements.txt`` for installing the Python libraries.
-- ``./addcities.sh`` for adding the cities to the geographical database and generating necessary files for the website.
-
-## Windows
-
-To do.
+Refer to the ``setup.sh`` script for installation procedures.
 
 ## Management
 
-## Adding and removing cities
+### Adding and removing cities
 
-The ``manage.py`` script is a command-line tool for adding and removing cities from the data collection process and the website vizualisation. The ``setup/addcities.sh`` script adds all the cities possible. More details can be found [here](lib/providers/README.md).
+The ``add.py`` and ``remove.py`` scripts are command-line tools for adding and removing cities from the data collection process and the website visualization. The ``setup/refresh_cities.sh`` script adds all the cities possible. More details can be found [here](lib/providers/README.md).
 
 - ``python3 manage.py add <provider> <city> <city_real_name> <country> <country_real_name> <predict>``
 - ``python3 manage.py remove <provider> <city> <city_real_name> <country> <country_real_name> <predict>``
 
-### GitHub
+### GitHub management
 
 ``cd /var/www`` before anything.
 

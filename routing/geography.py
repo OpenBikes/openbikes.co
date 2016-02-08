@@ -62,7 +62,6 @@ def compute_distances(departure, stations, mode, time):
                              for station in stations])
     url = '{0}mode={1}&key={2}&origins={3}&destinations={4}&time={5}'.format(
         base, mode, key, origin, destinations, time)
-    print(url)
     response = tb.query_API_cached(url)
     distances = tb.load_json(response)['rows'][0]['elements']
     # Add the distances to the stations

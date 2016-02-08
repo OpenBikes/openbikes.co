@@ -4,6 +4,7 @@ pandas
 flask
 flask-babel
 flask-wtf
+flask-sitemap
 pymongo
 htmlmin
 apscheduler

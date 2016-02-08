@@ -1,10 +1,10 @@
-import asyncio
-from apscheduler.schedulers.asyncio import AsyncIOScheduler
 import datetime
 import time
+import asyncio
 from common import toolbox as tb
 from mongo.timeseries import query
 from learning import *
+from app import scheduler
 
 settings = tb.read_json('common/settings.json')
 informationFolder = settings['folders']['information']
@@ -34,15 +34,13 @@ def learn(city, station):
     method.fit(dataframe, 'spaces', city, station)
 
 if __name__ == '__main__':
-    scheduler = AsyncIOScheduler()
     for city in stationsFile.keys():
         if predictions[city] == 'Yes':
             for station in stationsFile[city]:
                 learn(city, station)
                 scheduler.add_job(learn, 'interval', days=refresh,
-                                  args=[city, station], coalesce=True,
+                                  args=[city, station],
                                   misfire_grace_time=60*60*24*refresh)
-    scheduler.start()
     try:
         asyncio.get_event_loop().run_forever()
     except (KeyboardInterrupt, SystemExit):

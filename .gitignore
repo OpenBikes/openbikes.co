@@ -2,4 +2,4 @@ keys.json
 *.pyc
 *.zip
 ngrok
-serve.py
+*.geojson

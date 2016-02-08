@@ -19,7 +19,6 @@ def get_locale():
     ''' Default to english if no lang_code is set. '''
     return g.get('current_lang', 'en')
 
-
 @app.route('/')
 def home():
     cities = tb.read_json('{}/cities.json'.format(informationFolder))

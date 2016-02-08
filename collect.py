@@ -1,9 +1,9 @@
 import asyncio
-from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from datetime import datetime
 from collecting.providers import *
 from mongo.timeseries import insert
 from common import toolbox as tb
+from app import scheduler
 
 settings = tb.read_json('common/settings.json')
 # Where to save the geojson files
@@ -40,14 +40,12 @@ def update(provider, city, predict):
         return
 
 if __name__ == '__main__':
-    scheduler = AsyncIOScheduler()
     for provider, cities in providers.items():
         for city in cities:
             update(provider, city, predictions[city])
             scheduler.add_job(update, 'interval', seconds=refresh,
                               args=[provider, city, predictions[city]],
                               misfire_grace_time=refresh, coalesce=True)
-    scheduler.start()
     try:
         asyncio.get_event_loop().run_forever()
     except (KeyboardInterrupt, SystemExit):

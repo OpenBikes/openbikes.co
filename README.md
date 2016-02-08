@@ -4,7 +4,7 @@
 
 ![Logo](app/static/img/OpenBikes.png)
 
-OpenBikes is a project for visualizing bike stations in real time. It also includes a prediction system in order to propose faultless trips to users. This repository includes everything relative to the database and the website.
+OpenBikes is a project for visualizing bike stations in real time. It also includes a prediction system in order to propose faultless trips to users. This repository includes everything relative to the database and the website. Refer to the [wiki](https://github.com/OpenBikes/Website/wiki) if you want to contribute. 
 
 ## Structure
 
