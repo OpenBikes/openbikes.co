@@ -68,6 +68,8 @@ def extract_element(element, child):
     value = element.find(child)
     if type(value) is None:
         return ''
+    elif not value:
+        return ''
     else:
         return value.string
 
@@ -141,18 +143,18 @@ class MWT(object):
         return func
 
 
-def query_API(url, repeat=False):
+def query_API(url, repeat=False, encoding='utf-8'):
     ''' Send a query to a URL and decode the bytes it returns. '''
     if repeat is False:
         with urlopen(url) as response:
-            return response.read().decode('utf-8')
+            return response.read().decode(encoding)
     # Possibility to continuously re-qeury the API if it failed
     else:
         response = None
         while response is None:
             try:
                 with urlopen(url) as response:
-                    return response.read().decode('utf-8')
+                    return response.read().decode(encoding)
             except:
                 response = None
 
