@@ -186,7 +186,7 @@ Toronto is bugged and Ottawa doesn't seem to be working.
 |--------------------|------------|
 | Wien               | Germany    |
 
-#### Vannes
+#### Velocea
 
 - Command line argument: ``velocea``
 - [Website](https://www.velocea.fr/cartoV2/libProxyCarto.asp)
@@ -195,3 +195,126 @@ Toronto is bugged and Ottawa doesn't seem to be working.
 | City               | Country    |
 |--------------------|------------|
 | Vannes             | France     |
+
+#### Velobleu
+
+- Command line argument: ``velobleu``
+- [Website](http://www.velobleu.org/cartoV2/libProxyCarto.asp)
+- XML
+
+| City               | Country    |
+|--------------------|------------|
+| Nice               | France     |
+
+
+#### Vel-in
+
+- Command line argument: ``velin``
+- [Website](https://www.vel-in.fr/cartoV2/libProxyCarto.asp)
+- JSON
+
+| City               | Country    |
+|--------------------|------------|
+| Calais             | France     |
+
+#### Cli-velo
+
+- Command line argument: ``clivelo``
+- [Website](http://cli-velo-montpellier.gir.fr/vcstations.xml)
+- XML
+
+| City               | Country    |
+|--------------------|------------|
+| Montpellier        | France     |
+
+#### Velopop
+
+- Command line argument: ``velopop``
+- [Website](http://www.velopop.fr/vcstations.xml)
+- XML
+
+| City               | Country    |
+|--------------------|------------|
+| Avignon            | France     |
+
+#### Velo-libelo
+
+- Command line argument: ``velolibelo``
+- [Website](http://www.velo-libelo.fr/vcstations.xml)
+- XML
+
+| City               | Country    |
+|--------------------|------------|
+| Valence            | France     |
+
+
+
+#### Velhop
+
+- Command line argument: ``velhop``
+- [Website](http://www.velhop.strasbourg.eu/vcstations.xml)
+- XML
+
+| City               | Country    |
+|--------------------|------------|
+| Strasbourg         | France     |
+
+
+#### Velivert
+
+- Command line argument: ``velivert``
+- [Website](http://www.velivert.fr/vcstations.xml)
+- XML
+
+| City               | Country    |
+|--------------------|------------|
+| Saint-Etienne      | France     |
+
+#### Tashu
+
+- Command line argument: ``tashu``
+- [Website](http://www.tashu.or.kr/mapAction.do?process=statusMapView)
+- JSON
+
+| City               | Country     |
+|--------------------|-------------|
+| Daejeon            | South-Korea |
+
+#### Decobike
+
+- Command line argument: ``decobike``
+- [Website](http://www.decobike.com/playmoves.xml)
+- JSON
+
+| City               | Country     |
+|--------------------|-------------|
+| Miami-Beach        | USA         |
+
+#### Nextbike
+
+- Command line argument: ``nextbike``
+- [Website](https://nextbike.net/maps/nextbike-official.xml?city=210)
+- JSON
+
+| City                 | Country              |
+|----------------------|----------------------|
+| Warszawa             | Poland               |
+| Riga                 | Latvia               |
+| Jurmala              | Poland               |
+| Wroclaw              | Poland               |
+| Seferihisar          | Turkey               |
+| Dubai                | United Arab Emirates |
+| Abu Dhabi            | United Arab Emirates |
+| Zagreb               | Croatia              |
+| Krakow               | Poland               |
+| Bialystok            | Poland               |
+| Belfast              | UK                   |
+| KonstancinJeziorna   | Poland               |
+| Sibenik              | Croatia              |
+| Lublin               | Poland               |
+| GrodziskMazowiecki   | Poland               |
+| Pittsburgh           | USA                  |
+| Heidelberg           | Germany              |
+| WestPalmBeachFlorida | USA                  |
+| Auckland             | NZ                   |
+| Christchurch         | NZ                   |

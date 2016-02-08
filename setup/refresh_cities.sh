@@ -175,11 +175,132 @@ python3 add.py citybikewien Vienna Wien Austria Österreich No
 ###############
 
 python3 remove.py velocea Vannes France
-python3 add.py velocea Vannes Vannes France France Yes
+python3 add.py velocea Vannes Vannes France France No
 
 ################
 ### Velobleu ###
 ################
 
 python3 remove.py velobleu Nice France
-python3 add.py velobleu Nice Nice France France Yes
+python3 add.py velobleu Nice Nice France France No
+
+##############
+### Velin  ###
+##############
+
+python3 remove.py velin Calais France
+python3 add.py velin Calais Calais France France No
+
+################
+### Clivelo  ###
+################
+
+python3 remove.py clivelo Montpellier France
+python3 add.py clivelo Montpellier Montpellier France France No
+
+################
+### Velopop  ###
+################
+
+python3 remove.py velopop Avignon France
+python3 add.py velopop Avignon Avignon France France No
+
+###################
+### Velolibelo  ###
+###################
+
+python3 remove.py velolibelo Valence France
+python3 add.py velolibelo Valence Valence France France No
+
+###############
+### Velhop  ###
+###############
+
+python3 remove.py velhop Strasbourg France
+python3 add.py velhop Strasbourg Strasbourg France France No
+
+################
+### Velivert ###
+################
+
+python3 remove.py velivert Saint-Etienne France
+python3 add.py velivert Saint-Etienne Saint-Etienne France France No
+
+#############
+### Tashu ###
+#############
+
+python3 remove.py tashu Daejeon South-Korea
+python3 add.py tashu Daejeon "Daejeon - 대전" South-Korea "South-Korea - 대한민국" No
+
+################
+### Decobike ###
+################
+
+python3 remove.py decobike Miami-Beach USA
+python3 add.py decobike Miami-Beach Miami-Beach USA USA No
+
+################
+### Nextbike ###
+################
+
+python3 remove.py nextbike Warszawa Poland
+python3 add.py nextbike Warszawa Warszawa Poland Poland No
+
+python3 remove.py nextbike Riga Latvia
+python3 add.py nextbike Riga Riga Latvia Latvia No
+
+python3 remove.py nextbike Jurmala Latvia
+python3 add.py nextbike Jurmala Jurmala Latvia Latvia No
+
+python3 remove.py nextbike Wroclaw Poland
+python3 add.py nextbike Wroclaw "Wrocław" Poland Poland No
+
+python3 remove.py nextbike Seferihisar Turkey
+python3 add.py nextbike Seferihisar Seferihisar Turkey Turkey No
+
+python3 remove.py nextbike Dubai UnitedArabEmirates
+python3 add.py nextbike Dubai Dubai UnitedArabEmirates "United Arab Emirates" No
+
+python3 remove.py nextbike AbuDhabi UnitedArabEmirates
+python3 add.py nextbike AbuDhabi "Abu Dhabi" UnitedArabEmirates "United Arab Emirates" No
+
+python3 remove.py nextbike Zagreb Croatia
+python3 add.py nextbike Zagreb Zagreb Croatia Croatia No
+
+python3 remove.py nextbike Krakow Poland
+python3 add.py nextbike Krakow "Kraków" Poland Poland No
+
+python3 remove.py nextbike Bialystok Poland
+python3 add.py nextbike Bialystok "Białystok" Poland Poland No
+
+python3 remove.py nextbike Belfast UK
+python3 add.py nextbike Belfast Belfast UK UK No
+
+python3 remove.py nextbike KonstancinJeziorna Poland
+python3 add.py nextbike KonstancinJeziorna "Konstancin Jeziorna" Poland Poland No
+
+python3 remove.py nextbike Sibenik Croatia
+python3 add.py nextbike Sibenik "Šibenik" Croatia Croatia No
+
+python3 remove.py nextbike Lublin Poland
+python3 add.py nextbike Lublin Lublin Poland Poland No
+
+python3 remove.py nextbike GrodziskMazowiecki Poland
+python3 add.py nextbike GrodziskMazowiecki "Grodzisk Mazowiecki" Poland Poland No
+
+python3 remove.py nextbike Pittsburgh USA
+python3 add.py nextbike Pittsburgh Pittsburgh USA USA No
+
+python3 remove.py nextbike Heidelberg Germany
+python3 add.py nextbike Heidelberg Heidelberg Germany Germany No
+
+python3 remove.py nextbike WestPalmBeachFlorida USA
+python3 add.py nextbike WestPalmBeachFlorida "West Palm Beach Florida" USA USA No
+
+python3 remove.py nextbike Auckland NewZealand
+python3 add.py nextbike Auckland Auckland NewZealand "New Zealand" No
+
+python3 remove.py nextbike Christchurch NewZealand
+python3 add.py nextbike Christchurch Christchurch NewZealand "New Zealand" No
+

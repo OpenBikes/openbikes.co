@@ -30,7 +30,7 @@ def normalize(stations):
     metadata = stations
     stations = stations['stand']
     normalized = lambda station: {
-        'name': clean(str(station['wcom']) + str(station['name'])),
+        'name': clean(str(station['wcom']) + ' - ' + str(station['name'])),
         'address': clean(station['name']),
         'lat': float(station['lat']),
         'lon': float(station['lng']),
@@ -38,4 +38,5 @@ def normalize(stations):
         'bikes': int(station['ab']),
         'stands': int(station['ap']),
         'update': datetime.datetime.strptime(metadata['gmt'], '%d/%m/%Y %H:%M:%S %p').isoformat()}
-    return [normalized(station) for station in stations]
+    return [normalized(station) for station in stations
+            if float(station['lat']) > 10]
