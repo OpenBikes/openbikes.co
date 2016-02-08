@@ -3,3 +3,4 @@ keys.json
 *.zip
 ngrok
 *.geojson
+common/information/*.json

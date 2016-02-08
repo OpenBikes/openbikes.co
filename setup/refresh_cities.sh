@@ -2,6 +2,14 @@
 ### JCDecaux ###
 ################
 
+echo "{}" > common/information/centers.json
+echo "{}" > common/information/cities.json
+echo "{}" > common/information/names.json
+echo "{}" > common/information/predictions.json
+echo "{}" > common/information/providers.json
+echo "{}" > common/information/updates.json
+echo "{}" > common/information/stations.json
+
 python3 remove.py jcdecaux Amiens France
 python3 add.py jcdecaux Amiens Amiens France France Yes
 
@@ -303,4 +311,3 @@ python3 add.py nextbike Auckland Auckland NewZealand "New Zealand" No
 
 python3 remove.py nextbike Christchurch NewZealand
 python3 add.py nextbike Christchurch Christchurch NewZealand "New Zealand" No
-

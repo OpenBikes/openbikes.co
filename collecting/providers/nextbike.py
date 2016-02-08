@@ -27,7 +27,6 @@ def stations(city):
     uid = cities_uid[city]
     url = 'https://nextbike.net/maps/nextbike-official.xml?city={}'.format(uid)
     data = tb.query_API(url)
-    print(url)
     stations = tb.load_xml(data)
     return normalize(stations)
 
