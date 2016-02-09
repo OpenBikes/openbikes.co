@@ -44,7 +44,12 @@ sitemap = Sitemap(app=app)
 
 # Setup APScheduler
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
-scheduler = AsyncIOScheduler()
+from apscheduler.executors.pool import ProcessPoolExecutor
+executors = {
+    'default': {'type': 'threadpool', 'max_workers': 20},
+    'processpool': ProcessPoolExecutor(max_workers=5)
+}
+scheduler = AsyncIOScheduler(executors=executors)
 scheduler.start()
 
 if __name__ == '__main__':
