@@ -14,6 +14,19 @@ from mongo.timeseries import db
 # 'c': cloudiness
 
 
+def rename_columns(dataframe):
+    '''
+    The data is stored in MongoDB with shortcuts for the attributes in order
+    to save memory. This function renames the columns appropriately.
+    '''
+    shortcuts = {
+        'b': 'bikes',
+        's': 'spaces'
+    }
+    dataframe.rename(columns=shortcuts, inplace=True)
+    return dataframe
+
+
 def station(city, station, threshold):
     '''
     Returns a dictionary of dataframes containing all the updates of a given
@@ -41,6 +54,8 @@ def station(city, station, threshold):
             dataframe = pd.concat((dataframe, df))
         except:
             pass
+    # Rename the columns
+    dataframe = rename_columns(dataframe)
     return dataframe
 
 
@@ -79,4 +94,6 @@ def city(city, year='\d{4}', month='\d{1,2}', day='\d{1,2}'):
                 stationsDfs[station] = pd.concat((stationsDfs[station], df))
             else:
                 stationsDfs[station] = df
+    # Rename the columns
+    dataframe = rename_columns(dataframe)
     return stationsDfs

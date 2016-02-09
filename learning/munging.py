@@ -10,19 +10,6 @@ def split(dataframe, target):
     return X, Y
 
 
-def rename_columns(dataframe):
-    '''
-    The data is stored in MongoDB with shortcuts for the attributes in order
-    to save memory. This function renames the columns appropriately.
-    '''
-    shortcuts = {
-        'b': 'bikes',
-        's': 'spaces'
-    }
-    dataframe.rename(columns=shortcuts, inplace=True)
-    return dataframe
-
-
 def temporal_features(timestamp):
     ''' Extract relevant time information from a list of timestamps. '''
     features = {
@@ -39,8 +26,6 @@ def prepare(dataframe):
     ''' Extract features and label them as categorical or numerical. '''
     # Just to be sure, drop the duplicates
     dataframe = dataframe.groupby(dataframe.index).first()
-    # Rename the columns
-    dataframe = rename_columns(dataframe)
     # Extract temporal features
     temporalFeatures = [temporal_features(timestamp) for timestamp
                         in dataframe.index]

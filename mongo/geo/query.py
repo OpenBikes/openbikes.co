@@ -6,6 +6,13 @@ from mongo.geo import db
 # 'a': altitude
 
 
+def stations(city):
+    ''' Returns all the stations for a given city. '''
+    collection = db[city]
+    stations = collection.find()
+    return stations
+
+
 def close_points(city, pos, number=100000, minDistance=0, maxDistance=np.inf):
     '''
     Input a latitude and a longitude in meters to return a
