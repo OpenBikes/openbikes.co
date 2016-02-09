@@ -2,6 +2,8 @@
 ### JCDecaux ###
 ################
 
+mkdir common/information/
+
 echo "{}" > common/information/centers.json
 echo "{}" > common/information/cities.json
 echo "{}" > common/information/names.json
