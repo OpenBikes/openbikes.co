@@ -1,5 +1,4 @@
 import datetime
-import time
 import asyncio
 from common import toolbox as tb
 from mongo.timeseries import query
@@ -22,9 +21,11 @@ predictions = tb.read_json('{}/predictions.json'.format(informationFolder))
 
 def learn(city, station):
     # Get data from the past 30 days
-    threshold = datetime.datetime.now() - datetime.timedelta(days=timespan)
+    days = settings['learning']['timespan']
+    since = datetime.datetime.now() - datetime.timedelta(days=days)
+    until = datetime.datetime.now()
     try:
-        dataframe = query.station(city, station, threshold)
+        dataframe = query.station(city, station, since, until)
     except:
         return
     # Prepare the dataframe for learning

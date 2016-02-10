@@ -27,18 +27,28 @@ def rename_columns(dataframe):
     return dataframe
 
 
-def station(city, station, threshold):
+def station(city, station, since, until):
     '''
     Returns a dictionary of dataframes containing all the updates of a given
-    period or day for a station, up to a given threshold. The threshold is a
-    Python datetime object.
+    period or day for a station, up to a given threshold. The from and until
+    parameters are Python datetime object.
     '''
     # Connect to the appropriate collection of the database
     collection = db[city]
     # Query the station's updates
-    pattern = threshold.isoformat()
-    cursor = collection.find({'_id': {'$gte': pattern}, 'u.n': station},
-                             {'u': {'$elemMatch': {'n': station}}})
+    cursor = collection.find({
+        '_id': {
+            '$gte': since.isoformat(),
+            '$lte': until.isoformat()
+        },
+        'u.n': station
+    }, {
+        'u': {
+            '$elemMatch': {
+                'n': station
+            }
+        }
+    })
     # We will modify the index so as to take into account the date
     fmt = '%Y-%m-%d/%H:%M:%S'
     # Create the dataframe with the first date
@@ -95,5 +105,5 @@ def city(city, year='\d{4}', month='\d{1,2}', day='\d{1,2}'):
             else:
                 stationsDfs[station] = df
     # Rename the columns
-    dataframe = rename_columns(dataframe)
+    stationsDfs = rename_columns(stationsDfs)
     return stationsDfs
