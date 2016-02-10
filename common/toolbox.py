@@ -148,7 +148,7 @@ def query_API(url, repeat=False, encoding='utf-8'):
     if repeat is False:
         with urlopen(url) as response:
             return response.read().decode(encoding)
-    # Possibility to continuously re-qeury the API if it failed
+    # Possibility to continuously re-query the API if it failed
     else:
         response = None
         while response is None:

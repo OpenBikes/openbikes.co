@@ -43,23 +43,9 @@ git pull origin master
 sudo chown max -R .
 ```
 
-### Data collection robot
+### Task management
 
-- Start with ``sudo start ob-collect``
-- Stop with ``sudo stop ob-collect``
-- Restart with ``sudo restart ob-collect``
-
-### Learning robot
-
-- Start with ``sudo start ob-learn``
-- Stop with ``sudo stop ob-learn``
-- Restart with ``sudo restart ob-learn``
-
-### Restart robot
-
-- Start with ``sudo start ob-restart``
-- Stop with ``sudo stop ob-restart``
-- Restart with ``sudo restart ob-restart``
+The task management is done with [Celery](http://www.celeryproject.org/). You can run the tasks with `celery -A tasks worker -B`. The tasks are defined in `tasks.py` and Celery is configured in `celery_config.py`.
 
 ### Website
 

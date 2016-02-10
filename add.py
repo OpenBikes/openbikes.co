@@ -1,6 +1,7 @@
 import argparse
 import numpy as np
 from common import toolbox as tb
+from common import files
 from collecting.providers import *
 from collecting import altitudes
 from mongo.geo import insert
@@ -9,7 +10,7 @@ from mongo.geo import insert
 parser = argparse.ArgumentParser(description='Add a city to the system.')
 parser.add_argument('provider')
 parser.add_argument('city')
-parser.add_argument('cityRealName')
+parser.add_argument('city_real_name')
 parser.add_argument('country')
 parser.add_argument('countryRealName')
 parser.add_argument('predict')
@@ -18,22 +19,18 @@ parser.add_argument('predict')
 parameters = parser.parse_args()
 provider = parameters.provider
 city = parameters.city
-cityRealName = parameters.cityRealName
+city_real_name = parameters.city_real_name
 country = parameters.country
-countryRealName = parameters.countryRealName
+country_real_name = parameters.countryRealName
 predict = parameters.predict
 
-# Load the information folder path
-settings = tb.read_json('common/settings.json')
-informationFolder = settings['folders']['information']
-
-# Load the information files
-stationsFile = tb.read_json('{}/stations.json'.format(informationFolder))
-providersFile = tb.read_json('{}/providers.json'.format(informationFolder))
-centersFile = tb.read_json('{}/centers.json'.format(informationFolder))
-citiesFile = tb.read_json('{}/cities.json'.format(informationFolder))
-namesFile = tb.read_json('{}/names.json'.format(informationFolder))
-predictionsFile = tb.read_json('{}/predictions.json'.format(informationFolder))
+# Load the metadata files
+stations_file = tb.read_json(files.stations)
+providers_file = tb.read_json(files.providers)
+centers_file = tb.read_json(files.centers)
+cities_file = tb.read_json(files.cities)
+names_file = tb.read_json(files.names)
+predictions_file = tb.read_json(files.predictions)
 
 # Get the current information for a city
 stations = eval(provider).stations(city)
@@ -46,36 +43,36 @@ latitudes = [station['lat'] for station in stations]
 longitudes = [station['lon'] for station in stations]
 names = [station['name'] for station in stations]
 # City/Stations file
-stationsFile[city] = names
+stations_file[city] = names
 # Provider/City file
-if provider not in providersFile.keys():
-    providersFile[provider] = []
-    providersFile[provider].append(city)
+if provider not in providers_file.keys():
+    providers_file[provider] = []
+    providers_file[provider].append(city)
 else:
-    if city not in providersFile[provider]:
-        providersFile[provider].append(city)
+    if city not in providers_file[provider]:
+        providers_file[provider].append(city)
 # City/Center file
 center = [np.mean(latitudes), np.mean(longitudes)]
-centersFile[city] = center
+centers_file[city] = center
 # Country/City file
-if country not in citiesFile:
-    citiesFile[country] = []
-    citiesFile[country].append(city)
+if country not in cities_file:
+    cities_file[country] = []
+    cities_file[country].append(city)
 else:
-    if city not in citiesFile[country]:
-        citiesFile[country].append(city)
+    if city not in cities_file[country]:
+        cities_file[country].append(city)
 # Name/RealName file
-namesFile[city] = cityRealName
-namesFile[country] = countryRealName
+names_file[city] = city_real_name
+names_file[country] = country_real_name
 # Predictions file
-predictionsFile[city] = predict
+predictions_file[city] = predict
 # Notification
 print('{} has been added.'.format(city))
 
-# Save the information files
-tb.write_json(stationsFile, '{}/stations.json'.format(informationFolder))
-tb.write_json(providersFile, '{}/providers.json'.format(informationFolder))
-tb.write_json(centersFile, '{}/centers.json'.format(informationFolder))
-tb.write_json(citiesFile, '{}/cities.json'.format(informationFolder))
-tb.write_json(namesFile, '{}/names.json'.format(informationFolder))
-tb.write_json(predictionsFile, '{}/predictions.json'.format(informationFolder))
+# Save the metadata files
+tb.write_json(stations_file, files.stations)
+tb.write_json(providers_file, files.providers)
+tb.write_json(centers_file, files.centers)
+tb.write_json(cities_file, files.cities)
+tb.write_json(names_file, files.names)
+tb.write_json(predictions_file, files.predictions)

@@ -55,24 +55,11 @@ sudo apt-get install python3-lxml
 sudo pip3 install -r setup/requirements.txt
 
 # Add the cities
-cd setup
-sudo ./refresh_cities.sh
-cd ..
+sudo ./setup/refresh_cities.sh
 
-# Create the upstart script to collect data
-sudo cp setup/scripts/ob-collect.conf /etc/init/
-# Start it
-sudo start ob-collect
-
-# Create the upstart script to train predictors
-sudo cp setup/scripts/ob-learn.conf /etc/init/
-# Start it
-sudo start ob-learn
-
-# Create the upstart script to restart the robots
-sudo cp setup/scripts/ob-restart.conf /etc/init/
-# Start it
-sudo start ob-restart
+# Create the upstart script for the celery tasks
+sudo cp setup/scripts/ob-celery.conf /etc/init/
+sudo start ob-celery
 
 # Configure and enable a virtual host
 sudo cp setup/scripts/OpenBikes.conf /etc/apache2/sites-available/

@@ -7,8 +7,7 @@ flask-wtf
 flask-sitemap
 pymongo
 htmlmin
-apscheduler
-asyncio
+celery
 scipy
 sklearn
 lxml

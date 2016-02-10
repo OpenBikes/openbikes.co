@@ -2,7 +2,7 @@ from flask import render_template, request, g
 from flask.ext.babel import gettext
 from htmlmin import minify
 from common import toolbox as tb
-from app.views import informationFolder
+from common import files
 from app import app
 from app import babel
 
@@ -19,10 +19,11 @@ def get_locale():
     ''' Default to english if no lang_code is set. '''
     return g.get('current_lang', 'en')
 
+
 @app.route('/')
 def home():
-    cities = tb.read_json('{}/cities.json'.format(informationFolder))
-    names = tb.read_json('{}/names.json'.format(informationFolder))
+    cities = tb.read_json(files.cities)
+    names = tb.read_json(files.names)
     return minify(render_template('index.html',
                                   title=gettext('Maps - OpenBikes'),
                                   cities_file=cities, names_file=names,
@@ -31,8 +32,8 @@ def home():
 
 @app.route('/<lang_code>')
 def index():
-    cities = tb.read_json('{}/cities.json'.format(informationFolder))
-    names = tb.read_json('{}/names.json'.format(informationFolder))
+    cities = tb.read_json(files.cities)
+    names = tb.read_json(files.names)
     return minify(render_template('index.html',
                                   title=gettext('Maps - OpenBikes'),
                                   cities_file=cities, names_file=names))

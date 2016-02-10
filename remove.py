@@ -1,6 +1,7 @@
 import argparse
 import os
 from common import toolbox as tb
+from common import folders, files
 from mongo.geo import delete
 
 # Define the command line arguments
@@ -15,97 +16,88 @@ provider = parameters.provider
 city = parameters.city
 country = parameters.country
 
-# Load the information folder path
-settings = tb.read_json('common/settings.json')
-informationFolder = settings['folders']['information']
-
-# Load the information files
-stationsFile = tb.read_json('{}/stations.json'.format(informationFolder))
-providersFile = tb.read_json('{}/providers.json'.format(informationFolder))
-centersFile = tb.read_json('{}/centers.json'.format(informationFolder))
-citiesFile = tb.read_json('{}/cities.json'.format(informationFolder))
-namesFile = tb.read_json('{}/names.json'.format(informationFolder))
-predictionsFile = tb.read_json('{}/predictions.json'.format(informationFolder))
-updatesFile = tb.read_json('{}/updates.json'.format(informationFolder))
+# Load the metadata files
+stations_file = tb.read_json(files.stations)
+providers_file = tb.read_json(files.providers)
+centers_file = tb.read_json(files.centers)
+cities_file = tb.read_json(files.cities)
+names_file = tb.read_json(files.names)
+predictions_file = tb.read_json(files.predictions)
+updates_file = tb.read_json(files.updates)
 
 # Geographical database
 try:
     delete.city(city)
 except:
     None
-# geoJson file
+# geojson file
 try:
-    os.remove('static/geojson/{}.geojson'.format(city))
-except:
-    None
-# Update file
-try:
-    os.remove('static/updates/{}.txt'.format(city))
+    os.remove('{0}/{1}.geojson'.format(folders.geojson))
 except:
     None
 # City/Stations file
 try:
-    del stationsFile[city]
+    del stations_file[city]
 except:
     None
 # Provider/City file
 try:
-    providersFile[provider].remove(city)
+    providers_file[provider].remove(city)
 except:
     None
 try:
-    if len(providersFile[provider]) == 0:
-        del providersFile[provider]
+    if len(providers_file[provider]) == 0:
+        del providers_file[provider]
 except:
     None
 try:
-    if len(providersFile[provider]) == 0:
-        del providersFile[provider]
+    if len(providers_file[provider]) == 0:
+        del providers_file[provider]
 except:
     None
 # City/Center file
 try:
-    del centersFile[city]
+    del centers_file[city]
 except:
     None
 # Country/City file
 try:
-    citiesFile[country].remove(city)
+    cities_file[country].remove(city)
 except:
     None
 try:
-    if len(citiesFile[country]) == 0:
-        del citiesFile[country]
+    if len(cities_file[country]) == 0:
+        del cities_file[country]
 except:
     None
 # City/RealName file
 try:
-    del namesFile[city]
+    del names_file[city]
 except:
     None
 try:
-    if country not in citiesFile:
-        del namesFile[country]
+    if country not in cities_file:
+        del names_file[country]
 except:
     None
 # Predictions file
 try:
-    del predictionsFile[city]
+    del predictions_file[city]
 except:
     None
 # Updates file
 try:
-    del updatesFile[city]
+    del updates_file[city]
 except:
     None
 # Notification
 print('{} has been removed.'.format(city))
 
-# Save the information files
-tb.write_json(stationsFile, '{}/stations.json'.format(informationFolder))
-tb.write_json(providersFile, '{}/providers.json'.format(informationFolder))
-tb.write_json(centersFile, '{}/centers.json'.format(informationFolder))
-tb.write_json(citiesFile, '{}/cities.json'.format(informationFolder))
-tb.write_json(namesFile, '{}/names.json'.format(informationFolder))
-tb.write_json(predictionsFile, '{}/predictions.json'.format(informationFolder))
-tb.write_json(updatesFile, '{}/updates.json'.format(informationFolder))
+# Save the metadata files
+tb.write_json(stations_file, files.stations)
+tb.write_json(providers_file, files.providers)
+tb.write_json(centers_file, files.centers)
+tb.write_json(cities_file, files.cities)
+tb.write_json(names_file, files.names)
+tb.write_json(predictions_file, files.predictions)
+tb.write_json(predictions_file, files.updates)

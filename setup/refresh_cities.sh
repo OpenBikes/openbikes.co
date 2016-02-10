@@ -2,15 +2,17 @@
 ### JCDecaux ###
 ################
 
-mkdir common/information/
+mkdir common/metadata/
+mkdir app/static/geojson/
+mkdir common/regressors
 
-echo "{}" > common/information/centers.json
-echo "{}" > common/information/cities.json
-echo "{}" > common/information/names.json
-echo "{}" > common/information/predictions.json
-echo "{}" > common/information/providers.json
-echo "{}" > common/information/updates.json
-echo "{}" > common/information/stations.json
+echo "{}" > common/metadata/centers.json
+echo "{}" > common/metadata/cities.json
+echo "{}" > common/metadata/names.json
+echo "{}" > common/metadata/predictions.json
+echo "{}" > common/metadata/providers.json
+echo "{}" > common/metadata/updates.json
+echo "{}" > common/metadata/stations.json
 
 python3 remove.py jcdecaux Amiens France
 python3 add.py jcdecaux Amiens Amiens France France Yes

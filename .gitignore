@@ -3,4 +3,5 @@ keys.json
 *.zip
 ngrok
 *.geojson
-common/information/*.json
+*.json
+celerybeat-schedule.db
