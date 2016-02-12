@@ -9,14 +9,14 @@ from app.forms import DropBike, PickBike, FullTrip
 from app import app
 
 
-@app.route('/<lang_code>/<city>')
+@app.route('/city/<city>')
 def map(city):
     names = tb.read_json(files.names)
     centers = tb.read_json(files.centers)
     predictions = tb.read_json(files.predictions)
     geojson = str(url_for('static', filename='geojson/{}.geojson'.format(city)))
-    return minify(render_template('map.html', title='{} - OpenBikes'.format(city),
-                                  city=city, city_name=names[city],
+    return minify(render_template('map.html', city=city, city_name=names[city],
+                                  title='{} - OpenBikes'.format(city),
                                   center=centers[city], geojson=geojson,
                                   predict=predictions[city],
                                   formDropBike=DropBike(),

@@ -12,6 +12,7 @@ CELERY_MONGODB_BACKEND_SETTINGS = {
 }
 BROKER_URL = 'mongodb://localhost:27017/jobs'
 CELERY_TIMEZONE = 'Europe/Paris'
+CELERY_ACCEPT_CONTENT = ['json', 'pickle']
 
 # Add tasks
 CELERYBEAT_SCHEDULE = {}

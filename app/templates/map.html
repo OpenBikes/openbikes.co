@@ -34,9 +34,6 @@
         <link href='//api.tiles.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v0.0.2/leaflet.fullscreen.css' rel='stylesheet' />
         <!-- Font awesome -->
         <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
-        <!-- Home button -->
-        <link href="/static/css/map/leaflet.zoomhome.css" rel="stylesheet">
-        <script src="/static/js/map/leaflet.zoomhome.min.js"></script>
         <!-- Leaflet label -->
         <link href="/static/css/map/leaflet.label.css" rel="stylesheet">
         <script src="/static/js/map/leaflet.label.js"></script>
@@ -46,7 +43,7 @@
         <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/datetimepicker/latest/DateTimePicker.min.css"></link>
         <script type="text/javascript" src="//cdn.jsdelivr.net/datetimepicker/latest/DateTimePicker.min.js"></script>
         <!-- Géolocalisation de l'addresse -->
-        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places"></script>
     </head>
     {% include 'includes/navigation.html' %}
     <body>
@@ -59,9 +56,8 @@
         </script>
         <!-- DateTimePicker Function -->
         <script type="text/javascript">
-            function setDateTime(boxId){
-                if (lang =='fr') {
-                    // Paramètres du DateTimePicker
+            function setDateTime(boxId, lang){
+                if ("{{ g.locale }}" == 'fr') {
                     $(boxId).DateTimePicker({
                         fullMonthNames : ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Aout", "Septembre", "Octobre", "Novembre", "Décembre"],
                         shortDayNames: ["Dim", "Lun", "Mar", "Mer", "Jeu", "Ven", "Sam"],
@@ -92,81 +88,11 @@
         </script>
         <!-- Create the map -->
         <div id="map" class="col-xs-12"></div>
-        <!-- Add the routing button -->
-        {% if predict == 'Yes' %}
-            <div>
-                <button id="toggleChoose" type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#modalChoose">
-                    <i class="fa fa-bicycle"></i>
-                </button>
-                {% include 'forms/choose.html' %}
-                {% include 'forms/drop_bike.html' %}
-                {% include 'forms/pick_bike.html' %}
-                {% include 'forms/full_trip.html' %}
-                </div>
-            </div>
+
+        <!-- Change the moment.js locale -->
+        {% if g.locale != 'en' %}
+            <script src="/static/js/map/moment-{{ g.locale }}.js"></script>
         {% endif %}
-        <script>
-            // Language pack for livestamp
-            if (lang == 'fr') {
-                // Moment
-                moment.locale('fr', {
-                    months : "janvier_février_mars_avril_mai_juin_juillet_août_septembre_octobre_novembre_décembre".split("_"),
-                    monthsShort : "janv._févr._mars_avr._mai_juin_juil._août_sept._oct._nov._déc.".split("_"),
-                    weekdays : "dimanche_lundi_mardi_mercredi_jeudi_vendredi_samedi".split("_"),
-                    weekdaysShort : "dim._lun._mar._mer._jeu._ven._sam.".split("_"),
-                    weekdaysMin : "Di_Lu_Ma_Me_Je_Ve_Sa".split("_"),
-                    longDateFormat : {
-                        LT : "HH:mm",
-                        LTS : "HH:mm:ss",
-                        L : "DD/MM/YYYY",
-                        LL : "D MMMM YYYY",
-                        LLL : "D MMMM YYYY LT",
-                        LLLL : "dddd D MMMM YYYY LT"
-                    },
-                    calendar : {
-                        sameDay: "[Aujourd'hui à] LT",
-                        nextDay: '[Demain à] LT',
-                        nextWeek: 'dddd [à] LT',
-                        lastDay: '[Hier à] LT',
-                        lastWeek: 'dddd [dernier à] LT',
-                        sameElse: 'L'
-                    },
-                    relativeTime : {
-                        future : "dans %s",
-                        past : "il y a %s",
-                        s : "quelques secondes",
-                        m : "une minute",
-                        mm : "%d minutes",
-                        h : "une heure",
-                        hh : "%d heures",
-                        d : "un jour",
-                        dd : "%d jours",
-                        M : "un mois",
-                        MM : "%d mois",
-                        y : "une année",
-                        yy : "%d années"
-                    },
-                    ordinalParse : /\d{1,2}(er|ème)/,
-                    ordinal : function (number) {
-                        return number + (number === 1 ? 'er' : 'ème');
-                    },
-                    meridiemParse: /PD|MD/,
-                    isPM: function (input) {
-                        return input.charAt(0) === 'M';
-                    },
-                    meridiem : function (hours, minutes, isLower) {
-                        return hours < 12 ? 'PD' : 'MD';
-                    },
-                    week : {
-                        dow : 1,
-                        doy : 4
-                    }
-                });
-            }
-        </script>
-
-
-
         <script type="text/javascript">
             // Load the map style
             L.mapbox.accessToken = 'pk.eyJ1IjoibGVtYXgiLCJhIjoidnNDV1kzNCJ9.iH26jLhEuimYd6vLOO6v1g';
@@ -189,8 +115,6 @@
             ).addTo(map);
             // Initial location
             map.setView({{ center }}, 14);
-            var zoomBar = L.Control.zoomHome();
-            zoomBar.addTo(map);
             L.control.locate({
                 position: 'topleft',
                 drawCircle: true,
@@ -354,9 +278,6 @@
                 navigator.geolocation.getCurrentPosition(geoSuccess, geoError, geoOptions);
             };
             navigator.geolocation.getCurrentPosition(geoSuccess, geoError, geoOptions);
-            // Routing configuration
-            var searchButton = new L.Control.Button(L.DomUtil.get('toggleChoose'));
-            searchButton.addTo(map);
             // Routing function
             function route(formId, mode) {
                 var situation = {};
@@ -409,5 +330,23 @@
                 });
             };
         </script>
+        <!-- Add the routing button -->
+        {% if predict == 'Yes' %}
+            <div>
+                <button id="toggleChoose" type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#modalChoose">
+                    <i class="fa fa-bicycle"></i>
+                </button>
+                {% include 'forms/choose.html' %}
+                {% include 'forms/drop_bike.html' %}
+                {% include 'forms/pick_bike.html' %}
+                {% include 'forms/full_trip.html' %}
+                </div>
+            </div>
+            <script>
+                // Routing configuration
+                var searchButton = new L.Control.Button(L.DomUtil.get('toggleChoose'));
+                searchButton.addTo(map);
+            </script>
+        {% endif %}
     </body>
 </html>

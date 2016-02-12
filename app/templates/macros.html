@@ -1,17 +1,18 @@
 {# myapp/templates/macros.html #}
 
 <!-- Focus on a navigation link -->
-{% macro nav_link(endpoint, text) %}
+{% macro nav_link(endpoint, icon, text) %}
 	{% if request.endpoint is not none %}
 		{% if request.endpoint.endswith(endpoint) %}
-		    <a class="active teal item" href="{{ url_for(endpoint) }}">{{ text }}</a>
+		    <li class="active"><a href="{{ url_for(endpoint) }}"><i class="{{ icon }}"></i> {{ text }}</a></li>
 		{% else %}
-		    <a class="item" href="{{ url_for(endpoint) }}">{{ text }}</a>
+		    <li><a href="{{ url_for(endpoint) }}"><i class="{{ icon }}"></i> {{ text }}</a></li>
 		{% endif %}
 	{% else %}
-    	<a class="item" href="{{ url_for(endpoint) }}">{{ text }}</a>
+    	<li><a href="{{ url_for(endpoint) }}"><i class="{{ icon }}"></i> {{ text }}</a></li>
 	{% endif %}
 {% endmacro %}
+
 
 <!-- Generate a form field with WTForms -->
 {% macro render_field(field, id, logo) %}

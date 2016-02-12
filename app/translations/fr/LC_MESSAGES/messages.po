@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2016-02-06 13:33+0100\n"
-"PO-Revision-Date: 2016-02-06 14:17+0100\n"
+"PO-Revision-Date: 2016-02-12 13:44+0100\n"
 "Language: fr\n"
 "Language-Team: fr <LL@li.org>\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
@@ -503,7 +503,7 @@ msgstr "FAQ"
 
 #: app/templates/includes/navigation.html:16
 msgid "ABOUT"
-msgstr "Informations"
+msgstr "INFORMATIONS"
 
 #: app/templates/includes/navigation.html:18
 msgid "Language"

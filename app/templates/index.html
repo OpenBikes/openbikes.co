@@ -19,7 +19,7 @@
 	<br>
 	<div class="container mtb">
 		<img src="/static/img/OpenBikes.png" class="logo">
-		
+
 		<h2 align="center">" Not just biking <i class="fa fa-bicycle"></i>"</h2>
 
 		<div class="alert alert-info">
@@ -36,7 +36,7 @@
 
 		function goToMap(element){
 			var city = element.title;
-			location.href = ['/', lang, '/', city].join('');
+			location.href = ['/city/', city].join('');
 		}
 
 		var filters = '<div class="filter-label" style="color:white"><i class="fa fa-globe"></i></div>'
