@@ -57,8 +57,9 @@ sudo pip3 install -r setup/requirements.txt
 # Add the cities
 sudo ./setup/refresh_cities.sh
 
-# Create the upstart script for the celery tasks
-sudo cp setup/scripts/ob-celery.conf /etc/init/
+# Add the celery upstart script
+sudo cp setup/scripts/etc/init.d/ob-celery /etc/init.d/ob-celery
+sudo cp setup/scripts/etc/default/ob-celery /etc/default/ob-celery
 sudo start ob-celery
 
 # Configure and enable a virtual host

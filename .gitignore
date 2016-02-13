@@ -1,4 +1,4 @@
-keys.json
+keys.py
 *.pyc
 *.zip
 ngrok

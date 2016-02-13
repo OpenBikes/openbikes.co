@@ -1,7 +1,7 @@
 # Secret key for generating tokens
 SECRET_KEY = 'houdini'
 # DEBUG has to be False in production for security reasons
-DEBUG = False
+DEBUG = True
 # Supported languages
 LANGUAGES = {
     'en': 'English',

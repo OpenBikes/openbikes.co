@@ -1,5 +1,6 @@
 from routing import geography
 from common import toolbox as tb
+from common import settings, keys
 from mongo.geo import query
 from learning import *
 
@@ -29,10 +30,9 @@ def choose(situation, address, target, distance, mode, stationFirst, nbCandidate
         variables = munging.temporal_features(forecast)
         features = [variables['hour'], variables['minute'], variables['weekday']]
         # Make a prediction
-        settings = tb.read_json('common/settings.json')
-        method = eval(settings['learning']['method'])
+        method = eval(settings.learning['method'])
         prediction = method.predict(features, target, city, candidate['_id'])
-        bias = tb.read_json('common/settings.json')['learning']['bias']
+        bias = settings.learning['bias']
         if target == 'bikes':
             bias *= -1
         if prediction + bias >= people:
@@ -55,7 +55,7 @@ def turn_by_turn(trip):
     origin = points[0]
     destination = points[1]
     base = 'https://maps.googleapis.com/maps/api/directions/json'
-    key = tb.read_json('common/keys.json')['google-distance']
+    key = keys.google_directions
     url = '{0}?origin={1}&destination={2}&mode={3}&key={4}'.format(base, origin, destination, 'walking', key)
     # Query the API
     response = tb.query_API_cached(url)

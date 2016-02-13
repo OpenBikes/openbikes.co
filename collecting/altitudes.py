@@ -1,4 +1,5 @@
 from common import toolbox as tb
+from common import keys
 
 
 def add(stations, size=50):
@@ -13,7 +14,7 @@ def add(stations, size=50):
     send back into a list of dictionaries and sends it back.
     '''
     base = 'https://maps.googleapis.com/maps/api/elevation/json?'
-    key = tb.read_json('common/keys.json')['google-elevation']
+    key = keys.google_elevation
     locations = ''
     packages = []
     counter = 1

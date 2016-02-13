@@ -1,10 +1,10 @@
 from common import toolbox as tb
-from collecting.providers import keys
+from common import keys
 
 
 def stations(city):
     base = 'https://api.jcdecaux.com/vls/v1/'
-    key = keys['jcdecaux']
+    key = keys.jcdecaux
     url = '{0}stations/?contract={1}&apiKey={2}'.format(base, city, key)
     data = tb.query_API(url)
     stations = tb.load_json(data)

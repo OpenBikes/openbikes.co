@@ -1,10 +1,10 @@
 from common import toolbox as tb
-from collecting.providers import keys
+from common import keys
 
 
 def stations(city):
     # The city parameter is necessary so that everything works
-    key = keys['lacub']
+    key = keys.lacub
     url = 'http://data.lacub.fr/wfs?key={}' \
           '&SERVICE=WFS&VERSION=1.1.0&' \
           'REQUEST=GetFeature' \

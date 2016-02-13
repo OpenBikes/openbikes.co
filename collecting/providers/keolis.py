@@ -1,12 +1,12 @@
 from datetime import datetime
 from common import toolbox as tb
-from collecting.providers import keys
+from common import keys
 
 
 def stations(city):
     # The city parameter is necessary so that everything works
     base = 'http://data.keolis-rennes.com/json/?version=1.0&'
-    key = keys['keolis']
+    key = keys.jcdecaux
     url = '{0}key={1}&cmd=getstation'.format(base, key)
     data = tb.query_API(url)
     stations = tb.load_json(data)

@@ -28,7 +28,7 @@ def update_station(collection, station):
     time = timestamp.time().isoformat()
     date = timestamp.date().isoformat()
     # Check the dates has already been inserted
-    if collection.find({'_id': date}, {'_id': 1}).limit(1).count() == 0:
+    if collection.find({'_id': date}, {'_id': 1}).count() == 0:
         collection.save({
             '_id': date,
             'u': []
