@@ -44,9 +44,9 @@ def write_json(dictionary, filename):
         json.dump(dictionary, outfile)
 
 
-def read_json(file):
+def read_json(filename):
     ''' Open a JSON file and loads it as a dictionary. '''
-    with open(file) as infile:
+    with open(filename, 'r') as infile:
         dictionary = load_json(infile.read())
         return dictionary
 

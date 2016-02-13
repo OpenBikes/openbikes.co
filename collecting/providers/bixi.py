@@ -4,7 +4,7 @@ from common import toolbox as tb
 def stations(city):
     designations = {
         'Toronto': 'toronto',
-        'Montréal': 'montreal',
+        'Montreal': 'montreal',
         'Ottawa': 'capitale'
     }
     designation = designations[city]
