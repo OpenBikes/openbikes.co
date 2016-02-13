@@ -2,7 +2,7 @@
 
 ## Celery
 
-`celery -A tasks worker -B`
+`celery -A tasks worker -B --loglevel=info`
 
 
 ## Unit tests

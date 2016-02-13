@@ -5,7 +5,7 @@ ssh root@46.101.234.224
 
 # Add a new user "max" and give him a password
 adduser max
-# Give "max" sudo rights
+# Give "max" rights
 gpasswd -a max sudo
 
 # Change "PermitRootLogin yes" to "PermitRootLogin no"
@@ -15,30 +15,30 @@ nano /etc/ssh/sshd_config
 service ssh restart
 
 # Switch to user "max"
-sudo su max
+su max
 
 # Configure the timezone
-sudo dpkg-reconfigure tzdata
+dpkg-reconfigure tzdata
 # Configure NTP Synchronization
-sudo apt-get update
-sudo apt-get install ntp
+apt-get update
+apt-get install ntp
 # Create a Swap File
-sudo fallocate -l 4G /swapfile
-sudo chmod 600 /swapfile
-sudo mkswap /swapfile
-sudo swapon /swapfile
-sudo sh -c 'echo "/swapfile none swap sw 0 0" >> /etc/fstab'
+fallocate -l 4G /swapfile
+chmod 600 /swapfile
+mkswap /swapfile
+swapon /swapfile
+sh -c 'echo "/swapfile none swap sw 0 0" >> /etc/fstab'
 
 # Setup Python and Apache
-sudo apt-get update
-sudo apt-get install apache2
-sudo apt-get install python3-pip python3-dev libapache2-mod-wsgi-py3
+apt-get update
+apt-get install apache2
+apt-get install python3-pip python3-dev libapache2-mod-wsgi-py3
 
 # Clone the repository containing the code
 cd /var/www
-sudo apt-get install git
-sudo git clone https://github.com/MaxHalford/OpenBikes
-sudo chmod -R 777 OpenBikes/
+apt-get install git
+git clone https://github.com/MaxHalford/OpenBikes
+chmod -R 777 OpenBikes/
 cd OpenBikes
 
 # Install the MongoDB C driver
@@ -47,26 +47,27 @@ cd mongo-c-driver
 git checkout
 ./autogen.sh --with-libbson=bundled
 make
-sudo make install
+make install
 
 # Install the necessary Python libraries (takes some time)
-sudo apt-get install libblas-dev liblapack-dev libatlas-base-dev gfortran
-sudo apt-get install python3-lxml
-sudo pip3 install -r setup/requirements.txt
+apt-get install libblas-dev liblapack-dev libatlas-base-dev gfortran
+apt-get install python3-lxml
+pip3 install -r setup/requirements.txt
 
 # Add the cities
-sudo ./setup/refresh_cities.sh
+./setup/refresh_cities.sh
 
-# Add the celery upstart script
-sudo cp setup/scripts/etc/init.d/ob-celery /etc/init.d/ob-celery
-sudo cp setup/scripts/etc/default/ob-celery /etc/default/ob-celery
-celery multi start ob-celery
+# Use supervisord to start Celery
+apt-get install supervisor
+cp setup/scripts/etc/supervisor/conf.d/openbikes.conf /etc/supervisor/conf.d/openbikes.conf
+supervisorctl reread
+supervisorctl update
 
 # Configure and enable a virtual host
-sudo cp setup/scripts/OpenBikes.conf /etc/apache2/sites-available/
-sudo a2ensite OpenBikes
-sudo service apache2 reload
-sudo service apache2 restart
+cp setup/scripts/OpenBikes.conf /etc/apache2/sites-available/
+a2ensite OpenBikes
+service apache2 reload
+service apache2 restart
 
 # Reboot the server and you should be done!
-sudo reboot
+reboot

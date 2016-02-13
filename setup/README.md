@@ -48,14 +48,8 @@ sudo chmod 777 -R *
 
 The task management is done with [Celery](http://www.celeryproject.org/). The tasks are defined in `tasks.py` and Celery is configured in `celery_config.py`.
 
-To be able to launch Celery, you need to place two scripts in the `/etc/` folder (this is done in `setup.sh`):
+Celery is launched in the background with [supervisord](http://supervisord.org/). The management commands are `sudo supervisorctl {start|stop|restart|status} openbikes`.
 
-```sh
-sudo cp setup/scripts/etc/init.d/ob-celery /etc/init.d/ob-celery
-sudo cp setup/scripts/etc/default/ob-celery /etc/default/ob-celery
-```
-
-You can then `{start|stop|restart}` Celery with `multi <command> ob-celery --verbose`.
 
 ## Website management
 
