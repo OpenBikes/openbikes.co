@@ -7,11 +7,10 @@ CELERY_RESULT_BACKEND = 'mongodb'
 CELERY_MONGODB_BACKEND_SETTINGS = {
     'host': '127.0.0.1',
     'port': 27017,
-    'database': 'OpenBikes_Celery',
+    'database': 'OpenBikes_Celery_Tasks',
     'taskmeta_collection': 'Tasks',
 }
-BROKER_URL = 'mongodb://localhost:27017/jobs'
-CELERY_TIMEZONE = 'Europe/Paris'
+BROKER_URL = 'mongodb://localhost:27017/OpenBikes_Celery_Broker'
 CELERY_ACCEPT_CONTENT = ['json', 'pickle']
 
 # Add tasks

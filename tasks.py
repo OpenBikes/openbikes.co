@@ -8,7 +8,7 @@ from common import toolbox as tb
 from common import folders, files, settings
 
 # Setup celery
-celery = Celery('tasks')
+celery = Celery('openbikes')
 celery.config_from_object('celery_config')
 
 

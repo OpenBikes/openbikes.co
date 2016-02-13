@@ -60,7 +60,7 @@ sudo ./setup/refresh_cities.sh
 # Add the celery upstart script
 sudo cp setup/scripts/etc/init.d/ob-celery /etc/init.d/ob-celery
 sudo cp setup/scripts/etc/default/ob-celery /etc/default/ob-celery
-sudo start ob-celery
+celery multi start ob-celery
 
 # Configure and enable a virtual host
 sudo cp setup/scripts/OpenBikes.conf /etc/apache2/sites-available/

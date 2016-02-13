@@ -35,19 +35,27 @@ Whatever you do, run ``setup/refresh_cities.sh`` from the root if you want thing
 sudo git clone https://github.com/OpenBikes/Website
 sudo mv Website/ OpenBikes/
 sudo chmod 777 -R OpenBikes/
-touch OpenBikes/config/keys.json
 ```
 - Update with
 ```sh
 cd OpenBikes
 git reset --hard
 git pull origin master
-sudo chown max -R .
+sudo chmod 777 -R *
 ```
 
 ## Task management
 
-The task management is done with [Celery](http://www.celeryproject.org/). You can run the tasks with `celery -A tasks worker -B`. The tasks are defined in `tasks.py` and Celery is configured in `celery_config.py`.
+The task management is done with [Celery](http://www.celeryproject.org/). The tasks are defined in `tasks.py` and Celery is configured in `celery_config.py`.
+
+To be able to launch Celery, you need to place two scripts in the `/etc/` folder (this is done in `setup.sh`):
+
+```sh
+sudo cp setup/scripts/etc/init.d/ob-celery /etc/init.d/ob-celery
+sudo cp setup/scripts/etc/default/ob-celery /etc/default/ob-celery
+```
+
+You can then `{start|stop|restart}` Celery with `multi <command> ob-celery --verbose`.
 
 ## Website management
 
