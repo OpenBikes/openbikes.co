@@ -4,7 +4,9 @@ Incoming.
 
 ## Celery
 
-`celery -A tasks worker -B --loglevel=info`
+`rabbitmq-server -detached`
+
+`celery -A tasks worker --beat --loglevel=info`
 
 
 ## Unit tests

@@ -1,4 +1,6 @@
 from flask import Blueprint, jsonify
+import os
+import glob
 from common import toolbox as tb
 from common import files, folders
 
@@ -59,5 +61,7 @@ def api_predictions():
 @apibp.route('/updates', methods=['GET'])
 def api_updates():
     ''' Return a dictionary containing the time of latest updates. '''
-    updates = tb.read_json(files.updates)
+    geojson_files = glob.glob('{}/*.geojson'.format(folders.geojson))
+    updates = {geojson.split('/')[-1].split('.')[0]: os.path.getmtime(geojson)
+               for geojson in geojson_files}
     return jsonify(updates)

@@ -1,16 +1,14 @@
 #!/usr/bin/python3
 import datetime
-from celery import Celery
-from celery.decorators import periodic_task
 from collecting.providers import *
-from mongo.timeseries import insert, query
-from learning import *
+from mongo.timeseries import insert
+from celery import Celery
 from common import toolbox as tb
-from common import folders, files, settings
+from common import folders, files
 
 # Setup celery
 celery = Celery('openbikes')
-celery.config_from_object('celery_config')
+celery.config_from_object('celeryconfig')
 
 
 @celery.task
@@ -27,13 +25,6 @@ def update(provider, city, predict):
     # Save the data for the map
     geojson = tb.json_to_geojson(stations)
     tb.write_json(geojson, '{0}/{1}.geojson'.format(folders.geojson, city))
-    # Refresh the latest update time
-    try:
-        updates = tb.read_json(files.updates)
-        updates[city] = datetime.datetime.now().isoformat()
-        tb.write_json(updates, files.updates)
-    except:
-        return
 
 
 @celery.task

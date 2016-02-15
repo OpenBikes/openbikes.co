@@ -24,7 +24,6 @@ centers_file = tb.read_json(files.centers)
 cities_file = tb.read_json(files.cities)
 names_file = tb.read_json(files.names)
 predictions_file = tb.read_json(files.predictions)
-updates_file = tb.read_json(files.updates)
 
 # Geographical database
 try:
@@ -86,11 +85,6 @@ try:
     del predictions_file[city]
 except:
     None
-# Updates file
-try:
-    del updates_file[city]
-except:
-    None
 # Notification
 print('{} has been removed.'.format(city))
 
@@ -101,4 +95,3 @@ tb.write_json(centers_file, files.centers)
 tb.write_json(cities_file, files.cities)
 tb.write_json(names_file, files.names)
 tb.write_json(predictions_file, files.predictions)
-tb.write_json(predictions_file, files.updates)

@@ -5,15 +5,13 @@ from common import toolbox as tb
 from common import files, settings
 
 # Configure celery
-CELERY_RESULT_BACKEND = 'mongodb'
-CELERY_MONGODB_BACKEND_SETTINGS = {
-    'host': '127.0.0.1',
-    'port': 27017,
-    'database': 'OpenBikes_Celery_Tasks',
-    'taskmeta_collection': 'Tasks',
-}
-BROKER_URL = 'mongodb://localhost:27017/OpenBikes_Celery_Broker'
-CELERY_ACCEPT_CONTENT = ['json', 'pickle']
+CELERY_ACCEPT_CONTENT = ['json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_IGNORE_RESULT = True
+
+# Use RabbitMQ
+BROKER_URL = 'amqp://guest:guest@localhost:5672//'
 
 # Add tasks
 CELERYBEAT_SCHEDULE = {}
