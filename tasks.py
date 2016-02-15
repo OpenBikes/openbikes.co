@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 import datetime
 from celery import Celery
 from celery.decorators import periodic_task

@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 import argparse
 import numpy as np
 from common import toolbox as tb

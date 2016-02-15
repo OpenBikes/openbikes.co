@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 from datetime import timedelta
 from common import toolbox as tb
 from common import files, settings
