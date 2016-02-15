@@ -5,9 +5,7 @@ collecting = {
 
 learning = {
     # Number of days to analyze
-    'timespan': 15,
-    # Refresh rate in days
-    'refresh': 15,
+    'timespan': 7,
     # Machine learning method
     'method': 'tree',
     'bias': 2

@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 from datetime import timedelta
+from celery.schedules import crontab
 from common import toolbox as tb
 from common import files, settings
 
@@ -41,6 +42,7 @@ for city in stations.keys():
             task_name = 'Learn_{0}_{1}'.format(city, station)
             CELERYBEAT_SCHEDULE[task_name] = {
                 'task': 'tasks.learn',
-                'schedule': timedelta(seconds=settings.learning['refresh']),
+                # Every monday at 2 o'clock
+                'schedule': crontab(hour=2, minute=0, day_of_week='monday'),
                 'args': (provider, city)
             }
