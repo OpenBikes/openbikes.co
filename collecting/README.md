@@ -15,7 +15,7 @@ There are many providers that cover various cities throughout the world. Every p
         update: timestamp (ISO format)
     }
 
-There is a script for every API in ``lib/providers/``. Every script contains a ``normalization(data)`` function.
+There is a script for every API in ``collecting/providers/``. Every script contains a ``normalization(data)`` function.
 
 ## Providers
 
