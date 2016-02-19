@@ -34,6 +34,9 @@ apt-get update
 apt-get install apache2
 apt-get install python3-pip python3-dev libapache2-mod-wsgi-py3
 
+# Install RabbitMQ
+sudo apt-get install rabbitmq-server
+
 # Clone the repository containing the code
 cd /var/www
 apt-get install git

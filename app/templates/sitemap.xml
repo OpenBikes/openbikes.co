@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<doc xml:lang="en">
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-    {% for page in pages %}
+    {% for city in cities %}
     <url>
-        <loc>{{ page|safe }}</loc>
-        <changefreq>weekly</changefreq>
+        <loc>{{ url_for('map', city=city, _external=True) }}</loc>
+    </url>
+    {% endfor %}
+    {% for page in main %}
+    <url>
+        <loc>{{ url_for(page, _external=True) }}</loc>
     </url>
     {% endfor %}
 </urlset>
+</doc>
