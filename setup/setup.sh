@@ -67,7 +67,7 @@ supervisorctl reread
 supervisorctl update
 
 # Configure and enable a virtual host
-cp setup/scripts/OpenBikes.conf /etc/apache2/sites-available/
+cp setup/scripts/etc/apache2/sites-available/OpenBikes.conf /etc/apache2/sites-available/
 a2ensite OpenBikes
 service apache2 reload
 service apache2 restart

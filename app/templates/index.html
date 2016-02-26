@@ -36,7 +36,7 @@
 
 		function goToMap(element){
 			var city = element.title;
-			location.href = ['/city/', city].join('');
+			location.href = "{{ url_for('map', city='Toulouse') }}";
 		}
 
 		var filters = '<div class="filter-label" style="color:white"><i class="fa fa-globe"></i></div>'
@@ -44,18 +44,18 @@
 		var smallSizes = ["size11", "size12"];
 		var longSizes = ["size21"];
 		var colors = [
-			"#66C194", // Green blue
-			"#FF8C79", // Orange
-			"#ADD8E6", // Light blue
-			"#AEC6CF", // Blue
-			"#FFD1DC", // Pink
-			"#B39EB5", // Purple
-			"#77DD77", // Green
-			"#F9D1AF", // Brown
-			"#CFCFC4", // Gray
-			"#FFB347", // Orange
+			"#66C194",
+			"#FF8C79",
+			"#ADD8E6",
+			"#AEC6CF",
+			"#FFD1DC",
+			"#B39EB5",
+			"#77DD77",
+			"#F9D1AF",
+			"#CFCFC4",
+			"#FFB347",
 		];
-		var html = '', size = '', color = ''
+		var html = '', size = '', color = '';
 		var i = colors.length * Math.random() << 0;
 		{% for country, cities in cities_file.items()|sort %}
 			var country_name = "{{ names_file[country] }}";

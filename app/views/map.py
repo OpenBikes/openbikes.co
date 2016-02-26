@@ -9,7 +9,7 @@ from app.forms import DropBike, PickBike, FullTrip
 from app import app
 
 
-@app.route('/city/<city>')
+@app.route('/<lang_code>/city/<city>')
 def map(city):
     names = tb.read_json(files.names)
     centers = tb.read_json(files.centers)

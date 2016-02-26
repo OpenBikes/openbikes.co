@@ -8,14 +8,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2016-02-06 13:33+0100\n"
+"POT-Creation-Date: 2016-02-26 22:51+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.1.1\n"
+"Generated-By: Babel 2.2.0\n"
 
 #: app/forms.py:11 app/forms.py:23 app/forms.py:35
 msgid "Where are you ?"
@@ -214,6 +214,10 @@ msgstr ""
 msgid "Returns a dictionary that contains the last update time of a city."
 msgstr ""
 
+#: app/templates/error.html:11
+msgid "Home"
+msgstr ""
+
 #: app/templates/faq.html:10
 msgid "Frequently Asked Questions"
 msgstr ""
@@ -298,83 +302,83 @@ msgstr ""
 msgid "a national open data competition (02/02/16)"
 msgstr ""
 
-#: app/templates/map.html:177
+#: app/templates/map.html:105
 msgid "Basic"
 msgstr ""
 
-#: app/templates/map.html:178
+#: app/templates/map.html:106
 msgid "Light"
 msgstr ""
 
-#: app/templates/map.html:179
+#: app/templates/map.html:107
 msgid "Dark"
 msgstr ""
 
-#: app/templates/map.html:180
+#: app/templates/map.html:108
 msgid "Comic"
 msgstr ""
 
-#: app/templates/map.html:181
+#: app/templates/map.html:109
 msgid "Crayon"
 msgstr ""
 
-#: app/templates/map.html:214
+#: app/templates/map.html:140
 msgid "Locate me"
 msgstr ""
 
-#: app/templates/map.html:215
+#: app/templates/map.html:141
 msgid "Meters"
 msgstr ""
 
-#: app/templates/map.html:216
+#: app/templates/map.html:142
 msgid "This is you!"
 msgstr ""
 
-#: app/templates/map.html:226
+#: app/templates/map.html:152
 msgid "Updated"
 msgstr ""
 
-#: app/templates/map.html:235
+#: app/templates/map.html:161
 msgid "Bikes >> Stands"
 msgstr ""
 
-#: app/templates/map.html:235
+#: app/templates/map.html:161
 msgid "Bikes > Stands"
 msgstr ""
 
-#: app/templates/map.html:235
+#: app/templates/map.html:161
 msgid "Bikes = Stands"
 msgstr ""
 
-#: app/templates/map.html:235
+#: app/templates/map.html:161
 msgid "Bikes < Stands"
 msgstr ""
 
-#: app/templates/map.html:235
+#: app/templates/map.html:161
 msgid "Bikes << Stands"
 msgstr ""
 
-#: app/templates/map.html:297
+#: app/templates/map.html:223
 msgid " bikes"
 msgstr ""
 
-#: app/templates/map.html:299
+#: app/templates/map.html:225
 msgid " bike"
 msgstr ""
 
-#: app/templates/map.html:302
+#: app/templates/map.html:228
 msgid " stands"
 msgstr ""
 
-#: app/templates/map.html:304
+#: app/templates/map.html:230
 msgid " stand"
 msgstr ""
 
-#: app/templates/map.html:313
+#: app/templates/map.html:239
 msgid "Closed"
 msgstr ""
 
-#: app/templates/map.html:405
+#: app/templates/map.html:328
 msgid "Something went wrong :-("
 msgstr ""
 
@@ -420,39 +424,39 @@ msgstr ""
 msgid "Coordinates"
 msgstr ""
 
-#: app/templates/includes/navigation.html:13
+#: app/templates/includes/navigation.html:14
 msgid "MAPS"
 msgstr ""
 
-#: app/templates/includes/navigation.html:14
+#: app/templates/includes/navigation.html:15
 msgid "API"
 msgstr ""
 
-#: app/templates/includes/navigation.html:15
+#: app/templates/includes/navigation.html:16
 msgid "FAQ"
 msgstr ""
 
-#: app/templates/includes/navigation.html:16
+#: app/templates/includes/navigation.html:17
 msgid "ABOUT"
 msgstr ""
 
-#: app/templates/includes/navigation.html:18
-msgid "Language"
+#: app/templates/includes/navigation.html:19
+msgid "LANGUAGE"
 msgstr ""
 
-#: app/views/main.py:14 app/views/main.py:24
+#: app/views/main.py:17
 msgid "Maps - OpenBikes"
 msgstr ""
 
-#: app/views/main.py:30
+#: app/views/main.py:24
 msgid "API - OpenBikes"
 msgstr ""
 
-#: app/views/main.py:35
+#: app/views/main.py:30
 msgid "FAQ - OpenBikes"
 msgstr ""
 
-#: app/views/main.py:40
+#: app/views/main.py:36
 msgid "About - OpenBikes"
 msgstr ""
 
