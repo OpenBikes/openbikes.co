@@ -6,9 +6,7 @@ from common import files
 from app import app
 
 
-@app.route('/')
 @app.route('/<lang_code>/')
-@app.route('/index')
 @app.route('/<lang_code>/index')
 def index():
     cities = tb.read_json(files.cities)

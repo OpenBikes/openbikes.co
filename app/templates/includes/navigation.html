@@ -30,9 +30,10 @@
 <script type="text/javascript">
 function changeLanguage(lang_code) {
     var url = location.href.split('/');
-    var endpoint = url[url.length - 1];
-    var old = url.slice(0, url.length - 2);
-    window.location.replace([old.join("/"), lang_code, endpoint].join("/"));
+    var host = url.slice(0, 3);
+    var endpoint = url.slice(host.length, url.length);
+    endpoint[0] = lang_code;
+    window.location.replace([host.join("/"), endpoint.join("/")].join("/"));
 }
 </script>
 

@@ -14,5 +14,5 @@ from flask.ext.babel import Babel
 babel = Babel(app)
 
 # Import the views
-from app.views import main, map, api, error, seo, locale
+from app.views import main, map, api, error, seo, locale, redirect
 app.register_blueprint(api.apibp)

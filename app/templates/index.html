@@ -33,48 +33,45 @@
 	</div>
 
 	<script type="text/javascript">
-
-		function goToMap(element){
-			var city = element.title;
-			location.href = "{{ url_for('map', city='Toulouse') }}";
-		}
-
 		var filters = '<div class="filter-label" style="color:white"><i class="fa fa-globe"></i></div>'
-		var template = "<div class='brick {size} {country}' title={title} style='background-color: {color}; cursor: pointer;' onclick='goToMap(this)'><h2 class='cover'>{city}</h2></div>";
+		var template = "<div class='brick {size} {country}' title={title} style='background-color: {color}; cursor: pointer;' onclick='window.location.href={url}'><h2 class='cover'>{city}</h2></div>";
 		var smallSizes = ["size11", "size12"];
 		var longSizes = ["size21"];
 		var colors = [
 			"#66C194",
+			"#77DD77",
 			"#FF8C79",
+			"#FFD1DC",
 			"#ADD8E6",
 			"#AEC6CF",
-			"#FFD1DC",
 			"#B39EB5",
-			"#77DD77",
 			"#F9D1AF",
-			"#CFCFC4",
 			"#FFB347",
 		];
 		var html = '', size = '', color = '';
 		var i = colors.length * Math.random() << 0;
 		{% for country, cities in cities_file.items()|sort %}
-			var country_name = "{{ names_file[country] }}";
-			var color = colors[i];
-			filters += '<div class="filter-label" data-filter=".{{ country }}" style="background: '+color+'">'+country_name+'</div>'
-			if (i >= colors.length-1) {
+            var color = colors[i];
+			filters += ['<div class="filter-label" data-filter=".{{ country }}" style="background: ',
+                        color, '">', "{{ names_file[country] }}", '</div>'].join('')
+            if (i >= colors.length-1) {
 				i = 0;
 			} else {
 				i += 1;
 			}
 			{% for city in cities|sort %}
-				var city_name = "{{ names_file[city] }}";
 				var length = String("{{ city }}").length;
-				if (length <= 5) {
+				if (length <= 7) {
 					size = smallSizes[smallSizes.length * Math.random() << 0];
 				} else {
 					size = longSizes[longSizes.length * Math.random() << 0];
 				}
-				html += template.replace("{size}", size).replace("{color}", color).replace("{city}", city_name).replace("{country}", "{{ country }}").replace("{title}", "{{ city }}");
+				html += template.replace("{size}", size)
+                                .replace("{color}", color)
+                                .replace("{url}", '"{{ url_for("map", city=city) }}"')
+                                .replace("{city}", "{{ names_file[city] }}")
+                                .replace("{country}", "{{ country }}")
+                                .replace("{title}", "{{ city }}");
             {% endfor %}
         {% endfor %}
 
