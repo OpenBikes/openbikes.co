@@ -130,8 +130,8 @@ python3 add.py niceride Minneapolis Minneapolis USA USA Yes
 #python3 remove.py bixi Ottawa Canada
 #python3 add.py bixi Ottawa Ottawa Canada Canada No
 
-python3 remove.py bixi Montreal Canada
-python3 add.py bixi Montreal Montréal Canada Canada No
+#python3 remove.py bixi Montreal Canada
+#python3 add.py bixi Montreal Montréal Canada Canada No
 
 ##############
 ### Keolis ###

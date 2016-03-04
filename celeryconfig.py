@@ -13,6 +13,23 @@ CELERY_IGNORE_RESULT = True
 # Use RabbitMQ
 BROKER_URL = 'amqp://guest:guest@localhost:5672//'
 
+# Define different queues
+CELERY_DEFAULT_QUEUE = 'default'
+CELERY_QUEUES = {
+    'default': {
+        'exchange': 'default',
+        'binding_key': 'default',
+    },
+    'q_collect': {
+        'exchange': 'q_collect',
+        'routing_key': 'q_collect',
+    },
+    'q_learn': {
+        'exchange': 'q_learn',
+        'routing_key': 'q_learn',
+    }
+}
+
 # Add tasks
 CELERYBEAT_SCHEDULE = {}
 
@@ -30,7 +47,8 @@ for provider, cities in providers.items():
         CELERYBEAT_SCHEDULE[task_name] = {
             'task': 'tasks.update',
             'schedule': timedelta(seconds=settings.collecting['refresh']),
-            'args': (provider, city, predictions[city])
+            'args': (provider, city, predictions[city]),
+            'options': {'queue' : 'q_collect'}
         }
 
 # Station regressors training
@@ -42,5 +60,6 @@ for city in stations.keys():
                 'task': 'tasks.learn',
                 # Every monday at 2 o'clock
                 'schedule': crontab(hour=2, minute=0, day_of_week='monday'),
-                'args': (provider, city)
+                'args': (provider, city),
+                'options': {'queue' : 'q_learn'}
             }
