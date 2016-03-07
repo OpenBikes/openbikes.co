@@ -9,6 +9,7 @@ CELERY_ACCEPT_CONTENT = ['json']
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
 CELERY_IGNORE_RESULT = True
+CELERY_DISABLE_RATE_LIMITS = True
 
 # Use RabbitMQ
 BROKER_URL = 'amqp://guest:guest@localhost:5672//'
@@ -48,7 +49,7 @@ for provider, cities in providers.items():
             'task': 'tasks.update',
             'schedule': timedelta(seconds=settings.collecting['refresh']),
             'args': (provider, city, predictions[city]),
-            'options': {'queue' : 'q_collect'}
+            #'options': {'queue' : 'q_collect'}
         }
 
 # Station regressors training
@@ -61,5 +62,5 @@ for city in stations.keys():
                 # Every monday at 2 o'clock
                 'schedule': crontab(hour=2, minute=0, day_of_week='monday'),
                 'args': (provider, city),
-                'options': {'queue' : 'q_learn'}
+                #'options': {'queue' : 'q_learn'}
             }
