@@ -1,10 +1,11 @@
 #!/usr/bin/python3
 import datetime
-from collecting.providers import *
-from mongo.timeseries import insert
 from celery import Celery
+from collecting.providers import *
+from mongo.timeseries import insert, query
+from learning import *
 from common import toolbox as tb
-from common import folders, files
+from common import folders, files, settings
 
 # Setup celery
 celery = Celery('openbikes')
@@ -18,7 +19,7 @@ def update(provider, city, predict):
     try:
         stations = eval(provider).stations(city)
     except:
-        return
+        return 'API error for {}'.format(city)
     # Update the database if the city can be predicted
     if predict == 'Yes':
         insert.city(city, stations)
@@ -37,7 +38,7 @@ def learn(city, station):
     try:
         dataframe = query.station(city, station, since, until)
     except:
-        return
+        return "Couldn't find any data for {0}, {1}".format(station, city)
     # Prepare the dataframe for learning
     dataframe = munging.prepare(dataframe)
     # Define the regression method

@@ -88,10 +88,9 @@
         </script>
         <!-- Create the map -->
         <div id="map" class="col-xs-12"></div>
-
         <!-- Change the moment.js locale -->
-        {% if g.locale != 'en' %}
-            <script src="/static/js/map/moment-{{ g.locale }}.js"></script>
+        {% if g.lang_code != 'en' %}
+            <script src="/static/js/map/moment-{{ g.lang_code }}.js"></script>
         {% endif %}
         <script type="text/javascript">
             // Load the map style

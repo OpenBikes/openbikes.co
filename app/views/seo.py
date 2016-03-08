@@ -1,4 +1,4 @@
-from flask import render_template
+from flask import render_template, make_response
 from common import toolbox as tb
 from common import files
 from app import app
@@ -12,8 +12,9 @@ def robots_txt():
 
 @app.route('/sitemap.xml')
 def sitemap_xml():
-    main = ['/index', '/api', '/faq', '/about']
-    cities = ['/map/{}'.format(city)
-              for city in tb.read_json(files.stations).keys()]
-    return render_template('sitemap.xml', pages=main + cities),
-    200, {'Content-type': 'application/xml;charset=utf-8'}
+    main = ['index', 'api', 'faq', 'about']
+    cities = tb.read_json(files.stations).keys()
+    sitemap = render_template('sitemap.xml', main=main, cities=cities)
+    response = make_response(sitemap)
+    response.headers['Content-Type'] = 'application/xml'
+    return response

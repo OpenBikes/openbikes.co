@@ -1,12 +1,13 @@
 # Secret key for generating tokens
 SECRET_KEY = 'houdini'
 # DEBUG has to be False in production for security reasons
-DEBUG = True
+DEBUG = False
 # Supported languages
-LANGUAGES = {
+SUPPORTED_LANGUAGES = {
     'en': 'English',
-    'de': 'Deutsch'
+    'fr': 'French'
 }
-BABEL_DEFAULT_LOCALE = 'en'
+# English the default locale
+DEFAULT_LOCALE = 'en'
 # Static folder
 STATIC_FOLDER = 'app/static/'
