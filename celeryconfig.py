@@ -46,21 +46,20 @@ for provider, cities in providers.items():
     for city in cities:
         task_name = 'Collect_{0}'.format(city)
         CELERYBEAT_SCHEDULE[task_name] = {
-            'task': 'tasks.update',
+            'task': 'tasks.collect',
             'schedule': timedelta(seconds=settings.collecting['refresh']),
             'args': (provider, city, predictions[city]),
             #'options': {'queue' : 'q_collect'}
         }
 
 # Station regressors training
-for city in stations.keys():
+for city, stations in stations.items():
     if predictions[city] == 'Yes':
-        for station in stations[city]:
-            task_name = 'Learn_{0}_{1}'.format(city, station)
-            CELERYBEAT_SCHEDULE[task_name] = {
-                'task': 'tasks.learn',
-                # Every monday at 2 o'clock
-                'schedule': crontab(hour=2, minute=0, day_of_week='monday'),
-                'args': (provider, city),
-                #'options': {'queue' : 'q_learn'}
-            }
+        task_name = 'Learn_{0}'.format(city)
+        CELERYBEAT_SCHEDULE[task_name] = {
+            'task': 'tasks.learn',
+            # Every monday at 2 o'clock
+            'schedule': crontab(hour=2, minute=0, day_of_week='monday'),
+            'args': (city, stations),
+            #'options': {'queue' : 'q_learn'}
+        }
