@@ -5,3 +5,4 @@ ngrok
 *.geojson
 *.json
 celerybeat-schedule.db
+__pycache__
