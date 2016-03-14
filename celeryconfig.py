@@ -59,7 +59,7 @@ for city, stations in stations.items():
         CELERYBEAT_SCHEDULE[task_name] = {
             'task': 'tasks.learn',
             # Every monday at 2 o'clock
-            'schedule': crontab(hour=2, minute=0, day_of_week='monday'),
+            'schedule': crontab(hour=2, minute=0, day_of_week='wednesday'),
             'args': (city, stations),
             #'options': {'queue' : 'q_learn'}
         }

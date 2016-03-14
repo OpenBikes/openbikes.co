@@ -37,6 +37,7 @@ def normalize(stations):
         'status': 'OPEN' if station['disp'] == '1' else 'CLOSED',
         'bikes': int(station['ab']),
         'stands': int(station['ap']),
-        'update': datetime.datetime.strptime(metadata['gmt'], '%d/%m/%Y %H:%M:%S %p').isoformat()}
+        'update': datetime.datetime.strptime(metadata['gmt'], '{dt.day}/%m/%Y %H:%M:%S %p').isoformat()
+    }
     return [normalized(station) for station in stations
             if float(station['lat']) > 10]

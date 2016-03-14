@@ -16,3 +16,5 @@ cities = '{}/cities.json'.format(folders.metadata)
 names = '{}/names.json'.format(folders.metadata)
 # Updates JSON
 updates = '{}/updates.json'.format(folders.metadata)
+# OpenWeatherMap JSON
+owm = '{}/owm.json'.format(folders.metadata)
