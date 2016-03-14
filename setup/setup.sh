@@ -62,7 +62,8 @@ pip3 install -r setup/requirements.txt
 
 # Use supervisord to start Celery
 apt-get install supervisor
-cp setup/scripts/etc/supervisor/conf.d/openbikes.conf /etc/supervisor/conf.d/openbikes.conf
+cp setup/scripts/etc/supervisor/conf.d/ob-collect.conf /etc/supervisor/conf.d/ob-collect.conf
+cp setup/scripts/etc/supervisor/conf.d/ob-learn.conf /etc/supervisor/conf.d/ob-learn.conf
 supervisorctl reread
 supervisorctl update
 

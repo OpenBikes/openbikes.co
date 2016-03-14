@@ -6,8 +6,13 @@ Incoming.
 
 `rabbitmq-server -detached`
 
-`celery -A tasks worker --beat --loglevel=info`
+`celery -A collect worker --beat --loglevel=info`
 
+`celery -A learn worker --beat --loglevel=info`
+
+### Cleansing
+
+`celery purge`
 
 ## Unit tests
 

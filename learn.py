@@ -1,32 +1,13 @@
 #!/usr/bin/python3
 import datetime
-from celery import Celery
-from collecting.providers import *
-from mongo.timeseries import insert, query
+from mongo.timeseries import query
 from learning import *
-from common import toolbox as tb
-from common import folders, files, settings
+from common import settings
 
 # Setup celery
+from celery import Celery
 celery = Celery('openbikes')
-celery.config_from_object('celeryconfig')
-
-
-@celery.task
-def collect(provider, city, predict):
-    ''' Update the data for a city. '''
-    # Get the current formatted data for a city
-    try:
-        stations = eval(provider).stations(city)
-    except:
-        return False, city
-    # Update the database if the city can be predicted
-    if predict == 'Yes':
-        insert.city(city, stations)
-    # Save the data for the map
-    geojson = tb.json_to_geojson(stations)
-    tb.write_json(geojson, '{0}/{1}.geojson'.format(folders.geojson, city))
-    return True, city
+celery.config_from_object('learning.celeryconfig')
 
 
 @celery.task
