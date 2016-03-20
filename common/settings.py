@@ -3,6 +3,11 @@ collecting = {
     'refresh': 60
 }
 
+weather = {
+    # Refresh rate in minutes
+    'refresh': 20
+}
+
 learning = {
     # Number of days to analyze
     'timespan': 7,

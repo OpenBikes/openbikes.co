@@ -26,7 +26,7 @@ for provider, cities in providers.items():
     for city in cities:
         task_name = 'Collect_{0}'.format(city)
         CELERYBEAT_SCHEDULE[task_name] = {
-            'task': 'collect.collect',
+            'task': 'collect.bikes',
             'schedule': timedelta(seconds=settings.collecting['refresh']),
             'args': (provider, city, predictions[city])
         }

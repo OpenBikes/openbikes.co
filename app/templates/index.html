@@ -35,8 +35,6 @@
 	<script type="text/javascript">
 		var filters = '<div class="filter-label" style="color:white"><i class="fa fa-globe"></i></div>'
 		var template = "<div class='brick {size} {country}' title={title} style='background-color: {color}; cursor: pointer;' onclick='window.location.href={url}'><h2 class='cover'>{city}</h2></div>";
-		var smallSizes = ["size11", "size12"];
-		var longSizes = ["size21"];
 		var colors = [
 			"#66C194",
 			"#77DD77",
@@ -61,10 +59,10 @@
 			}
 			{% for city in cities|sort %}
 				var length = String("{{ city }}").length;
-				if (length <= 7) {
-					size = smallSizes[smallSizes.length * Math.random() << 0];
+				if (length <= 6) {
+					size = "size11";
 				} else {
-					size = longSizes[longSizes.length * Math.random() << 0];
+					size = "size21";
 				}
 				html += template.replace("{size}", size)
                                 .replace("{color}", color)
@@ -84,7 +82,7 @@
 				selector: '.brick',
 				animate: true,
 				cellW: 160,
-				cellH: 160,
+				cellH: 120,
 				fixSize: 0,
 				onResize: function() {
 					wall.refresh();

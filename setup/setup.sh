@@ -66,6 +66,9 @@ cp setup/scripts/etc/supervisor/conf.d/ob-collect.conf /etc/supervisor/conf.d/ob
 supervisorctl reread
 supervisorctl update
 
+# Add learning task to the crontab file
+echo '0 3 * * 4 cd /var/www/OpenBikes && python3 learn.py && chmod 777 -R *' >> /var/spool/cron/crontabs/max
+
 # Configure and enable a virtual host
 cp setup/scripts/etc/apache2/sites-available/OpenBikes.conf /etc/apache2/sites-available/
 a2ensite OpenBikes

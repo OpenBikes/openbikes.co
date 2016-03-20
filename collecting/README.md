@@ -1,4 +1,22 @@
-# City bikes feeds
+# OpenWeatherMap
+
+We all the [OpenWeatherMap API](http://openweathermap.org/) on a regular schedule dissociated from the provider API calls. Indeed the weather doesn't have to be collected as often. An API key is necessary.
+
+## Parameters of API respond for current weather
+
+    {
+    	'datetime': timestamp (ISO format)
+        'weather': string,
+        'temp': float,
+        'humidity': float,
+        'pressure': float,
+        'description': string,
+        'wind_speed': float,
+        'wind_speed': float,
+        'rain_vol': float,
+        'snow_vol': float,
+        'clouds_pct': float
+    }
 
 ## Normalization
 
@@ -14,6 +32,8 @@ There are many providers that cover various cities throughout the world. Every p
         stands: integer,
         update: timestamp (ISO format)
     }
+
+# City bikes feeds
 
 There is a script for every API in ``collecting/providers/``. Every script contains a ``normalization(data)`` function.
 

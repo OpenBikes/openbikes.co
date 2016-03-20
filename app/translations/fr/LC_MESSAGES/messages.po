@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2016-02-26 22:51+0100\n"
-"PO-Revision-Date: 2016-02-26 22:53+0100\n"
+"POT-Creation-Date: 2016-03-20 14:09+0100\n"
+"PO-Revision-Date: 2016-03-20 14:12+0100\n"
 "Last-Translator: \n"
 "Language: fr\n"
 "Language-Team: fr <LL@li.org>\n"
@@ -44,8 +44,8 @@ msgid ""
 "OpenBikes is a project powered by students in data science and business "
 "intelligence from the Université Paul Sabatier - Toulouse III"
 msgstr ""
-"OpenBikes est un projet porté par des étudiants en sciences de données et de "
-"business intelligence de l’Université Paul Sabatier - Toulouse III"
+"OpenBikes est un projet porté par des étudiants en sciences de données et "
+"de business intelligence de l’Université Paul Sabatier - Toulouse III"
 
 #: app/templates/about.html:17
 msgid "Modern"
@@ -53,8 +53,8 @@ msgstr "Moderne"
 
 #: app/templates/about.html:18
 msgid ""
-"Bike sharing is part of the transport ecosystem of many major cities. We want "
-"to make bike transport a breeze."
+"Bike sharing is part of the transport ecosystem of many major cities. We "
+"want to make bike transport a breeze."
 msgstr ""
 "Les vélos en libre-partage font partie de l’écosystème urbain dans le monde "
 "entier. Nous voulons rendre le transport en vélo un jeu d’enfant."
@@ -67,8 +67,8 @@ msgstr "Robuste"
 msgid ""
 "Our system is built on open-source tools and state of the art methodologies."
 msgstr ""
-"Notre système est construit avec des outils open-source et l’état de l’art des "
-"technologies requises."
+"Notre système est construit avec des outils open-source et l’état de l’art "
+"des technologies requises."
 
 #: app/templates/about.html:27
 msgid "Award winning"
@@ -80,8 +80,8 @@ msgid ""
 "dataconnexions-6'>DataConnexions 6</a>, a national open data competition."
 msgstr ""
 "Lauréat de <a href='https://www.data.gouv.fr/fr/"
-"dataconnexions-6'>DataConnexions 6</a>, une compétition nationale sur l’Open "
-"Data."
+"dataconnexions-6'>DataConnexions 6</a>, une compétition nationale sur "
+"l’Open Data."
 
 #: app/templates/about.html:37
 msgid "Our team"
@@ -95,14 +95,15 @@ msgstr "Fondateur"
 msgid ""
 "OpenBikes is an excellent opportunity for me to enhance my skills in "
 "mathematics and computer science. I get a real kick out of making accurate "
-"forecasts. I also enjoy adressing the algorithmic issues we have to face, for "
-"example dealing with data in real-time and managing a large noSQL database."
+"forecasts. I also enjoy adressing the algorithmic issues we have to face, "
+"for example dealing with data in real-time and managing a large noSQL "
+"database."
 msgstr ""
 "OpenBikes est une excellente opportunité pour moi de me parfaire en "
-"mathématiques et en informatiques. Ca m’intéresse beaucoup de faire des bonnes "
-"prévisions. Je prend aussi de plaisir à résoudre les problèmes algorithmiques "
-"auxquels nous devons faire face, par exemple la récupération des données en "
-"temps réel et la gestion d’une grande base de donnée noSQL."
+"mathématiques et en informatiques. Ca m’intéresse beaucoup de faire des "
+"bonnes prévisions. Je prend aussi de plaisir à résoudre les problèmes "
+"algorithmiques auxquels nous devons faire face, par exemple la récupération "
+"des données en temps réel et la gestion d’une grande base de donnée noSQL."
 
 #: app/templates/about.html:68
 msgid "Junior Flask Programmer"
@@ -112,13 +113,14 @@ msgstr "Programmeur Flask"
 msgid ""
 "OpenBikes is the first project where I am able to associate backend and "
 "frontend development. It's a fantastic opportunity to apply my knowledge in "
-"statistics and business intelligence. OpenBikes has also helped me familiarize "
-"myself with modern technologies such as MongoDB."
+"statistics and business intelligence. OpenBikes has also helped me "
+"familiarize myself with modern technologies such as MongoDB."
 msgstr ""
-"OpenBikes est mon premier projet associant développement backend et frontend. "
-"C’est une superbe opportunité pour mettre en avant mes compétences en "
-"statistiques et en business intelligence. Ce projet m’a aussi permis de me "
-"familiariser avec des technologies dans l’air du temps tel que MongoDB."
+"OpenBikes est mon premier projet associant développement backend et "
+"frontend. C’est une superbe opportunité pour mettre en avant mes "
+"compétences en statistiques et en business intelligence. Ce projet m’a "
+"aussi permis de me familiariser avec des technologies dans l’air du temps "
+"tel que MongoDB."
 
 #: app/templates/about.html:89
 msgid "They talk about us"
@@ -140,122 +142,16 @@ msgstr "Nos objectifs"
 msgid ""
 "We wish for OpenBikes to become a reference for the visualization and the "
 "analysis of bike sharing services in cities from all across the world. For "
-"this we are building a reliable forecasting model in order to advise users on "
-"their trips across the city. We also want to understand user behavior in order "
-"to help cities manage their bike sharing service."
+"this we are building a reliable forecasting model in order to advise users "
+"on their trips across the city. We also want to understand user behavior in "
+"order to help cities manage their bike sharing service."
 msgstr ""
-"Nous voulons que OpenBikes devienne une référence pour la visualisation et la "
-"prédiction de vélos en libre service, et cela dans des villes du monde entier. "
-"Pour cela nous continuons à améliorer notre système de prédiction et nous "
-"étudions d’autres moyens d’utiliser les données dont nous disposons. Nous "
-"voulons aussi utiliser notre savoir-faire pour aider les villes à gérer leurs "
-"parcs de vélos."
-
-#: app/templates/api.html:15
-msgid ""
-"The data we collect from various APIs is tranformed into a single format. "
-"Because we got this data for free we believe that it's only normal to "
-"redistribute it for other developers. For the while our API is not limited and "
-"not require any key. Later on, when we will enable access to historical data, "
-"things may change."
-msgstr ""
-"Les données que nous collectons des différentes API sont transformé en un "
-"format unique. Nous obtenons ces données gratuitement, nous pensons que c’est "
-"donc normal de les redistribuer pour d’autres développeurs. Pour le moment "
-"notre API n’est pas limité et ne requiert pas de clé. Plus tard, lorsque nous "
-"donnerons l’accès aux données historiques, cela pourrait changer."
-
-#: app/templates/api.html:21
-msgid "City current state"
-msgstr "Etat actuel d’une ville"
-
-#: app/templates/api.html:26
-msgid ""
-"Returns the state of each station in the queried city. Just like the maps, "
-"this data is refreshed every minute or so. The data follows the GeoJSON "
-"standard format."
-msgstr ""
-"Retourne l’état actuel de chaque station d’une ville. Ces données se mettent à "
-"jour en même temps que les cartes. Ces données suivent le format standard "
-"GeoJSON."
-
-#: app/templates/api.html:37
-msgid "Stations"
-msgstr "Stations"
-
-#: app/templates/api.html:42
-msgid ""
-"Returns a dictionary containing the list of stations of each city. The data is "
-"refreshed every day."
-msgstr ""
-"Retourne un dictionnaire contenant la liste des stations de chaque ville, ces "
-"données sont rafraîchis tous les jours."
-
-#: app/templates/api.html:53
-msgid "Providers"
-msgstr "Fournisseurs"
-
-#: app/templates/api.html:58
-msgid ""
-"Returns a dictionary containing the list of cities each bike sharing provider "
-"covers. The data is updated every time we add/remove a city."
-msgstr ""
-"Retourne un dictionnaire contenant la liste des villes que dessert chaque "
-"opérateur. Ces données se mettent à jour dès que l’on ajoute/supprime une "
-"ville."
-
-#: app/templates/api.html:69
-msgid "Countries &amp; cities"
-msgstr "Pays &amp; villes"
-
-#: app/templates/api.html:74
-msgid ""
-"Returns a dictionary containing the list of cities of each country. The data "
-"is updated every time we add/remove a city."
-msgstr ""
-"Retourne un dictionnaire contenant la liste des villes de chaque pays. Ces "
-"données se mettent à jour dès que l’on ajoute/supprime une ville."
-
-#: app/templates/api.html:85
-msgid "City centers"
-msgstr "Centres"
-
-#: app/templates/api.html:90
-msgid ""
-"Returns a dictionary containing the center position of each city. The format "
-"is [lat, lon]."
-msgstr ""
-"Retourne un dictionnaire contenant le centre de chaque ville. Le format est "
-"[lat, lon]."
-
-#: app/templates/api.html:101
-msgid "Names"
-msgstr "Noms"
-
-#: app/templates/api.html:106
-msgid ""
-"Returns a dictionary containing translations for the names used in the API."
-msgstr ""
-"Retourne un dictionnaire contenant les traductions des noms employés dans "
-"l’API."
-
-#: app/templates/api.html:117
-msgid "Predictions"
-msgstr "Prédictions"
-
-#: app/templates/api.html:122
-msgid "Returns a dictionary informing if a city has predictions enabled or not."
-msgstr ""
-"Retourne un dictionnaire indiquant si les prédictions sont activées pour une "
-"ville ou pas."
-
-#: app/templates/api.html:133
-msgid "Updates"
-msgstr "Mises à jours"
-
-#: app/templates/api.html:138
-msgid "Returns a dictionary that contains the last update time of a city."
-msgstr "Retour un dictionnaire contenant la date de mise à jour de chaque ville."
+"Nous voulons que OpenBikes devienne une référence pour la visualisation et "
+"la prédiction de vélos en libre service, et cela dans des villes du monde "
+"entier. Pour cela nous continuons à améliorer notre système de prédiction "
+"et nous étudions d’autres moyens d’utiliser les données dont nous "
+"disposons. Nous voulons aussi utiliser notre savoir-faire pour aider les "
+"villes à gérer leurs parcs de vélos."
 
 #: app/templates/error.html:11
 msgid "Home"
@@ -271,13 +167,13 @@ msgstr "Pourquoi est-ce ma ville n’est pas sur la page d’accueil?"
 
 #: app/templates/faq.html:27
 msgid ""
-"There are a lot of cities who provide bike sharing. However, not all of these "
-"cities have linked their bike hubs to a central computer, hence we do not have "
-"access to their data."
+"There are a lot of cities who provide bike sharing. However, not all of "
+"these cities have linked their bike hubs to a central computer, hence we do "
+"not have access to their data."
 msgstr ""
-"Il y’a beaucoup de villes qui proposent des vélos en libre-service. Cependant, "
-"pas toutes ces villes ont reliés leurs stations de vélos à un ordinateur "
-"central, nous n’avons pas accès aux données de ces villes."
+"Il y’a beaucoup de villes qui proposent des vélos en libre-service. "
+"Cependant, pas toutes ces villes ont reliés leurs stations de vélos à un "
+"ordinateur central, nous n’avons pas accès aux données de ces villes."
 
 #: app/templates/faq.html:35
 msgid "Why have you built OpenBikes when similar applications already exist?"
@@ -288,26 +184,24 @@ msgstr ""
 msgid ""
 "We believe that we compare well to other applications because we are honest "
 "about the data we are using while they are not. For example, there have "
-"already been applications that have used the CityBikes API as a data provider. "
-"However, CityBikes doesn't include timestamps, which makes it impossible to be "
-"sure that their data is in real time or not."
+"already been applications that have used the CityBikes API as a data "
+"provider. However, CityBikes doesn't include timestamps, which makes it "
+"impossible to be sure that their data is in real time or not."
 msgstr ""
 "Nous pensons que nous sommes plus honnêtes que d’autres applications. Par "
-"exemple, de nombreuses autres applications utilisent les données fournies par "
-"l’API CityBikes, cependant celle-ci n’associe le temps à ses données, on ne "
-"peut donc pas être sûr que ces données soient en temps réel ou pas."
+"exemple, de nombreuses autres applications utilisent les données fournies "
+"par l’API CityBikes, cependant celle-ci n’associe le temps à ses données, "
+"on ne peut donc pas être sûr que ces données soient en temps réel ou pas."
 
 #: app/templates/faq.html:48
 msgid "How do you predict the number of bikes/spaces at a station?"
 msgstr "Comment prédisez-vous le nombre de vélos/stations à l’avance?"
 
 #: app/templates/faq.html:53
-msgid ""
-"We use a machine learning. We have had the best results with the Random Forest "
-"algorithm."
+msgid "We use a machine learning. We have good results with decision trees."
 msgstr ""
-"Nous utilisons du machine learning. Nous obtenons de bons résultats avec "
-"l’algorithme du Random Forest."
+"Nous utilisons de l’apprentissage supervisé. Nous obtenons de bons "
+"résultats avec des arbres de décision."
 
 #: app/templates/faq.html:61
 msgid "Can you summarize how OpenBikes works under the hood?"
@@ -315,30 +209,31 @@ msgstr "Pouvez-vous résumer comment OpenBikes fonctionne?"
 
 #: app/templates/faq.html:66
 msgid ""
-"We have a program that collects data from different cities. When the data is "
-"collected it is transformed so that all our data is uniform regardless of "
-"where it comes from. We run our machine learning algorithm on all the data we "
-"have collected, we do this once a week. We then connect our predictions to the "
-"map."
+"We have a program that collects data from different cities. When the data "
+"is collected it is transformed so that all our data is uniform regardless "
+"of where it comes from. We run our machine learning algorithm on all the "
+"data we have collected, we do this once a week. We then connect our "
+"predictions to the map."
 msgstr ""
-"Nous avons écrit un programme qui récupère les données de différentes villes. "
-"Lorsque nous collectons des données, nous les transformons pour qu’elles aient "
-"toutes la même forme, quelque soit la ville. Ensuite, nous appliquons nos "
-"algorithmes d’apprentissage sur l’ensemble des données, nous le faisons une "
-"fois par semaine. Il s’agit alors de connecter nos prédictions aux cartes."
+"Nous avons écrit un programme qui récupère les données de différentes "
+"villes. Lorsque nous collectons des données, nous les transformons pour "
+"qu’elles aient toutes la même forme, quelque soit la ville. Ensuite, nous "
+"appliquons nos algorithmes d’apprentissage sur l’ensemble des données, nous "
+"le faisons une fois par semaine. Il s’agit alors de connecter nos "
+"prédictions aux cartes."
 
 #: app/templates/faq.html:74
 msgid "Why is the prediction button not on the map of each city?"
 msgstr ""
-"Pourquoi est-ce que le bouton de prédiction n’est pas sur la carte de chaque "
-"ville?"
+"Pourquoi est-ce que le bouton de prédiction n’est pas sur la carte de "
+"chaque ville?"
 
 #: app/templates/faq.html:79
 msgid ""
 "Quite often the data that we collect does not have associated timestamps, "
-"hence it's impossible to verify if the data is in real time or not. Without a "
-"timestamp we cannot run our prediction models. Some other applications use the "
-"current time as a timestamp but that leads to a lot of problems and "
+"hence it's impossible to verify if the data is in real time or not. Without "
+"a timestamp we cannot run our prediction models. Some other applications "
+"use the current time as a timestamp but that leads to a lot of problems and "
 "imprecision."
 msgstr ""
 "Très souvent les données que nous collectons sont incomplètes car le temps "
@@ -353,14 +248,22 @@ msgstr "Est-ce je peux aider?"
 #: app/templates/faq.html:92
 msgid ""
 "Of course! We are merely students who do similar side projects during our "
-"spare time. The code for the application is available on GitHub, a lot of it "
-"is documented and you can send us a mail in case you have questions or "
+"spare time. The code for the application is available on GitHub, a lot of "
+"it is documented and you can send us a mail in case you have questions or "
 "suggestions."
 msgstr ""
-"Bien sûr! Nous sommes seulement des étudiants qui travaillons sur des projets "
-"similaires durant notre temps libre. Le code de l’application est accessible "
-"sur GitHub, dont beaucoup est documenté. Vous pouvez aussi nous envoyer un "
-"mail si vous avez des questions ou des suggestions."
+"Bien sûr! Nous sommes seulement des étudiants qui travaillons sur des "
+"projets similaires durant notre temps libre. Le code de l’application est "
+"accessible sur GitHub, dont beaucoup est documenté. Vous pouvez aussi nous "
+"envoyer un mail si vous avez des questions ou des suggestions."
+
+#: app/templates/faq.html:100
+msgid "Do you redistribute the data you collect?"
+msgstr "Est-ce que vous redistribuez les données?"
+
+#: app/templates/faq.html:105
+msgid "Naturally, our public API is documented on "
+msgstr "Bien sûr! Notre API publique est documentée sur "
 
 #: app/templates/index.html:26
 msgid "is the winner of "
@@ -370,83 +273,83 @@ msgstr "est le lauréat de"
 msgid "a national open data competition (02/02/16)"
 msgstr "une compétition nationale d’Open Data (02/02/16)"
 
-#: app/templates/map.html:105
+#: app/templates/map.html:104
 msgid "Basic"
 msgstr "Informative"
 
-#: app/templates/map.html:106
+#: app/templates/map.html:105
 msgid "Light"
 msgstr "Lumineuse"
 
-#: app/templates/map.html:107
+#: app/templates/map.html:106
 msgid "Dark"
 msgstr "Sombre"
 
-#: app/templates/map.html:108
+#: app/templates/map.html:107
 msgid "Comic"
 msgstr "Comic"
 
-#: app/templates/map.html:109
+#: app/templates/map.html:108
 msgid "Crayon"
 msgstr "Crayon"
 
-#: app/templates/map.html:140
+#: app/templates/map.html:139
 msgid "Locate me"
 msgstr "Me localiser"
 
-#: app/templates/map.html:141
+#: app/templates/map.html:140
 msgid "Meters"
 msgstr "mètres"
 
-#: app/templates/map.html:142
+#: app/templates/map.html:141
 msgid "This is you!"
 msgstr "C’est vous!"
 
-#: app/templates/map.html:152
+#: app/templates/map.html:151
 msgid "Updated"
 msgstr "Mise à jour"
 
-#: app/templates/map.html:161
+#: app/templates/map.html:160
 msgid "Bikes >> Stands"
 msgstr "Vélos >> Places"
 
-#: app/templates/map.html:161
+#: app/templates/map.html:160
 msgid "Bikes > Stands"
 msgstr "Vélos > Places"
 
-#: app/templates/map.html:161
+#: app/templates/map.html:160
 msgid "Bikes = Stands"
 msgstr "Vélos = Places"
 
-#: app/templates/map.html:161
+#: app/templates/map.html:160
 msgid "Bikes < Stands"
 msgstr "Vélos < Places"
 
-#: app/templates/map.html:161
+#: app/templates/map.html:160
 msgid "Bikes << Stands"
 msgstr "Vélos << Places"
 
-#: app/templates/map.html:223
+#: app/templates/map.html:222
 msgid " bikes"
 msgstr " vélos"
 
-#: app/templates/map.html:225
+#: app/templates/map.html:224
 msgid " bike"
 msgstr " vélo"
 
-#: app/templates/map.html:228
+#: app/templates/map.html:227
 msgid " stands"
 msgstr " places"
 
-#: app/templates/map.html:230
+#: app/templates/map.html:229
 msgid " stand"
 msgstr " place"
 
-#: app/templates/map.html:239
+#: app/templates/map.html:238
 msgid "Closed"
 msgstr "Fermée"
 
-#: app/templates/map.html:328
+#: app/templates/map.html:327
 msgid "Something went wrong :-("
 msgstr "Une erreur est survenue :("
 
@@ -497,33 +400,124 @@ msgid "MAPS"
 msgstr "CARTES"
 
 #: app/templates/includes/navigation.html:15
-msgid "API"
-msgstr "API"
-
-#: app/templates/includes/navigation.html:16
 msgid "FAQ"
 msgstr "FAQ"
 
-#: app/templates/includes/navigation.html:17
+#: app/templates/includes/navigation.html:16
 msgid "ABOUT"
 msgstr "INFORMATIONS"
 
-#: app/templates/includes/navigation.html:19
+#: app/templates/includes/navigation.html:18
 msgid "LANGUAGE"
 msgstr "LANGUE"
 
-#: app/views/main.py:17
+#: app/views/main.py:15
 msgid "Maps - OpenBikes"
 msgstr "Cartes - OpenBikes"
 
-#: app/views/main.py:24
-msgid "API - OpenBikes"
-msgstr "API - OpenBikes"
-
-#: app/views/main.py:30
+#: app/views/main.py:22
 msgid "FAQ - OpenBikes"
 msgstr "FAQ - OpenBikes"
 
-#: app/views/main.py:36
+#: app/views/main.py:28
 msgid "About - OpenBikes"
 msgstr "Informations - OpenBikes"
+
+#~ msgid ""
+#~ "The data we collect from various APIs is tranformed into a single "
+#~ "format. Because we got this data for free we believe that it's only "
+#~ "normal to redistribute it for other developers. For the while our API is "
+#~ "not limited and not require any key. Later on, when we will enable "
+#~ "access to historical data, things may change."
+#~ msgstr ""
+#~ "Les données que nous collectons des différentes API sont transformé en "
+#~ "un format unique. Nous obtenons ces données gratuitement, nous pensons "
+#~ "que c’est donc normal de les redistribuer pour d’autres développeurs. "
+#~ "Pour le moment notre API n’est pas limité et ne requiert pas de clé. "
+#~ "Plus tard, lorsque nous donnerons l’accès aux données historiques, cela "
+#~ "pourrait changer."
+
+#~ msgid "City current state"
+#~ msgstr "Etat actuel d’une ville"
+
+#~ msgid ""
+#~ "Returns the state of each station in the queried city. Just like the "
+#~ "maps, this data is refreshed every minute or so. The data follows the "
+#~ "GeoJSON standard format."
+#~ msgstr ""
+#~ "Retourne l’état actuel de chaque station d’une ville. Ces données se "
+#~ "mettent à jour en même temps que les cartes. Ces données suivent le "
+#~ "format standard GeoJSON."
+
+#~ msgid "Stations"
+#~ msgstr "Stations"
+
+#~ msgid ""
+#~ "Returns a dictionary containing the list of stations of each city. The "
+#~ "data is refreshed every day."
+#~ msgstr ""
+#~ "Retourne un dictionnaire contenant la liste des stations de chaque "
+#~ "ville, ces données sont rafraîchis tous les jours."
+
+#~ msgid "Providers"
+#~ msgstr "Fournisseurs"
+
+#~ msgid ""
+#~ "Returns a dictionary containing the list of cities each bike sharing "
+#~ "provider covers. The data is updated every time we add/remove a city."
+#~ msgstr ""
+#~ "Retourne un dictionnaire contenant la liste des villes que dessert "
+#~ "chaque opérateur. Ces données se mettent à jour dès que l’on ajoute/"
+#~ "supprime une ville."
+
+#~ msgid "Countries &amp; cities"
+#~ msgstr "Pays &amp; villes"
+
+#~ msgid ""
+#~ "Returns a dictionary containing the list of cities of each country. The "
+#~ "data is updated every time we add/remove a city."
+#~ msgstr ""
+#~ "Retourne un dictionnaire contenant la liste des villes de chaque pays. "
+#~ "Ces données se mettent à jour dès que l’on ajoute/supprime une ville."
+
+#~ msgid "City centers"
+#~ msgstr "Centres"
+
+#~ msgid ""
+#~ "Returns a dictionary containing the center position of each city. The "
+#~ "format is [lat, lon]."
+#~ msgstr ""
+#~ "Retourne un dictionnaire contenant le centre de chaque ville. Le format "
+#~ "est [lat, lon]."
+
+#~ msgid "Names"
+#~ msgstr "Noms"
+
+#~ msgid ""
+#~ "Returns a dictionary containing translations for the names used in the "
+#~ "API."
+#~ msgstr ""
+#~ "Retourne un dictionnaire contenant les traductions des noms employés "
+#~ "dans l’API."
+
+#~ msgid "Predictions"
+#~ msgstr "Prédictions"
+
+#~ msgid ""
+#~ "Returns a dictionary informing if a city has predictions enabled or not."
+#~ msgstr ""
+#~ "Retourne un dictionnaire indiquant si les prédictions sont activées pour "
+#~ "une ville ou pas."
+
+#~ msgid "Updates"
+#~ msgstr "Mises à jours"
+
+#~ msgid "Returns a dictionary that contains the last update time of a city."
+#~ msgstr ""
+#~ "Retour un dictionnaire contenant la date de mise à jour de chaque ville."
+
+#~ msgid "API"
+#~ msgstr "API"
+
+#~ msgid "API - OpenBikes"
+#~ msgstr "API - OpenBikes"

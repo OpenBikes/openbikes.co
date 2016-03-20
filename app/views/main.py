@@ -16,12 +16,6 @@ def index():
                                   names_file=names))
 
 
-@app.route('/api')
-@app.route('/<lang_code>/api')
-def api():
-    return minify(render_template('api.html', title=gettext('API - OpenBikes')))
-
-
 @app.route('/faq')
 @app.route('/<lang_code>/faq')
 def faq():

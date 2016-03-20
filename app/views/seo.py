@@ -1,7 +1,15 @@
-from flask import render_template, make_response
+import os
+from flask import render_template, make_response, send_from_directory
 from common import toolbox as tb
 from common import files
 from app import app
+
+
+@app.route('/favicon.ico')
+def favicon():
+    return send_from_directory(os.path.join(app.root_path, 'static'),
+                               'img/favicon.ico',
+                               mimetype='image/vnd.microsoft.icon')
 
 
 @app.route('/robots.txt')

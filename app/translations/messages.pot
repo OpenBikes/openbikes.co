@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2016-02-26 22:51+0100\n"
+"POT-Creation-Date: 2016-03-20 14:09+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -128,92 +128,6 @@ msgid ""
 "behavior in order to help cities manage their bike sharing service."
 msgstr ""
 
-#: app/templates/api.html:15
-msgid ""
-"The data we collect from various APIs is tranformed into a single format."
-" Because we got this data for free we believe that it's only normal to "
-"redistribute it for other developers. For the while our API is not "
-"limited and not require any key. Later on, when we will enable access to "
-"historical data, things may change."
-msgstr ""
-
-#: app/templates/api.html:21
-msgid "City current state"
-msgstr ""
-
-#: app/templates/api.html:26
-msgid ""
-"Returns the state of each station in the queried city. Just like the "
-"maps, this data is refreshed every minute or so. The data follows the "
-"GeoJSON standard format."
-msgstr ""
-
-#: app/templates/api.html:37
-msgid "Stations"
-msgstr ""
-
-#: app/templates/api.html:42
-msgid ""
-"Returns a dictionary containing the list of stations of each city. The "
-"data is refreshed every day."
-msgstr ""
-
-#: app/templates/api.html:53
-msgid "Providers"
-msgstr ""
-
-#: app/templates/api.html:58
-msgid ""
-"Returns a dictionary containing the list of cities each bike sharing "
-"provider covers. The data is updated every time we add/remove a city."
-msgstr ""
-
-#: app/templates/api.html:69
-msgid "Countries &amp; cities"
-msgstr ""
-
-#: app/templates/api.html:74
-msgid ""
-"Returns a dictionary containing the list of cities of each country. The "
-"data is updated every time we add/remove a city."
-msgstr ""
-
-#: app/templates/api.html:85
-msgid "City centers"
-msgstr ""
-
-#: app/templates/api.html:90
-msgid ""
-"Returns a dictionary containing the center position of each city. The "
-"format is [lat, lon]."
-msgstr ""
-
-#: app/templates/api.html:101
-msgid "Names"
-msgstr ""
-
-#: app/templates/api.html:106
-msgid ""
-"Returns a dictionary containing translations for the names used in the "
-"API."
-msgstr ""
-
-#: app/templates/api.html:117
-msgid "Predictions"
-msgstr ""
-
-#: app/templates/api.html:122
-msgid "Returns a dictionary informing if a city has predictions enabled or not."
-msgstr ""
-
-#: app/templates/api.html:133
-msgid "Updates"
-msgstr ""
-
-#: app/templates/api.html:138
-msgid "Returns a dictionary that contains the last update time of a city."
-msgstr ""
-
 #: app/templates/error.html:11
 msgid "Home"
 msgstr ""
@@ -251,9 +165,7 @@ msgid "How do you predict the number of bikes/spaces at a station?"
 msgstr ""
 
 #: app/templates/faq.html:53
-msgid ""
-"We use a machine learning. We have had the best results with the Random "
-"Forest algorithm."
+msgid "We use a machine learning. We have good results with decision trees."
 msgstr ""
 
 #: app/templates/faq.html:61
@@ -294,6 +206,14 @@ msgid ""
 " or suggestions."
 msgstr ""
 
+#: app/templates/faq.html:100
+msgid "Do you redistribute the data you collect?"
+msgstr ""
+
+#: app/templates/faq.html:105
+msgid "Naturally, our public API is documented on "
+msgstr ""
+
 #: app/templates/index.html:26
 msgid "is the winner of "
 msgstr ""
@@ -302,83 +222,83 @@ msgstr ""
 msgid "a national open data competition (02/02/16)"
 msgstr ""
 
-#: app/templates/map.html:105
+#: app/templates/map.html:104
 msgid "Basic"
 msgstr ""
 
-#: app/templates/map.html:106
+#: app/templates/map.html:105
 msgid "Light"
 msgstr ""
 
-#: app/templates/map.html:107
+#: app/templates/map.html:106
 msgid "Dark"
 msgstr ""
 
-#: app/templates/map.html:108
+#: app/templates/map.html:107
 msgid "Comic"
 msgstr ""
 
-#: app/templates/map.html:109
+#: app/templates/map.html:108
 msgid "Crayon"
 msgstr ""
 
-#: app/templates/map.html:140
+#: app/templates/map.html:139
 msgid "Locate me"
 msgstr ""
 
-#: app/templates/map.html:141
+#: app/templates/map.html:140
 msgid "Meters"
 msgstr ""
 
-#: app/templates/map.html:142
+#: app/templates/map.html:141
 msgid "This is you!"
 msgstr ""
 
-#: app/templates/map.html:152
+#: app/templates/map.html:151
 msgid "Updated"
 msgstr ""
 
-#: app/templates/map.html:161
+#: app/templates/map.html:160
 msgid "Bikes >> Stands"
 msgstr ""
 
-#: app/templates/map.html:161
+#: app/templates/map.html:160
 msgid "Bikes > Stands"
 msgstr ""
 
-#: app/templates/map.html:161
+#: app/templates/map.html:160
 msgid "Bikes = Stands"
 msgstr ""
 
-#: app/templates/map.html:161
+#: app/templates/map.html:160
 msgid "Bikes < Stands"
 msgstr ""
 
-#: app/templates/map.html:161
+#: app/templates/map.html:160
 msgid "Bikes << Stands"
 msgstr ""
 
-#: app/templates/map.html:223
+#: app/templates/map.html:222
 msgid " bikes"
 msgstr ""
 
-#: app/templates/map.html:225
+#: app/templates/map.html:224
 msgid " bike"
 msgstr ""
 
-#: app/templates/map.html:228
+#: app/templates/map.html:227
 msgid " stands"
 msgstr ""
 
-#: app/templates/map.html:230
+#: app/templates/map.html:229
 msgid " stand"
 msgstr ""
 
-#: app/templates/map.html:239
+#: app/templates/map.html:238
 msgid "Closed"
 msgstr ""
 
-#: app/templates/map.html:328
+#: app/templates/map.html:327
 msgid "Something went wrong :-("
 msgstr ""
 
@@ -429,34 +349,26 @@ msgid "MAPS"
 msgstr ""
 
 #: app/templates/includes/navigation.html:15
-msgid "API"
-msgstr ""
-
-#: app/templates/includes/navigation.html:16
 msgid "FAQ"
 msgstr ""
 
-#: app/templates/includes/navigation.html:17
+#: app/templates/includes/navigation.html:16
 msgid "ABOUT"
 msgstr ""
 
-#: app/templates/includes/navigation.html:19
+#: app/templates/includes/navigation.html:18
 msgid "LANGUAGE"
 msgstr ""
 
-#: app/views/main.py:17
+#: app/views/main.py:15
 msgid "Maps - OpenBikes"
 msgstr ""
 
-#: app/views/main.py:24
-msgid "API - OpenBikes"
-msgstr ""
-
-#: app/views/main.py:30
+#: app/views/main.py:22
 msgid "FAQ - OpenBikes"
 msgstr ""
 
-#: app/views/main.py:36
+#: app/views/main.py:28
 msgid "About - OpenBikes"
 msgstr ""
 

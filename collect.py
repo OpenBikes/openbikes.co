@@ -11,7 +11,7 @@ celery.config_from_object('collecting.celeryconfig')
 
 
 @celery.task
-def collect(provider, city, predict):
+def bikes(provider, city, predict):
     ''' Update the data for a city. '''
     # Get the current formatted data for a city
     try:
