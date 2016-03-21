@@ -20,7 +20,7 @@ def robots_txt():
 
 @app.route('/sitemap.xml')
 def sitemap_xml():
-    main = ['index', 'api', 'faq', 'about']
+    main = ['index', 'faq', 'api', 'about']
     cities = tb.read_json(files.stations).keys()
     sitemap = render_template('sitemap.xml', main=main, cities=cities)
     response = make_response(sitemap)

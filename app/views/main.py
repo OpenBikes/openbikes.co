@@ -22,6 +22,12 @@ def faq():
     return minify(render_template('faq.html', title=gettext('FAQ - OpenBikes')))
 
 
+@app.route('/api')
+@app.route('/<lang_code>/api')
+def api():
+    return minify(render_template('api.html', title=gettext('API - OpenBikes')))
+
+
 @app.route('/about')
 @app.route('/<lang_code>/about')
 def about():
