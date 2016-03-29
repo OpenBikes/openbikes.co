@@ -238,7 +238,7 @@ def api_prediction(city, station, timestamp):
                 'quantity': bikes,
                 'std': bias
             },
-            'spaces': {
+            'stands': {
                 'quantity': spaces,
                 'std': bias
             }

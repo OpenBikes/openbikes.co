@@ -20,13 +20,21 @@ CELERYBEAT_SCHEDULE = {}
 providers = tb.read_json(files.providers)
 # Predictions file
 predictions = tb.read_json(files.predictions)
+# OpenWeatherMap file
+owm = tb.read_json(files.owm)
+
 
 # City data collection
 for provider, cities in providers.items():
     for city in cities:
-        task_name = 'Collect_{0}'.format(city)
-        CELERYBEAT_SCHEDULE[task_name] = {
+        CELERYBEAT_SCHEDULE['Bikes_{0}'.format(city)] = {
             'task': 'collect.bikes',
-            'schedule': timedelta(seconds=settings.collecting['refresh']),
+            'schedule': timedelta(seconds=settings.collecting['bikes']),
             'args': (provider, city, predictions[city])
         }
+        if predictions[city] == 'Yes':
+            CELERYBEAT_SCHEDULE['Weather_{0}'.format(city)] = {
+                'task': 'collect.weather',
+                'schedule': timedelta(seconds=settings.collecting['weather']),
+                'args': (city, owm[city])
+            }

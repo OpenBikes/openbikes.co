@@ -1,11 +1,8 @@
 collecting = {
     # Refresh rate in seconds
-    'refresh': 60
-}
-
-weather = {
-    # Refresh rate in minutes
-    'refresh': 20
+    'bikes': 60,
+    # Refresh rate in seconds
+    'weather': 60 * 20
 }
 
 learning = {

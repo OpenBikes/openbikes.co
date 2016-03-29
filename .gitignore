@@ -2,6 +2,7 @@ keys.py
 *.pyc
 *.zip
 ngrok
+TODO.md
 *.geojson
 *.json
 celerybeat-schedule.db
