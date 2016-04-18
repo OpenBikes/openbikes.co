@@ -4,9 +4,10 @@ from learning import munging
 
 city = 'Toulouse'
 station = '00067 - MUSEUM'
-threshold = datetime.datetime.now() - datetime.timedelta(days=3)
+since = datetime.datetime.now() - datetime.timedelta(days=3)
+until = datetime.datetime.now()
 
-dataframe = query.station(city, station, threshold)
+dataframe = query.station(city, station, since, until)
 dataframe = munging.prepare(dataframe)
 
 X, Y = munging.split(dataframe, 'bikes')
