@@ -9,6 +9,7 @@ Toulouse is the *de facto* city for running tests. As such Toulouse data should 
 - Boot RabbitMQ with `rabbitmq-server -detached`
 - Collect data with `celery -A collect worker --beat --loglevel=info`
 - Cleanse Celery with `celery purge`
+- (Stopping `rabbitmq` : `rabbitmqctl stop`)
 
 ### Training the regressors
 
