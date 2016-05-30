@@ -1,7 +1,7 @@
 import React from 'react';
 
 const CityPanel = () => (
-  <div>Hello world</div>
+  <h2>Toulouse</h2>
 );
 
 export default CityPanel;
