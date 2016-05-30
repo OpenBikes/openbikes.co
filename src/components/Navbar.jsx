@@ -8,8 +8,7 @@ import FontIcon from 'material-ui/FontIcon';
 const styles = {
   tabs: {
     width: 500,
-    'margin-top': -13,
-    'margin-right': -8,
+    'margin-right': -24,
   },
 };
 
@@ -35,7 +34,7 @@ const tabs = (
 );
 
 const Navbar = () => (
-  <AppBar title="OpenBikes" iconElementRight={tabs} />
+  <AppBar title="OpenBikes" children={tabs} />
 );
 
 export default Navbar;
