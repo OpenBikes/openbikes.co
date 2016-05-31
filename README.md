@@ -30,7 +30,14 @@ If you're on Mac OS X, follow these steps :
     brew install node
     ```
 
+Or you can just run `make install`.
+
+Then you need to download our repo using `git` :  
+```sh
+git clone https://github.com/OpenBikes/openbikes.co.git
+```
+
 ## Usage
 
-Install **node** depencies with : `npm install`.  
-Finally, run `npm start`.
+Install **node** depencies with : `npm install` (or `make dev`).  
+Finally, run `npm start` (or `make run`).
