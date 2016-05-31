@@ -4,9 +4,10 @@ import { browserHistory, IndexRoute, Route, Router } from 'react-router';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
-import Search from './search/Search.jsx';
-import Home from './home/Home.jsx';
 import Layout from './Layout.jsx';
+
+import Home from './home/Home.jsx';
+import Search from './search/Search.jsx';
 
 const App = () => (
   <MuiThemeProvider muiTheme={getMuiTheme()}>
