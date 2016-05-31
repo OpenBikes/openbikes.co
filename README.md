@@ -7,6 +7,11 @@
 
 ## Installation
 
+First step, you need to download our repo using `git` :  
+```sh
+git clone https://github.com/OpenBikes/openbikes.co.git
+```
+
 You can install **Node JS** through this [download page](https://nodejs.org/en/download/).
 If you're on Mac OS X, follow these steps :
 
@@ -30,12 +35,7 @@ If you're on Mac OS X, follow these steps :
     brew install node
     ```
 
-Or you can just run `make install`.
-
-Then you need to download our repo using `git` :  
-```sh
-git clone https://github.com/OpenBikes/openbikes.co.git
-```
+Or you can just run `make install` (once you have downloaded our repository).
 
 ## Usage
 
