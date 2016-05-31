@@ -26,7 +26,7 @@ const tabs = (
     />
     <Tab
       label="Cities"
-      path="/cities"
+      path="/search"
       icon={<FontIcon className="fa fa-bicycle" />}
       onActive={clickTab}
     />
@@ -34,7 +34,10 @@ const tabs = (
 );
 
 const Navbar = () => (
-  <AppBar title="OpenBikes" children={tabs} />
+  <AppBar
+    title="OpenBikes"
+    children={tabs}
+  />
 );
 
 export default Navbar;

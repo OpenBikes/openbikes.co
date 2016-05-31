@@ -1,9 +1,7 @@
 import React from 'react';
 
-import CityPanel from './CityPanel.jsx';
-
 const Home = () => (
-  <div><CityPanel /></div>
+  <div>Home</div>
 );
 
 export default Home;
