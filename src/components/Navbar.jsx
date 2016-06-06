@@ -8,7 +8,7 @@ import FontIcon from 'material-ui/FontIcon';
 const styles = {
   tabs: {
     width: 500,
-    'margin-right': -24,
+    marginRight: -24,
   },
 };
 
@@ -28,6 +28,12 @@ const tabs = (
       label="Cities"
       path="/search"
       icon={<FontIcon className="fa fa-bicycle" />}
+      onActive={clickTab}
+    />
+    <Tab
+      label="Map"
+      path="/map"
+      icon={<FontIcon className="fa fa-map" />}
       onActive={clickTab}
     />
   </Tabs>
