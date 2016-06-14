@@ -44,8 +44,8 @@
     "webpack-dev-server": "^1.14.1"
   },
   "scripts": {
-    "build": "webpack",
-    "start": "webpack-dev-server",
-    "lint": "eslint . --ext .js --ext .jsx --ignore-path .gitignore --cache"
+    "build": "webpack --progress --colors",
+    "lint": "eslint . --ext .js --ext .jsx --ignore-path .gitignore --cache",
+    "start": "webpack-dev-server --hot --progress --colors"
   }
 }
