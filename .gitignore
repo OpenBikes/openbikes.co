@@ -1,4 +1,5 @@
+.DS_Store
 node_modules/
 dist/
-!dist/index.html
-*.log
+npm-debug.log
+src/semantic/dist

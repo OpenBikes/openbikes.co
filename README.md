@@ -1,43 +1,27 @@
-# OpenBikes browser frontend
+# openbikes.co
 
-- React
-- Sass
-- Webpack with hot reloading
-- [Airbnb style conventions](https://github.com/airbnb/javascript)
+> OpenBikes browser frontend
 
-## Installation
+## Build Setup
 
-First step, you need to download our repo using `git` :  
-```sh
-git clone https://github.com/OpenBikes/openbikes.co.git
+``` bash
+# install dependencies
+npm install
+
+# serve with hot reload at localhost:8080
+npm run dev
+
+# build for production with minification
+npm run build
+
+# run unit tests
+npm run unit
+
+# run e2e tests
+npm run e2e
+
+# run all tests
+npm test
 ```
 
-You can install **Node JS** through this [download page](https://nodejs.org/en/download/).
-If you're on Mac OS X, follow these steps :
-
-1. Install **Homebrew**  
-    ```sh
-    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-    ```
-2. Update `brew`  
-    This will update brew to the latest version :  
-    ```sh
-    brew update
-    ```
-3. Upgrade `brew` packages  
-    Upgrade all of your brew packages with :  
-    ```sh
-    brew upgrade
-    ```
-4. Install **Node JS**  
-    Next, install **node** (`npm` will be installed with `node`):  
-    ```sh
-    brew install node
-    ```
-
-Or you can just run `make install` (once you have downloaded our repository).
-
-## Usage
-
-Install **node** depencies with : `npm install` (or `make dev`).  
-Finally, run `npm start` (or `make run`).
+For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
