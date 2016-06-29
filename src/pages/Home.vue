@@ -1,33 +1,7 @@
 <template>
-
-<div class="ui center aligned icon header logo-container">
-  <img class="ui centered large image logo-image" src="../img/logo.png">
-</div>
-
-<div class="ui statistics four column doubling stackable grid container">
-  <div class="column">
-    <div class="statistic">
-      <div class="value">5</div>
-      <div class="label">Providers</div>
-    </div>
-  </div>
-  <div class="column">
-    <div class="statistic">
-      <div class="value">10</div>
-      <div class="label">Countries</div>
-    </div>
-  </div>
-  <div class="column">
-    <div class="statistic">
-      <div class="value">30</div>
-      <div class="label">Cities</div>
-    </div>
-  </div>
-  <div class="column">
-    <div class="statistic">
-      <div class="value">1000</div>
-      <div class="label">Stations</div>
-    </div>
+<div>
+  <div class="container center banner-container">
+    <img style="width: 400px;" class="responsive-img banner-logo" src="../img/logo.png">
   </div>
 </div>
 </template>
@@ -37,11 +11,11 @@ export default {};
 </script>
 
 <style scoped>
-.logo-container {
-  height: 200px;
+.banner-container {
+  height: 300px;
 }
 
-.logo-image {
-  padding: 50px 30px;
+.banner-container {
+  margin-top: 100px;
 }
 </style>

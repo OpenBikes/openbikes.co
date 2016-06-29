@@ -1,52 +1,54 @@
 <template>
+  <div id="search">
 
-
-  <div class="ui centered grid search-container">
-    <div id="search-input" class="ui search">
-      <div class="ui icon huge input">
-        <input class="prompt" type="text" placeholder="Find your city">
-        <i class="search icon"></i>
+    <div class="row search-container">
+      <div class="center col s12">
+        <div class="input-field col s6 offset-s3 search-bar">
+          <input v-model="input"
+                 debounce="200"
+                 placeholder="Find your city"
+                 type="text"
+                 class="validate">
+        </div>
       </div>
-      <div class="results"></div>
     </div>
-  </div>
 
-  <div class="ui container">
-    <div class="ui three stackable cards">
-
-      <a class="ui card" v-link="{ path: '/map' }">
-        <div class="content">
-          <div class="header">Cute Dog</div>
-          <div class="meta">
-            <span class="category">Animals</span>
-          </div>
-          <div class="description">
-            <p></p>
-          </div>
-        </div>
-        <div class="extra content">
-          <div class="right floated author">
-            <img class="ui avatar image" src="/images/avatar/small/matt.jpg"> Matt
-          </div>
-        </div>
-      </a>
-
+    <div class="container">
+      <Grid :items="cities"
+            :query="input">
+      </Grid>
     </div>
+
   </div>
 </template>
 
 <script>
+import Grid from '../components/Grid.vue';
 
-export default {};
+export default {
+  name: 'Search',
+  components: {
+    Grid,
+  },
+  el: () => '#search',
+  data: () => ({
+    input: '',
+    cities: [
+      { name: 'Toulouse' },
+      { name: 'Paris' },
+      { name: 'Rome' },
+      { name: 'London' },
+    ],
+  }),
+};
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h1 {
-  color: #42b983;
+.search-container {
+  height: 300px;
 }
 
-.search-container {
-  margin: 70px;
+.search-bar {
+  margin-top: 100px;
 }
 </style>

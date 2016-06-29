@@ -5,7 +5,6 @@
   "author": "MaxHalford <maxhalford25@gmail.com>",
   "private": true,
   "scripts": {
-    "semantic": "cd src/semantic && gulp build",
     "dev": "node build/dev-server.js",
     "build": "node build/build.js",
     "test": "",
@@ -14,6 +13,8 @@
   "dependencies": {
     "babel-runtime": "^6.0.0",
     "jquery": "^3.0.0",
+    "leaflet": "^0.7.7",
+    "lodash": "^4.0.0",
     "vue": "^1.0.21",
     "vue-router": "^0.7.13"
   },

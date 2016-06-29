@@ -1,8 +1,6 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 
-import App from './App';
-
 import About from './pages/About';
 import Home from './pages/Home';
 import CityMap from './pages/Map';
@@ -37,4 +35,4 @@ router.beforeEach(() => {
   window.scrollTo(0, 0);
 });
 
-router.start(App, '#app');
+export router
