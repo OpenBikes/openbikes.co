@@ -16,7 +16,7 @@ import Home from './pages/Home';
 import Navbar from './components/Navbar';
 import Search from './pages/Search';
 
-import store from './store';
+import store from './vuex/store';
 
 
 export default {

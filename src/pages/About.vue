@@ -7,7 +7,9 @@
 </template>
 
 <script>
-export default {};
+export default {
+  name: 'About',
+};
 </script>
 
 <style scoped lang="sass">
