@@ -13,13 +13,12 @@
 </template>
 
 <script>
-import $ from 'jquery';
-
 import Routes from '../components/Routes.vue';
 
-$(document).ready(() => {
-  $('.navbar-burger').sideNav();
-});
+// import $ from 'jquery';
+// $(document).ready(() => {
+//   $('.navbar-burger').sideNav();
+// });
 
 export default {
   components: {

@@ -1,6 +1,6 @@
 <template>
   <div class="row">
-    <div class="col s12 m6 l4" v-for="item in filteredItems">
+    <div class="col s12 m6 l4" v-for="item in items">
       <Card></Card>
     </div>
   </div>
@@ -18,18 +18,6 @@ export default {
       type: Array,
       required: true,
     },
-    query: {
-      type: String,
-      required: true,
-    },
   },
-  data: () => ({
-    filteredItems: [
-      { name: 'Toulouse' },
-      { name: 'Paris' },
-      { name: 'Rome' },
-      { name: 'London' },
-    ],
-  }),
 };
 </script>

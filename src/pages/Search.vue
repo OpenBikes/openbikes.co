@@ -5,6 +5,7 @@
       <div class="center col s12">
         <div class="input-field col s6 offset-s3 search-bar">
           <input v-model="input"
+                 v-el:input
                  debounce="200"
                  placeholder="Find your city"
                  type="text"
@@ -13,9 +14,14 @@
       </div>
     </div>
 
+    <div>
+      <button @click='increment'>Increment +1</button>
+    </div>
+
+    <h3>Count is {{ counterValue }}</h3>
+
     <div class="container">
-      <Grid :items="cities"
-            :query="input">
+      <Grid :items="filteredItems">
       </Grid>
     </div>
 
@@ -25,6 +31,9 @@
 <script>
 import Grid from '../components/Grid.vue';
 
+import { incrementCounter } from '../vuex/actions';
+import { getCount } from '../vuex/getters';
+
 export default {
   name: 'Search',
   components: {
@@ -33,13 +42,26 @@ export default {
   el: () => '#search',
   data: () => ({
     input: '',
-    cities: [
+    filteredItems: [
       { name: 'Toulouse' },
       { name: 'Paris' },
       { name: 'Rome' },
       { name: 'London' },
     ],
   }),
+  ready: () => {
+    // fetch('/api/updates')
+    // .then(response => response.json())
+    // .then(data => console.log(data));
+  },
+  vuex: {
+    actions: {
+      increment: incrementCounter,
+    },
+    getters: {
+      counterValue: getCount,
+    },
+  },
 };
 </script>
 

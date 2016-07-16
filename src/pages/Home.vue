@@ -10,12 +10,10 @@
 export default {};
 </script>
 
-<style scoped>
-.banner-container {
+<style scoped lang="sass">
+.banner-container
   height: 300px;
-}
 
-.banner-container {
+.banner-container
   margin-top: 100px;
-}
 </style>

@@ -4,33 +4,34 @@
     <div class="page">
       <router-view></router-view>
     </div>
-    <Foot v-if="$route.name !== 'map'"></Foot>
+    <Foot></Foot>
   </div>
 </template>
 
 <script>
-import Navbar from './components/Navbar';
-import Foot from './components/Footer';
-
 import About from './pages/About';
-import Home from './pages/Home';
 import CityMap from './pages/Map';
+import Foot from './components/Footer';
+import Home from './pages/Home';
+import Navbar from './components/Navbar';
 import Search from './pages/Search';
+
+import store from './store';
+
 
 export default {
   name: 'App',
-  components: { About, Foot, Home, CityMap, Navbar, Search },
+  components: { About, CityMap, Foot, Home, Navbar, Search },
+  store,
 };
 </script>
 
-<style>
-.app {
+<style scoped lang="sass">
+.app
   display: flex;
   min-height: 100vh;
   flex-direction: column;
-}
 
-.page {
+.page
   flex: 1 0 auto;
-}
 </style>
