@@ -1,7 +1,5 @@
 <template>
-  <div id="map">
-      <p>Hello</p>
-  </div>
+  <div id="map">Hello</div>
 </template>
 
 <script>
@@ -18,5 +16,5 @@ export default {
 
 <style scoped lang="sass">
 #map
-  height: 180px;
+  height: 380px;
 </style>

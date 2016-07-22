@@ -21,7 +21,7 @@
     <h3>Count is {{ counterValue }}</h3>
 
     <div class="container">
-      <Grid :items="filteredItems">
+      <Grid :items="cities">
       </Grid>
     </div>
 
@@ -39,20 +39,14 @@ export default {
   components: {
     Grid,
   },
-  el: () => '#search',
   data: () => ({
     input: '',
-    filteredItems: [
-      { name: 'Toulouse' },
-      { name: 'Paris' },
-      { name: 'Rome' },
-      { name: 'London' },
-    ],
+    cities: [],
   }),
   ready: () => {
-    // fetch('/api/updates')
-    // .then(response => response.json())
-    // .then(data => console.log(data));
+    fetch('/api/cities')
+      .then(response => response.json())
+      .then(data => { this.cities = data.cities; });
   },
   vuex: {
     actions: {
@@ -65,12 +59,10 @@ export default {
 };
 </script>
 
-<style scoped>
-.search-container {
+<style scoped lang="sass">
+.search-container
   height: 300px;
-}
 
-.search-bar {
+.search-bar
   margin-top: 100px;
-}
 </style>

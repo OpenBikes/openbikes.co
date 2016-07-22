@@ -2,6 +2,7 @@ const path = require('path');
 const config = require('../config');
 const utils = require('./utils');
 const projectRoot = path.resolve(__dirname, '../');
+const webpack = require('webpack');
 
 module.exports = {
   entry: {
@@ -82,4 +83,11 @@ module.exports = {
   vue: {
     loaders: utils.cssLoaders(),
   },
+  plugins: [
+    new webpack.ProvidePlugin({
+      $: 'jquery',
+      _: 'lodash',
+      L: 'leaflet',
+    }),
+  ],
 };
