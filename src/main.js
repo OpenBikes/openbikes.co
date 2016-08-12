@@ -3,6 +3,7 @@ import 'expose?$!jquery';
 import 'expose?jQuery!jquery';
 
 import '../static/vendor/js/materialize.min.js';
+import '../static/vendor/leaflet/leaflet.js';
 
 import App from './App';
 import router from './router';

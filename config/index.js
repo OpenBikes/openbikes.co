@@ -20,9 +20,9 @@ module.exports = {
     env: require('./dev.env'),
     port: 8080,
     proxyTable: {
-      // Proxy all requests starting with "/api" to "openbikes.co/api"
+      // Proxy all requests starting with "/api" to "api.openbikes.co"
       '/api': {
-        target: 'http://openbikes.co/api',
+        target: 'http://api.openbikes.co',
         changeOrigin: true,
         pathRewrite: {
           '^/api': '',

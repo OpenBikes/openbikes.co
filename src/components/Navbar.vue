@@ -9,8 +9,6 @@
 </template>
 
 <script>
-import $ from 'jquery';
-
 import Routes from '../components/Routes.vue';
 
 $(document).ready(() => {

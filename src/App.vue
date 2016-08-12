@@ -4,7 +4,7 @@
     <div class="page">
       <router-view></router-view>
     </div>
-    <Foot></Foot>
+    <Foot v-if="$route.name !== 'map'"></Foot>
   </div>
 </template>
 
@@ -16,17 +16,16 @@ import Home from './pages/Home';
 import Navbar from './components/Navbar';
 import Search from './pages/Search';
 
-import store from './vuex/store';
-
 
 export default {
   name: 'App',
   components: { About, CityMap, Foot, Home, Navbar, Search },
-  store,
 };
 </script>
 
-<style scoped lang="sass">
+<style lang="sass">
+@import "./style.sass"
+
 .app
   display: flex;
   min-height: 100vh;

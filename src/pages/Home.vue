@@ -16,6 +16,9 @@ export default {
 .banner-container
   height: 300px;
 
+.parallax
+  position: static;
+
 .banner-container
   margin-top: 100px;
 </style>

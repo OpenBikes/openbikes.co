@@ -1,0 +1,606 @@
+{
+  "cities": [
+    {
+      "active": true,
+      "country": "France",
+      "latitude": 44.92825985,
+      "longitude": 4.89443995,
+      "name": "Valence",
+      "predictable": false,
+      "provider": "velolibelo",
+      "slug": "valence"
+    },
+    {
+      "active": true,
+      "country": "UAE",
+      "latitude": 25.1327892945062,
+      "longitude": 55.1844994091053,
+      "name": "Dubai",
+      "predictable": false,
+      "provider": "nextbike",
+      "slug": "dubai"
+    },
+    {
+      "active": true,
+      "country": "Irlande",
+      "latitude": 53.3443469108911,
+      "longitude": -6.26436795049505,
+      "name": "Dublin",
+      "predictable": true,
+      "provider": "jcdecaux",
+      "slug": "dublin"
+    },
+    {
+      "active": true,
+      "country": "Luxembourg",
+      "latitude": 49.5991704,
+      "longitude": 6.12592306666667,
+      "name": "Luxembourg",
+      "predictable": true,
+      "provider": "jcdecaux",
+      "slug": "luxembourg"
+    },
+    {
+      "active": true,
+      "country": "France",
+      "latitude": 47.7471462362228,
+      "longitude": 7.33488014682054,
+      "name": "Mulhouse",
+      "predictable": true,
+      "provider": "jcdecaux",
+      "slug": "mulhouse"
+    },
+    {
+      "active": true,
+      "country": "France",
+      "latitude": 47.2397657182927,
+      "longitude": 6.02543330108886,
+      "name": "Besancon",
+      "predictable": true,
+      "provider": "jcdecaux",
+      "slug": "besancon"
+    },
+    {
+      "active": true,
+      "country": "Belgium",
+      "latitude": 50.842670192015,
+      "longitude": 4.36068610685475,
+      "name": "Brussels",
+      "predictable": true,
+      "provider": "jcdecaux",
+      "slug": "brussels"
+    },
+    {
+      "active": true,
+      "country": "France",
+      "latitude": 49.8940298692084,
+      "longitude": 2.29725010938634,
+      "name": "Amiens",
+      "predictable": true,
+      "provider": "jcdecaux",
+      "slug": "amiens"
+    },
+    {
+      "active": true,
+      "country": "France",
+      "latitude": 49.0368759562153,
+      "longitude": 2.05919134071038,
+      "name": "Cergy",
+      "predictable": true,
+      "provider": "jcdecaux",
+      "slug": "cergy"
+    },
+    {
+      "active": true,
+      "country": "Slovenia",
+      "latitude": 46.0572541111111,
+      "longitude": 14.5096159722222,
+      "name": "Ljubljana",
+      "predictable": true,
+      "provider": "jcdecaux",
+      "slug": "ljubljana"
+    },
+    {
+      "active": true,
+      "country": "Sweden",
+      "latitude": 57.7013111044776,
+      "longitude": 11.971047238806,
+      "name": "Gothenburg",
+      "predictable": true,
+      "provider": "jcdecaux",
+      "slug": "gothenburg"
+    },
+    {
+      "active": true,
+      "country": "France",
+      "latitude": 43.2865127852829,
+      "longitude": 5.38122438256176,
+      "name": "Marseille",
+      "predictable": true,
+      "provider": "jcdecaux",
+      "slug": "marseille"
+    },
+    {
+      "active": true,
+      "country": "Turkey",
+      "latitude": 38.4591445745834,
+      "longitude": 27.1044586971402,
+      "name": "Seferihisar",
+      "predictable": false,
+      "provider": "nextbike",
+      "slug": "seferihisar"
+    },
+    {
+      "active": true,
+      "country": "France",
+      "latitude": 45.7601997597771,
+      "longitude": 4.85000248373283,
+      "name": "Lyon",
+      "predictable": true,
+      "provider": "jcdecaux",
+      "slug": "lyon"
+    },
+    {
+      "active": true,
+      "country": "France",
+      "latitude": 43.6019562856783,
+      "longitude": 1.44374195333697,
+      "name": "Toulouse",
+      "predictable": true,
+      "provider": "jcdecaux",
+      "slug": "toulouse"
+    },
+    {
+      "active": true,
+      "country": "Spain",
+      "latitude": 37.3891252530926,
+      "longitude": -5.97768318679562,
+      "name": "Sevilla",
+      "predictable": true,
+      "provider": "jcdecaux",
+      "slug": "sevilla"
+    },
+    {
+      "active": true,
+      "country": "France",
+      "latitude": 48.6892902830836,
+      "longitude": 6.17996993260364,
+      "name": "Nancy",
+      "predictable": true,
+      "provider": "jcdecaux",
+      "slug": "nancy"
+    },
+    {
+      "active": true,
+      "country": "Sweden",
+      "latitude": 55.7925507142857,
+      "longitude": 49.1203628571429,
+      "name": "Kazan",
+      "predictable": true,
+      "provider": "jcdecaux",
+      "slug": "kazan"
+    },
+    {
+      "active": true,
+      "country": "USA",
+      "latitude": 26.7127053851296,
+      "longitude": -80.0536713438971,
+      "name": "West Palm Beach",
+      "predictable": false,
+      "provider": "nextbike",
+      "slug": "west-palm-beach"
+    },
+    {
+      "active": true,
+      "country": "France",
+      "latitude": 47.2157921715795,
+      "longitude": -1.55390971040983,
+      "name": "Nantes",
+      "predictable": true,
+      "provider": "jcdecaux",
+      "slug": "nantes"
+    },
+    {
+      "active": true,
+      "country": "France",
+      "latitude": 49.4367233783785,
+      "longitude": 1.09185134713743,
+      "name": "Rouen",
+      "predictable": true,
+      "provider": "jcdecaux",
+      "slug": "rouen"
+    },
+    {
+      "active": true,
+      "country": "Spain",
+      "latitude": 39.4716733230875,
+      "longitude": -0.371302996858719,
+      "name": "Valencia",
+      "predictable": true,
+      "provider": "jcdecaux",
+      "slug": "valencia"
+    },
+    {
+      "active": true,
+      "country": "Latvia",
+      "latitude": 56.9820221924635,
+      "longitude": 23.8472566008568,
+      "name": "J\u016brmala",
+      "predictable": false,
+      "provider": "nextbike",
+      "slug": "jurmala"
+    },
+    {
+      "active": true,
+      "country": "France",
+      "latitude": 48.1109449146341,
+      "longitude": -1.67677343902439,
+      "name": "Rennes",
+      "predictable": true,
+      "provider": "keolis",
+      "slug": "rennes"
+    },
+    {
+      "active": true,
+      "country": "France",
+      "latitude": 43.6921938900691,
+      "longitude": 7.24491997167393,
+      "name": "Nice",
+      "predictable": false,
+      "provider": "velobleu",
+      "slug": "nice"
+    },
+    {
+      "active": true,
+      "country": "Lithuania",
+      "latitude": 54.6887474048649,
+      "longitude": 25.2820302256757,
+      "name": "Vilnius",
+      "predictable": true,
+      "provider": "jcdecaux",
+      "slug": "vilnius"
+    },
+    {
+      "active": true,
+      "country": "New Zealand",
+      "latitude": -43.5315987538975,
+      "longitude": 172.634747922421,
+      "name": "Christchurch",
+      "predictable": false,
+      "provider": "nextbike",
+      "slug": "christchurch"
+    },
+    {
+      "active": true,
+      "country": "USA",
+      "latitude": 40.7274559988735,
+      "longitude": -73.9840443838094,
+      "name": "New-York",
+      "predictable": true,
+      "provider": "citibike",
+      "slug": "new-york"
+    },
+    {
+      "active": true,
+      "country": "USA",
+      "latitude": 41.8875990316733,
+      "longitude": -87.6584241137369,
+      "name": "Chicago",
+      "predictable": false,
+      "provider": "divvy",
+      "slug": "chicago"
+    },
+    {
+      "active": true,
+      "country": "Sweden",
+      "latitude": 55.7081859643358,
+      "longitude": 13.1996098355197,
+      "name": "Lund",
+      "predictable": true,
+      "provider": "jcdecaux",
+      "slug": "lund"
+    },
+    {
+      "active": true,
+      "country": "Poland",
+      "latitude": 52.1063850941081,
+      "longitude": 20.6277567148209,
+      "name": "Grodzisk Mazowiecki",
+      "predictable": false,
+      "provider": "nextbike",
+      "slug": "grodzisk-mazowiecki"
+    },
+    {
+      "active": true,
+      "country": "France",
+      "latitude": 48.8594305604181,
+      "longitude": 2.3434502469605,
+      "name": "Paris",
+      "predictable": true,
+      "provider": "jcdecaux",
+      "slug": "paris"
+    },
+    {
+      "active": true,
+      "country": "USA",
+      "latitude": 37.5995227910448,
+      "longitude": -122.212836089552,
+      "name": "Bay Area",
+      "predictable": false,
+      "provider": "bayarea",
+      "slug": "bay-area"
+    },
+    {
+      "active": true,
+      "country": "France",
+      "latitude": 50.9491144431375,
+      "longitude": 1.85911539046351,
+      "name": "Calais",
+      "predictable": false,
+      "provider": "velin",
+      "slug": "calais"
+    },
+    {
+      "active": true,
+      "country": "Poland",
+      "latitude": 52.2236554795533,
+      "longitude": 21.007372475686,
+      "name": "Warsaw",
+      "predictable": false,
+      "provider": "nextbike",
+      "slug": "warsaw"
+    },
+    {
+      "active": true,
+      "country": "Latvia",
+      "latitude": 56.9569987517641,
+      "longitude": 24.1167935041281,
+      "name": "Riga",
+      "predictable": false,
+      "provider": "nextbike",
+      "slug": "riga"
+    },
+    {
+      "active": true,
+      "country": "Sweden",
+      "latitude": 0.0,
+      "longitude": 0.0,
+      "name": "Stockholm",
+      "predictable": true,
+      "provider": "jcdecaux",
+      "slug": "stockholm"
+    },
+    {
+      "active": true,
+      "country": "France",
+      "latitude": 48.7836807938776,
+      "longitude": 2.46049145366762,
+      "name": "Creteil",
+      "predictable": true,
+      "provider": "jcdecaux",
+      "slug": "creteil"
+    },
+    {
+      "active": true,
+      "country": "Poland",
+      "latitude": 52.090450399639,
+      "longitude": 21.1185464859009,
+      "name": "Konstancin-Jeziorna",
+      "predictable": false,
+      "provider": "nextbike",
+      "slug": "konstancin-jeziorna"
+    },
+    {
+      "active": true,
+      "country": "South Korea",
+      "latitude": 36.3527412280788,
+      "longitude": 127.390457389163,
+      "name": "Daejeon",
+      "predictable": false,
+      "provider": "tashu",
+      "slug": "daejeon"
+    },
+    {
+      "active": true,
+      "country": "Poland",
+      "latitude": 51.105702321149,
+      "longitude": 17.0324795466813,
+      "name": "Wroc\u0142aw",
+      "predictable": false,
+      "provider": "nextbike",
+      "slug": "wroclaw"
+    },
+    {
+      "active": true,
+      "country": "France",
+      "latitude": 43.6103901785714,
+      "longitude": 3.87576189285714,
+      "name": "Montpellier",
+      "predictable": false,
+      "provider": "clivelo",
+      "slug": "montpellier"
+    },
+    {
+      "active": true,
+      "country": "France",
+      "latitude": 45.4412591034483,
+      "longitude": 4.38925372413793,
+      "name": "Saint-Etienne",
+      "predictable": false,
+      "provider": "velivert",
+      "slug": "saint-etienne"
+    },
+    {
+      "active": true,
+      "country": "Poland",
+      "latitude": 51.2425646544494,
+      "longitude": 22.5504707348408,
+      "name": "Lublin",
+      "predictable": false,
+      "provider": "nextbike",
+      "slug": "lublin"
+    },
+    {
+      "active": true,
+      "country": "UK",
+      "latitude": 54.596714237195,
+      "longitude": -5.92892222816447,
+      "name": "Belfast",
+      "predictable": false,
+      "provider": "nextbike",
+      "slug": "belfast"
+    },
+    {
+      "active": true,
+      "country": "Poland",
+      "latitude": 53.1289196903033,
+      "longitude": 23.1491393231331,
+      "name": "Bia\u0142ystok",
+      "predictable": false,
+      "provider": "nextbike",
+      "slug": "bialystok"
+    },
+    {
+      "active": true,
+      "country": "Japan",
+      "latitude": 36.6965253,
+      "longitude": 137.2115839,
+      "name": "Toyama",
+      "predictable": true,
+      "provider": "jcdecaux",
+      "slug": "toyama"
+    },
+    {
+      "active": true,
+      "country": "Japan",
+      "latitude": 35.0030096,
+      "longitude": 135.7665302,
+      "name": "Kyoto",
+      "predictable": true,
+      "provider": "machikado",
+      "slug": "kyoto"
+    },
+    {
+      "active": true,
+      "country": "UAE",
+      "latitude": 24.4304118095499,
+      "longitude": 54.6177964760056,
+      "name": "Abu Dhabi",
+      "predictable": false,
+      "provider": "nextbike",
+      "slug": "abu-dhabi"
+    },
+    {
+      "active": true,
+      "country": "USA",
+      "latitude": 40.446933047098,
+      "longitude": -79.9668415404242,
+      "name": "Pittsburgh",
+      "predictable": false,
+      "provider": "nextbike",
+      "slug": "pittsburgh"
+    },
+    {
+      "active": true,
+      "country": "New Zealand",
+      "latitude": -36.7894416657263,
+      "longitude": 174.666271805763,
+      "name": "Auckland",
+      "predictable": false,
+      "provider": "nextbike",
+      "slug": "auckland"
+    },
+    {
+      "active": true,
+      "country": "France",
+      "latitude": 47.6527659606934,
+      "longitude": -2.76303206443787,
+      "name": "Vannes",
+      "predictable": false,
+      "provider": "velocea",
+      "slug": "vannes"
+    },
+    {
+      "active": true,
+      "country": "Norway",
+      "latitude": 59.956188,
+      "longitude": 11.050704,
+      "name": "Lillestr\u00f8m",
+      "predictable": true,
+      "provider": "jcdecaux",
+      "slug": "lillestrom"
+    },
+    {
+      "active": true,
+      "country": "Croatia",
+      "latitude": 45.7982854100769,
+      "longitude": 15.9746899033415,
+      "name": "Zagreb",
+      "predictable": false,
+      "provider": "nextbike",
+      "slug": "zagreb"
+    },
+    {
+      "active": true,
+      "country": "France",
+      "latitude": 43.945905,
+      "longitude": 4.80973457894737,
+      "name": "Avignon",
+      "predictable": false,
+      "provider": "velopop",
+      "slug": "avignon"
+    },
+    {
+      "active": true,
+      "country": "France",
+      "latitude": 48.5810973333333,
+      "longitude": 7.74733676190476,
+      "name": "Strasbourg",
+      "predictable": false,
+      "provider": "velhop",
+      "slug": "strasbourg"
+    },
+    {
+      "active": true,
+      "country": "USA",
+      "latitude": 35.0498363030303,
+      "longitude": -85.3066237272727,
+      "name": "Chattanooga",
+      "predictable": false,
+      "provider": "bikechattanooga",
+      "slug": "chattanooga"
+    },
+    {
+      "active": true,
+      "country": "Poland",
+      "latitude": 43.7243902313151,
+      "longitude": 15.8538690446585,
+      "name": "\u0160ibenik",
+      "predictable": false,
+      "provider": "nextbike",
+      "slug": "sibenik"
+    },
+    {
+      "active": true,
+      "country": "Germany",
+      "latitude": 49.4079188963007,
+      "longitude": 8.6935751260643,
+      "name": "Heidelberg",
+      "predictable": false,
+      "provider": "nextbike",
+      "slug": "heidelberg"
+    },
+    {
+      "active": true,
+      "country": "Belgium",
+      "latitude": 50.4632780384615,
+      "longitude": 4.86400825769231,
+      "name": "Namur",
+      "predictable": true,
+      "provider": "jcdecaux",
+      "slug": "namur"
+    }
+  ],
+  "count": 60,
+  "status": "success"
+}

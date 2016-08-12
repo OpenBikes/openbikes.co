@@ -6,8 +6,8 @@
           <div class="card-panel blue-grey footer-card">
             <div class="row center">
               <ul>
-                <li class="col s4 m12" v-for="link in leftLinks">
-                  <a class="white-text" href="{{ link.url }}">{{ link.label }}</a>
+                <li class="col s6 m12" v-for="link in leftLinks">
+                  <a class="" href="{{ link.url }}">{{ link.label }}</a>
                 </li>
               </ul>
             </div>
@@ -17,8 +17,8 @@
           <div class="card-panel blue-grey footer-card">
             <div class="row center">
               <ul>
-                <li class="col s4 m12" v-for="link in rightLinks">
-                  <a class="white-text" href="{{ link.url }}">{{ link.label }}</a>
+                <li class="col s6 m12" v-for="link in rightLinks">
+                  <a class="" href="{{ link.url }}">{{ link.label }}</a>
                 </li>
               </ul>
             </div>
@@ -27,14 +27,10 @@
         <div class="col s12 m4">
           <div class="card-panel blue-grey footer-card">
             <div class="row center">
-              <div class="col s4 m12 card-logo">
-                <i class="fa fa-5x fa-facebook-square white-text" aria-hidden="true"></i>
-              </div>
-              <div class="col s4 m12 card-logo">
-                <i class="fa fa-5x fa-twitter white-text" aria-hidden="true"></i>
-              </div>
-              <div class="col s4 m12 card-logo">
-                <i class="fa fa-5x fa-github white-text" aria-hidden="true"></i>
+              <div class="col s3 m6 card-logo" v-for="logo in logos">
+                <a href="{{ logo.url }}">
+                  <i class="fa fa-4x fa-{{ logo.icon }}" aria-hidden="true"></i>
+                </a>
               </div>
             </div>
           </div>
@@ -59,9 +55,6 @@ export default {
       { label: 'JCDecaux', url: 'https://developer.jcdecaux.com/' },
       { label: 'JCDecaux', url: 'https://developer.jcdecaux.com/' },
       { label: 'JCDecaux', url: 'https://developer.jcdecaux.com/' },
-      { label: 'JCDecaux', url: 'https://developer.jcdecaux.com/' },
-      { label: 'JCDecaux', url: 'https://developer.jcdecaux.com/' },
-      { label: 'JCDecaux', url: 'https://developer.jcdecaux.com/' },
     ],
     rightLinks: [
       { label: 'data.gouv.fr', url: 'https://www.data.gouv.fr/fr/' },
@@ -70,24 +63,31 @@ export default {
       { label: 'data.gouv.fr', url: 'https://www.data.gouv.fr/fr/' },
       { label: 'data.gouv.fr', url: 'https://www.data.gouv.fr/fr/' },
       { label: 'data.gouv.fr', url: 'https://www.data.gouv.fr/fr/' },
-      { label: 'data.gouv.fr', url: 'https://www.data.gouv.fr/fr/' },
-      { label: 'data.gouv.fr', url: 'https://www.data.gouv.fr/fr/' },
-      { label: 'data.gouv.fr', url: 'https://www.data.gouv.fr/fr/' },
+    ],
+    logos: [
+      { icon: 'facebook-square', url: 'https://www.facebook.com/OpenBikesNotJustBiking/' },
+      { icon: 'twitter', url: 'https://twitter.com/openbikes_' },
+      { icon: 'book', url: 'http://docs.openbikes.apiary.io/' },
+      { icon: 'github', url: 'https://github.com/OpenBikes' },
     ],
   }),
 };
 </script>
 
 <style scoped lang="sass">
+.page-footer
+  margin-top: 0;
+
 .footer-card
-  height: 260px;
+  height: 200px;
 
   @media screen and (max-width: 600px)
     height: 130px;
 
 .card-logo
-  margin-top: 3px;
+  margin-top: 10px;
+  padding-bottom: 16px;
 
   @media screen and (max-width: 600px)
-    margin-top: 10px;
+    margin-top: 14px;
 </style>
