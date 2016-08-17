@@ -4,12 +4,9 @@
     <div class="row">
       <div class="col s6 offset-s3">
         <Multiselect :options="cities",
-                     :multiple="true",
                      :searchable="true",
-                     :close-on-select="false",
                      :show-labels="false"
                      placeholder="Search"
-                     option-partial="searchSelectOption"
                      label="name">
         </Multiselect>
       </div>
@@ -26,18 +23,9 @@
 
 <script>
 import Multiselect from 'vue-multiselect';
-import Vue from 'vue';
 
 import Card from '../components/Card.vue';
 
-Vue.partial('searchSelectOption', `<div>
-                                    <div class="option__desc">
-                                      <span class="option__title">{‌{option.name}}</span>
-                                      <span class="option__small">
-                                        {‌{option.country}}
-                                      </span>
-                                    </div>
-                                  </div>`);
 
 export default {
   name: 'Search',

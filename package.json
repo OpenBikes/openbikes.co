@@ -18,6 +18,7 @@
     "jquery": "^2.2.4",
     "leaflet": "^0.7.7",
     "lodash": "^4.13.1",
+    "materialize-css": "^0.97.7",
     "vue": "^1.0.21",
     "vue-multiselect": "^1.1.1",
     "vue-router": "^0.7.13"

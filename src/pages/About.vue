@@ -14,7 +14,7 @@
           </div>
           <div class="card-action" style="padding-bottom: 5px;">
             <div class="row">
-              <div class="col s4" v-for="logo in teamMembersLogos.max">
+              <div class="col s4 center" v-for="logo in teamMembersLogos.max">
                 <a href="{{ logo.url }}" style="color: #455a64;">
                   <i class="fa fa-3x fa-{{ logo.icon }}" aria-hidden="true"></i>
                 </a>
@@ -35,7 +35,7 @@
           </div>
           <div class="card-action" style="padding-bottom: 5px;">
             <div class="row">
-              <div class="col s4" v-for="logo in teamMembersLogos.axel">
+              <div class="col s4 center" v-for="logo in teamMembersLogos.axel">
                 <a href="{{ logo.url }}" style="color: #455a64;">
                   <i class="fa fa-3x fa-{{ logo.icon }}" aria-hidden="true"></i>
                 </a>
