@@ -20,9 +20,10 @@ module.exports = {
     env: require('./dev.env'),
     port: 8080,
     proxyTable: {
-      // Proxy all requests starting with "/api" to "api.openbikes.co"
+      // Proxy all requests starting with "/api" to "api.openbikes.co" or to "localhost:5000"
+      // depending on the environment.
       '/api': {
-        target: 'http://api.openbikes.co',
+        target: process.env.NODE_ENV === 'production' ? 'http://api.openbikes.co' : 'http://localhost:5000',
         changeOrigin: true,
         pathRewrite: {
           '^/api': '',

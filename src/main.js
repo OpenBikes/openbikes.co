@@ -2,7 +2,10 @@
 import 'expose?$!jquery';
 import 'expose?jQuery!jquery';
 
+import 'leaflet';
 import 'materialize-css';
+
+L.Icon.Default.imagePath = '/static/vendor/leaflet/images';
 
 import App from './App';
 import router from './router';

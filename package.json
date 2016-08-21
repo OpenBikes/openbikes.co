@@ -1,7 +1,7 @@
 {
   "name": "openbikes.co",
   "version": "1.0.0",
-  "description": "OpenBikes browser frontend",
+  "description": "OpenBikes responsive browser frontend",
   "author": "OpenBikes <contact.openbikes@gmail.com>",
   "repository": "https://github.com/OpenBikes/openbikes.co",
   "private": false,
@@ -17,8 +17,9 @@
     "hammerjs": "^2.0.8",
     "jquery": "^2.2.4",
     "leaflet": "^0.7.7",
-    "lodash": "^4.13.1",
     "materialize-css": "^0.97.7",
+    "moment": "^2.14.1",
+    "tinycolor2": "^1.4.1",
     "vue": "^1.0.21",
     "vue-multiselect": "^1.1.1",
     "vue-router": "^0.7.13"

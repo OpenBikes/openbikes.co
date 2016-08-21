@@ -38,6 +38,16 @@ export default {
     cities: [
       {
         active: true,
+        country: 'France',
+        latitude: 43.6018906155859,
+        longitude: 1.4436077736487,
+        name: 'Toulouse',
+        predictable: true,
+        provider: 'jcdecaux',
+        slug: 'toulouse',
+      },
+      {
+        active: true,
         country: 'Belgium',
         latitude: 50.842670192015,
         longitude: 4.36068610685475,

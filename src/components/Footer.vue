@@ -1,9 +1,9 @@
 <template>
-  <footer class="page-footer blue-grey darken-2">
+  <footer class="page-footer blue-grey darken-3">
     <div class="container">
       <div class="row">
         <div class="col s12 m4">
-          <div class="card-panel blue-grey footer-card">
+          <div class="card-panel blue-grey darken-2 footer-card">
             <div class="row center">
               <ul>
                 <li class="col s6 m12" v-for="link in leftLinks">
@@ -14,7 +14,7 @@
           </div>
         </div>
         <div class="col s12 m4">
-          <div class="card-panel blue-grey footer-card">
+          <div class="card-panel blue-grey darken-2 footer-card">
             <div class="row center">
               <ul>
                 <li class="col s6 m12" v-for="link in rightLinks">
@@ -25,7 +25,7 @@
           </div>
         </div>
         <div class="col s12 m4">
-          <div class="card-panel blue-grey footer-card">
+          <div class="card-panel blue-grey darken-2 footer-card">
             <div class="row center">
               <div class="col s3 m6 card-logo" v-for="logo in logos">
                 <a href="{{ logo.url }}">

@@ -10,12 +10,13 @@ module.exports = {
   ],
   // add your custom rules here
   'rules': {
+    'func-names': 0,
     'import/no-unresolved': 0,
-    // allow debugger during development
     'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0,
     'no-param-reassign': 0,
     'no-console': 0,
-    'object-shorthand': 0
+    'object-shorthand': 0,
+    'space-before-function-paren': 0
   },
   'globals': {
     $: true,

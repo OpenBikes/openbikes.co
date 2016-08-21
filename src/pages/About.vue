@@ -2,15 +2,21 @@
 <div>
   <div class="container">
     <div class="row">
-      <div class="col offset-s2 s8 offset-m1 m4">
+      <div class="col offset-s2 s8 m5">
         <div class="card">
-          <div class="card-image">
-            <img src="../img/max_halford.jpg">
-            <span class="card-title">Max Halford</span>
+          <div class="card-image waves-effect waves-block waves-light">
+            <img class="activator" src="../img/max_halford.jpg">
           </div>
-          <div class="card-content">
-            <p>I am a very simple card. I am good at containing small bits of information.
-            I am convenient because I require little markup to use effectively.</p>
+          <div class="card-content center">
+            <span class="card-title activator">
+              Max Halford
+            </span>
+          </div>
+          <div class="card-reveal">
+            <span class="card-title">
+              <i class="material-icons left">close</i> Max Halford
+            </span>
+            <p>Here is some more information about this product that is only revealed once clicked on.</p>
           </div>
           <div class="card-action" style="padding-bottom: 5px;">
             <div class="row">
@@ -23,15 +29,21 @@
           </div>
         </div>
       </div>
-      <div class="col offset-s2 s8 offset-m2 m4">
+      <div class="col offset-s2 s8 offset-m2 m5">
         <div class="card">
-          <div class="card-image">
-            <img src="../img/axel_bellec.jpg">
-            <span class="card-title">Axel Bellec</span>
+          <div class="card-image waves-effect waves-block waves-light">
+            <img class="activator" src="../img/axel_bellec.jpg">
           </div>
-          <div class="card-content">
-            <p>I am a very simple card. I am good at containing small bits of information.
-            I am convenient because I require little markup to use effectively.</p>
+          <div class="card-content center">
+            <span class="card-title activator">
+              Axel Bellec
+            </span>
+          </div>
+          <div class="card-reveal">
+            <span class="card-title">
+              <i class="material-icons left">close</i> Axel Bellec
+            </span>
+            <p>Here is some more information about this product that is only revealed once clicked on.</p>
           </div>
           <div class="card-action" style="padding-bottom: 5px;">
             <div class="row">
