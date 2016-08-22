@@ -26,7 +26,6 @@ import Multiselect from 'vue-multiselect';
 
 import Card from '../components/Card.vue';
 
-
 export default {
   name: 'Search',
   components: {

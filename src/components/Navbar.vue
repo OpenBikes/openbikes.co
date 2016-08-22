@@ -11,13 +11,10 @@
 <script>
 import Routes from '../components/Routes.vue';
 
-$(document).ready(() => {
-  $('.button-collapse').sideNav();
-});
-
 export default {
   components: {
     Routes,
   },
+  ready: () => $('.button-collapse').sideNav(),
 };
 </script>

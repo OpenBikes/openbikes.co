@@ -9,17 +9,24 @@
 </template>
 
 <script>
-import About from './pages/About';
-import CityMap from './pages/Map';
 import Foot from './components/Footer';
-import Home from './pages/Home';
 import Navbar from './components/Navbar';
-import Search from './pages/Search';
 
+import About from './pages/About';
+import Home from './pages/Home';
+import CityMap from './pages/Map';
+import Search from './pages/Search';
 
 export default {
   name: 'App',
-  components: { About, CityMap, Foot, Home, Navbar, Search },
+  components: {
+    About,
+    CityMap,
+    Foot,
+    Home,
+    Navbar,
+    Search,
+  },
 };
 </script>
 

@@ -6,6 +6,8 @@
 import moment from 'moment';
 import tinycolor from 'tinycolor2';
 
+import { fetchJson } from '../util';
+
 const getColor = ratio => {
   const hue = 120 + ratio * 80;
   const saturation = 100;
@@ -14,25 +16,23 @@ const getColor = ratio => {
   return `#${tinycolor(hsl).toHex()}`;
 };
 
-const getMarkerOptions = (bikes, stands, status) => {
-  const fillRatio = stands / (stands + bikes);
-  return {
-    radius: 8,
-    fillColor: status === 'OPEN' ? getColor(fillRatio) : '#980000',
-    fillOpacity: 0.8,
-    weight: 2.5,
-    color: '#263238',
-    opacity: 1,
-  };
-};
+const defineMarkerOptions = (bikes, stands, status) => ({
+  radius: 8,
+  fillColor: status === 'OPEN' ? getColor(stands / (stands + bikes)) : '#980000',
+  fillOpacity: 0.8,
+  weight: 2.5,
+  color: '#263238',
+  opacity: 1,
+});
 
 export default {
   name: 'Map',
   data: () => ({
     map: null,
+    status: 'loading',
     lastUpdate: null,
     stations: [],
-    markers: {},
+    markers: new Map(),
   }),
   computed: {
     citySlug: function() { return this.$route.query.city; },
@@ -40,33 +40,34 @@ export default {
   watch: {
     stations: function(newStations) {
       for (const station of newStations) {
-        const markerOptions = getMarkerOptions(
-          station.properties.bikes,
-          station.properties.stands,
-          station.properties.status
-        );
-        L.geoJson(station, {
-          pointToLayer: (feature, latlng) => L.circleMarker(latlng, markerOptions),
-          onEachFeature: (feature, layer) => {
-            layer.bindPopup(feature.properties.address);
-          },
-        }).addTo(this.map);
+        // If the marker is already on the map, only refresh it if it has changed in any way
+        if (this.markers.has(station.properties.slug)) {
+          const marker = this.markers.get(station.properties.slug);
+          if (marker.options.bikes !== station.properties.bikes ||
+              marker.options.stands !== station.properties.stands ||
+              marker.options.status !== station.properties.status) {
+            this.map.removeLayer(marker);
+            this.createMarker(station);
+          }
+        } else this.createMarker(station);
       }
     },
   },
   ready: function() {
     this.setupMap();
     this.fetchStations();
+    this.status = 'ready';
+    setInterval(this.fetchStations, 60000);
   },
   methods: {
     fetchStations: function() {
-      fetch(`/api/geojson/${this.citySlug}`)
-      .then(response => response.json())
-      .then(data => {
-        this.map.setView([data.center.latitude, data.center.longitude], 13);
-        this.lastUpdate = moment(data.update);
-        this.stations = data.features;
-      });
+      fetchJson('GET', `/api/geojson/${this.citySlug}`)
+      .then(city => {
+        this.map.setView([city.center.latitude, city.center.longitude], 13);
+        this.lastUpdate = moment(city.update);
+        this.stations = city.features;
+      })
+      .catch(() => { this.status = 'failure'; });
     },
     setupMap: function() {
       this.map = L.map('map');
@@ -76,6 +77,22 @@ export default {
         mapId: 'mapbox.outdoors',
         token: 'pk.eyJ1IjoibGVtYXgiLCJhIjoidnNDV1kzNCJ9.iH26jLhEuimYd6vLOO6v1g',
       }).addTo(this.map);
+    },
+    createMarker: function(station) {
+      const markerOptions = defineMarkerOptions(
+        station.properties.bikes,
+        station.properties.stands,
+        station.properties.status
+      );
+      const marker = L.geoJson(station, {
+        pointToLayer: (feature, latlng) => L.circleMarker(latlng, markerOptions),
+        onEachFeature: (feature, layer) => { layer.bindPopup(feature.properties.address); },
+        bikes: station.properties.bikes,
+        stands: station.properties.stands,
+        status: station.properties.status,
+      });
+      this.markers.set(station.properties.slug, marker);
+      marker.addTo(this.map);
     },
   },
 };
