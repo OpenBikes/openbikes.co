@@ -3,7 +3,7 @@
     <div class="nav-wrapper container">
       <ul class="right hide-on-med-and-down"><Routes></Routes></ul>
       <ul id="mobile-nav" class="side-nav"><Routes></Routes></ul>
-      <a href="#" data-activates="mobile-nav" class="button-collapse"><i class="material-icons">menu</i></a>
+      <a v-el:collapser href="#" data-activates="mobile-nav"><i class="material-icons">menu</i></a>
     </div>
   </nav>
 </template>
@@ -15,6 +15,6 @@ export default {
   components: {
     Routes,
   },
-  ready: () => $('.button-collapse').sideNav(),
+  ready: function() { $(this.$els.collapser).sideNav(); },
 };
 </script>

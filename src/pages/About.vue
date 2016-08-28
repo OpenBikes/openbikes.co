@@ -20,7 +20,7 @@
           </div>
           <div class="card-action" style="padding-bottom: 5px;">
             <div class="row">
-              <div class="col s4 center" v-for="logo in teamMembersLogos.max">
+              <div class="col s4 center" v-for="logo in teamMembersLinks.max">
                 <a href="{{ logo.url }}" style="color: #455a64;">
                   <i class="fa fa-3x fa-{{ logo.icon }}" aria-hidden="true"></i>
                 </a>
@@ -47,7 +47,7 @@
           </div>
           <div class="card-action" style="padding-bottom: 5px;">
             <div class="row">
-              <div class="col s4 center" v-for="logo in teamMembersLogos.axel">
+              <div class="col s4 center" v-for="logo in teamMembersLinks.axel">
                 <a href="{{ logo.url }}" style="color: #455a64;">
                   <i class="fa fa-3x fa-{{ logo.icon }}" aria-hidden="true"></i>
                 </a>
@@ -65,7 +65,7 @@
 export default {
   name: 'About',
   data: () => ({
-    teamMembersLogos: {
+    teamMembersLinks: {
       max: [
         { icon: 'home', url: 'http://maxhalford.com/' },
         { icon: 'github', url: 'https://github.com/MaxHalford' },
@@ -80,3 +80,10 @@ export default {
   }),
 };
 </script>
+
+<style scoped lang="sass">
+.card-title
+  font-size: 30px;
+  font-weight: 400;
+</style>
+
