@@ -1,9 +1,8 @@
 <template>
   <div class="card blue-grey darken-1">
     <div class="card-image waves-effect waves-block waves-light">
-        <img src="http://maps.googleapis.com/maps/api/staticmap?center={{ city.country }},+{{ city.name }}&zoom=12&scale=2&size=500x350&maptype=terrain&format=png&visual_refresh=true">
+        <img :src="'static/img/cityMapBackground/'+city.slug+'_'+city.country+'.png'">
     </div>
-
     <div class="card-content white-text">
       <span class="card-title activator">{{ city.name }}</span>
     </div>
@@ -29,6 +28,9 @@ export default {
   },
   computed: {
     mapLink: function() { return `map?city=${this.city.slug}`; },
+    imgPath: function() {
+      return `static/img/cityMapBackground/${this.city.slug}_${this.city.country}.png`;
+    },
   },
 };
 </script>
