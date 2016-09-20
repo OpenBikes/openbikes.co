@@ -1,4 +1,5 @@
 var config = require('../config')
+var DashboardPlugin = require('webpack-dashboard/plugin');
 var webpack = require('webpack')
 var merge = require('webpack-merge')
 var utils = require('./utils')
@@ -17,6 +18,7 @@ module.exports = merge(baseWebpackConfig, {
   // eval-source-map is faster for development
   devtool: '#eval-source-map',
   plugins: [
+    new DashboardPlugin(),
     new webpack.DefinePlugin({
       'process.env': config.dev.env
     }),
