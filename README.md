@@ -11,6 +11,12 @@ npm install
 # serve with hot reload at localhost:8080
 npm run dev
 
+# download Google Static Maps
+npm run saveMaps
+
+# delete Google Static Maps
+npm run delMaps
+
 # build for production with minification
 npm run build
 

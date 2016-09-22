@@ -12,6 +12,7 @@ const spinner = ora('building for production...');
 spinner.start();
 
 const assetsPath = path.join(config.build.assetsRoot, config.build.assetsSubDirectory);
+
 rm('-rf', assetsPath);
 mkdir('-p', assetsPath);
 cp('-R', 'static/', assetsPath);
