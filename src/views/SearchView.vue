@@ -1,36 +1,32 @@
 <template>
   <div class="container">
-
     <div class="row">
       <div class="col s6 offset-s3">
-        <Multiselect :options="cities",
-                     :searchable="true",
+        <Multiselect :options="cities"
+                     :searchable="true"
                      :show-labels="false"
                      placeholder="Search"
                      label="name">
         </Multiselect>
       </div>
     </div>
-
     <div class="row">
       <div class="col s12 m6 l4" v-for="city in cities">
         <Card :city="city"></Card>
       </div>
     </div>
-
   </div>
 </template>
 
 <script>
-
-import Multiselect from 'vue-multiselect';
-import Card from '../components/Card.vue';
+import Multiselect from 'vue-multiselect'
+import Card from '../components/Card.vue'
 
 export default {
-  name: 'Search',
+  name: 'SearchView',
   components: {
     Card,
-    Multiselect,
+    Multiselect
   },
   data: () => ({
     input: '',
@@ -43,7 +39,7 @@ export default {
         name: 'Toulouse',
         predictable: true,
         provider: 'jcdecaux',
-        slug: 'toulouse',
+        slug: 'toulouse'
       },
       {
         active: true,
@@ -53,7 +49,7 @@ export default {
         name: 'Brussels',
         predictable: true,
         provider: 'jcdecaux',
-        slug: 'brussels',
+        slug: 'brussels'
       },
       {
         active: true,
@@ -63,7 +59,7 @@ export default {
         name: 'Amiens',
         predictable: true,
         provider: 'jcdecaux',
-        slug: 'amiens',
+        slug: 'amiens'
       },
       {
         active: true,
@@ -73,23 +69,23 @@ export default {
         name: 'Cergy',
         predictable: true,
         provider: 'jcdecaux',
-        slug: 'cergy',
-      },
-    ],
+        slug: 'cergy'
+      }
+    ]
   }),
-  ready: function ready() {
+  mounted: function () {
     // fetch('/api/cities')
     //   .then(response => response.json())
     //   .then(data => { this.cities = data.cities; });
-  },
-};
+  }
+}
 </script>
 
 <style scoped lang="sass">
 .search-container
-  height: 200px;
-  width: 300px;
+  height: 200px
+  width: 300px
 
 .search-bar
-  margin-top: 100px;
+  margin-top: 100px
 </style>

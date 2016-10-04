@@ -1,6 +1,8 @@
 # openbikes.co
 
-> OpenBikes browser frontend
+[![JavaScript Style Guide](https://cdn.rawgit.com/feross/standard/master/badge.svg)](https://github.com/feross/standard)
+
+> OpenBikes frontend
 
 ## Build Setup
 
@@ -13,12 +15,6 @@ npm run dev
 
 # build for production with minification
 npm run build
-
-# run unit tests
-npm run unit
-
-# run e2e tests
-npm run e2e
 
 # run all tests
 npm test

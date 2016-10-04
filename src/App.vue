@@ -1,43 +1,39 @@
 <template>
-  <div class="app">
+  <div id="app">
     <Navbar></Navbar>
-    <div class="page">
-      <router-view></router-view>
-    </div>
+    <transition name="fade" mode="out-in">
+      <router-view class="view"></router-view>
+    </transition>
     <Foot v-if="$route.name !== 'map'"></Foot>
   </div>
 </template>
 
 <script>
-import Foot from './components/Footer';
-import Navbar from './components/Navbar';
-
-import About from './pages/About';
-import Home from './pages/Home';
-import CityMap from './pages/Map';
-import Search from './pages/Search';
+import Foot from './components/Footer'
+import Navbar from './components/Navbar'
 
 export default {
   name: 'App',
   components: {
-    About,
-    CityMap,
-    Foot,
-    Home,
-    Navbar,
-    Search,
-  },
-};
+    Foot, Navbar
+  }
+}
 </script>
 
 <style lang="sass">
 @import "./main.sass"
 
-.app
+#app
   display: flex;
   min-height: 100vh;
   flex-direction: column;
 
-.page
+.fade-enter-active, .fade-leave-active
+  transition all .2s ease
+
+.fade-enter, .fade-leave-active
+  opacity 0
+
+.view
   flex: 1 0 auto;
 </style>

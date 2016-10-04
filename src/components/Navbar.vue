@@ -1,20 +1,29 @@
 <template>
-  <nav class="blue-grey darken-3" role="navigation">
+  <nav class="navbar blue-grey darken-3" role="navigation">
     <div class="nav-wrapper container">
       <ul class="right hide-on-med-and-down"><Routes></Routes></ul>
       <ul id="mobile-nav" class="side-nav"><Routes></Routes></ul>
-      <a v-el:collapser href="#" data-activates="mobile-nav"><i class="material-icons">menu</i></a>
+      <a href="#" data-activates="mobile-nav" class="button-collapse">
+        <i class="material-icons">menu</i>
+      </a>
     </div>
   </nav>
 </template>
 
 <script>
-import Routes from '../components/Routes.vue';
+import Routes from '../components/Routes.vue'
 
 export default {
   components: {
-    Routes,
+    Routes
   },
-  ready: function() { $(this.$els.collapser).sideNav(); },
-};
+  mounted: () => $('.button-collapse').sideNav()
+}
 </script>
+
+<style scoped lang="sass">
+@import "../variables.sass"
+
+.navbar
+  z-index: $top-level
+</style>

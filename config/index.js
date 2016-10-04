@@ -1,5 +1,5 @@
 // see http://vuejs-templates.github.io/webpack for documentation.
-const path = require('path');
+var path = require('path')
 
 module.exports = {
   build: {
@@ -14,11 +14,13 @@ module.exports = {
     // Before setting to `true`, make sure to:
     // npm install --save-dev compression-webpack-plugin
     productionGzip: false,
-    productionGzipExtensions: ['js', 'css'],
+    productionGzipExtensions: ['js', 'css']
   },
   dev: {
     env: require('./dev.env'),
     port: 8080,
+    assetsSubDirectory: 'static',
+    assetsPublicPath: '/',
     proxyTable: {
       // Proxy all requests starting with "/api" to "api.openbikes.co" or to "localhost:5000"
       // depending on the environment.
@@ -26,9 +28,15 @@ module.exports = {
         target: process.env.NODE_ENV === 'production' ? 'http://api.openbikes.co' : 'http://localhost:5000',
         changeOrigin: true,
         pathRewrite: {
-          '^/api': '',
-        },
-      },
+          '^/api': ''
+        }
+      }
     },
-  },
-};
+    // CSS Sourcemaps off by default because relative paths are "buggy"
+    // with this option, according to the CSS-Loader README
+    // (https://github.com/webpack/css-loader#sourcemaps)
+    // In our experience, they generally work as expected,
+    // just be aware of this issue when enabling this option.
+    cssSourceMap: false
+  }
+}

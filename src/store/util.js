@@ -1,4 +1,5 @@
-import { merge } from 'lodash';
+import { merge } from 'lodash'
+import fetch from 'isomorphic-fetch'
 
 /**
  * Wrapper around `fetch` to query a JSON resource.
@@ -7,21 +8,21 @@ import { merge } from 'lodash';
  * @param {string} url - The URL to query
  * @param {object} additionalInit - Additional parameters to pass to `fetch`
  */
-export function fetchJson(method, url, additionalInit = {}) {
+export function fetchJson (method, url, additionalInit = {}) {
   const init = {
     method: method,
     headers: {
-      Accept: 'application/json',
-    },
-  };
+      Accept: 'application/json'
+    }
+  }
 
-  merge(init, additionalInit);
+  merge(init, additionalInit)
 
   return fetch(url, init).then(data => {
-    if (data.status >= 200 && data.status < 300) return data.json();
-    throw data;
+    if (data.status >= 200 && data.status < 300) return data.json()
+    throw data
   })
-  .catch(err => { throw err; });
+  .catch(err => { throw err })
 }
 
 /**
@@ -34,15 +35,15 @@ export function fetchJson(method, url, additionalInit = {}) {
  *
  * @see {@link superFetch}
  */
-export function fetchWithBody(method, url, body, additionalInit = {}) {
+export function fetchWithBody (method, url, body, additionalInit = {}) {
   const init = {
     body: JSON.stringify(body),
     headers: {
-      'Content-type': 'application/json',
-    },
-  };
+      'Content-type': 'application/json'
+    }
+  }
 
-  merge(init, additionalInit);
+  merge(init, additionalInit)
 
-  return fetchJson(method, url, init);
+  return fetchJson(method, url, init)
 }
