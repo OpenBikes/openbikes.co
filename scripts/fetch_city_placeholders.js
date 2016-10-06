@@ -43,6 +43,8 @@ function downloadGoogleStaticMapAPI (country, city) {
   })
 }
 
+if (!fs.existsSync(MAPS_PATH)) { fs.mkdirSync(MAPS_PATH) }
+
 // Download the placeholder map for each city
 request({ method: 'GET', json: true, url: 'http://api.openbikes.co/cities' }, (err, res, cities) => {
   if (!err && res.statusCode === 200) {

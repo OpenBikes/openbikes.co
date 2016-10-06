@@ -74,9 +74,7 @@ export default {
     ]
   }),
   mounted: function () {
-    // fetch('/api/cities')
-    //   .then(response => response.json())
-    //   .then(data => { this.cities = data.cities; });
+    this.$store.dispatch('FETCH_CITIES')
   }
 }
 </script>

@@ -1,8 +1,9 @@
+import { isEmpty } from 'lodash'
 import moment from 'moment'
 import Vue from 'vue'
 import Vuex from 'vuex'
 
-import { fetchCity, fetchStations } from './api'
+import { fetchCities, fetchCity, fetchStations } from './api'
 
 Vue.use(Vuex)
 
@@ -17,12 +18,18 @@ export default new Vuex.Store({
   },
 
   mutations: {
+    SET_CITIES: (state, cities) => { state.cities = cities },
     SET_CURRENT_CITY: (state, city) => { state.currentCity = city },
     SET_LAST_REFRESH: (state, time) => { state.lastRefresh = time },
     SET_STATIONS: (state, stations) => { state.stations = stations }
   },
 
   actions: {
+    FETCH_CITIES: (context, citySlug) => {
+      if (isEmpty(context.state.cities)) {
+        fetchCities(citySlug).then(r => { context.commit('SET_CITIES', r) })
+      }
+    },
     FETCH_CITY: (context, citySlug) => {
       return new Promise((resolve, reject) => {
         fetchCity(citySlug).then(r => {
