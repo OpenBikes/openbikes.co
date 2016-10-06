@@ -30,17 +30,20 @@ export default {
     markers: new Map()
   }),
   mounted: function () {
-    const cityChosen = this.$route.params.hasOwnProperty('citySlug')
-    if (cityChosen || (!cityChosen && !this.$store.state.city)) {
-      // If the user has chosen a new city or if it's first visit on the map without having chosen
-      // a city, the city has to be set
-      this.$store.commit('SET_CURRENT_CITY', this.$route.params.citySlug)
+    // The user has chosen a city
+    if (this.$route.params.hasOwnProperty('citySlug')) {
+      const citySlug = this.$route.params.citySlug
+      // The city the user has chosen if different from the one he chose previously
+      if (!this.$store.state.currentCity || citySlug !== this.$store.state.currentCity.slug) {
+        this.$store.dispatch('FETCH_CITY', citySlug).then(() => this.setupMap())
+      } else this.setupMap()
+    // The user has clicked on the "Map tab and chose a city during his session
+    } else if (this.$store.state.currentCity) this.setupMap()
+    // The user has clicked on the "Map tab but hasn't chosen any city previously
+    else {
+      console.log('TODO')
     }
     // Fetch the stations, once this is done the map can be setup and the markers can be displayed
-    this.$store.dispatch('FETCH_STATIONS').then(() => {
-      this.setupMap()
-      this.displayMarkers()
-    })
     // Refresh the data every 2 minutes
     setInterval(
       () => this.$store.dispatch('FETCH_STATIONS').then(this.displayMarkers()),
@@ -57,7 +60,12 @@ export default {
         mapId: 'mapbox.outdoors',
         token: 'pk.eyJ1IjoibGVtYXgiLCJhIjoidnNDV1kzNCJ9.iH26jLhEuimYd6vLOO6v1g'
       }).addTo(this.map)
-      this.map.setView(this.$store.state.center, 13)
+      const center = [
+        this.$store.state.currentCity.latitude,
+        this.$store.state.currentCity.longitude
+      ]
+      this.map.setView(center, 13)
+      this.$store.dispatch('FETCH_STATIONS').then(() => this.displayMarkers())
     },
     createMarker: function (station) {
       const markerOptions = defineMarkerOptions(
