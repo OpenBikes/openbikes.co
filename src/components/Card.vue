@@ -1,13 +1,12 @@
 <template>
   <div class="card blue-grey darken-1">
     <div class="card-image waves-effect waves-block waves-light">
-      <img :src="pathToPlaceholder">
+      <router-link :to="linkToMap">
+        <img :src="pathToPlaceholder">
+      </router-link>
     </div>
     <div class="card-content white-text">
       <span class="card-title activator">{{ city.name }}</span>
-    </div>
-    <div class="card-action">
-      <router-link :to="linkToMap">Go to map</router-link>
     </div>
     <div class="card-reveal">
       <span class="card-title grey-text text-darken-4">{{ city.name }}
@@ -30,7 +29,7 @@ export default {
   },
   computed: {
     linkToMap: function () { return `map/${this.city.slug}` },
-    pathToPlaceholder: function () { return `../assets/city_placeholders/${this.city.slug}.png` }
+    pathToPlaceholder: function () { return require(`../assets/city_placeholders/${this.city.slug}.png`) }
   }
 }
 </script>

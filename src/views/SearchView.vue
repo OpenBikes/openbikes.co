@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <div class="row">
+    <!-- <div class="row">
       <div class="col s6 offset-s3">
         <Multiselect :options="cities"
                      :searchable="true"
@@ -9,7 +9,7 @@
                      label="name">
         </Multiselect>
       </div>
-    </div>
+    </div> -->
     <div class="row">
       <div class="col s12 m6 l4" v-for="city in cities">
         <Card :city="city"></Card>
@@ -30,51 +30,12 @@ export default {
   },
   data: () => ({
     input: '',
-    cities: [
-      {
-        active: true,
-        country: 'France',
-        latitude: 43.6018906155859,
-        longitude: 1.4436077736487,
-        name: 'Toulouse',
-        predictable: true,
-        provider: 'jcdecaux',
-        slug: 'toulouse'
-      },
-      {
-        active: true,
-        country: 'Belgium',
-        latitude: 50.842670192015,
-        longitude: 4.36068610685475,
-        name: 'Brussels',
-        predictable: true,
-        provider: 'jcdecaux',
-        slug: 'brussels'
-      },
-      {
-        active: true,
-        country: 'France',
-        latitude: 49.8940298692084,
-        longitude: 2.29725010938634,
-        name: 'Amiens',
-        predictable: true,
-        provider: 'jcdecaux',
-        slug: 'amiens'
-      },
-      {
-        active: true,
-        country: 'France',
-        latitude: 49.0368759562153,
-        longitude: 2.05919134071038,
-        name: 'Cergy',
-        predictable: true,
-        provider: 'jcdecaux',
-        slug: 'cergy'
-      }
-    ]
+    cities: []
   }),
   mounted: function () {
-    this.$store.dispatch('FETCH_CITIES')
+    this.$store.dispatch('FETCH_CITIES').then(() => {
+      this.cities = this.$store.state.cities
+    })
   }
 }
 </script>

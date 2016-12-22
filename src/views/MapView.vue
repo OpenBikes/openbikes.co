@@ -33,13 +33,13 @@ export default {
     // The user has chosen a city
     if (this.$route.params.hasOwnProperty('citySlug')) {
       const citySlug = this.$route.params.citySlug
-      // The city the user has chosen if different from the one he chose previously
+      // The user has chosen a city that is different from the one he chose previously
       if (!this.$store.state.currentCity || citySlug !== this.$store.state.currentCity.slug) {
         this.$store.dispatch('FETCH_CITY', citySlug).then(() => this.setupMap())
       } else this.setupMap()
-    // The user has clicked on the "Map tab and chose a city during his session
+    // The user has clicked on the "Map tab and has previously chosen a city
     } else if (this.$store.state.currentCity) this.setupMap()
-    // The user has clicked on the "Map tab but hasn't chosen any city previously
+    // The user has clicked on the "Map tab and hasn't chosen any city previously
     else {
       console.log('TODO')
     }
@@ -75,7 +75,7 @@ export default {
       )
       const marker = L.geoJson(station, {
         pointToLayer: (feature, latlng) => L.circleMarker(latlng, markerOptions),
-        onEachFeature: (feature, layer) => { layer.bindPopup(feature.properties.address) },
+        onEachFeature: (feature, layer) => { layer.bindPopup(feature.properties.slug) },
         bikes: station.properties.bikes,
         stands: station.properties.stands,
         status: station.properties.status

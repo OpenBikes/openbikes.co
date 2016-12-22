@@ -12,7 +12,7 @@ export default new Vuex.Store({
     currentCity: null, // The last city the user chose during his session
     cities: [], // Array containing metadata for each city
     lastRefresh: null, // Moment at which time the data was refreshed on the api.openbikes.co server
-    stations: [],
+    stations: [], // Array containing stations that are displayed on the map
     refreshTimer: 60000, // Rate at which the app will check if it's data is obsolete
     expirationDuration: 120000 // Duration after which the data is considered obsolete
   },
@@ -26,9 +26,14 @@ export default new Vuex.Store({
 
   actions: {
     FETCH_CITIES: (context, citySlug) => {
-      if (isEmpty(context.state.cities)) {
-        fetchCities(citySlug).then(r => { context.commit('SET_CITIES', r) })
-      }
+      return new Promise((resolve, reject) => {
+        if (isEmpty(context.state.cities)) {
+          fetchCities(citySlug).then(r => {
+            context.commit('SET_CITIES', r)
+            resolve()
+          })
+        } else resolve()
+      })
     },
     FETCH_CITY: (context, citySlug) => {
       return new Promise((resolve, reject) => {
