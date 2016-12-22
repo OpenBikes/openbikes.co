@@ -1,6 +1,0 @@
-.DS_Store
-.env
-node_modules/
-dist/
-npm-debug.log
-src/assets/city_placeholders/
