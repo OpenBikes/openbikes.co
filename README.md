@@ -1,23 +1,35 @@
+<div>
+  <div align="center">
+    <img src="https://docs.google.com/drawings/d/1Q3qpaYW0OS3a0fcBObYDxwkp_vco-K92WNFwJ9Wflcc/pub?w=491&h=179" alt="logo"/>
+  </div>
+  <div align="center">
+    <a href="http://standardjs.com/">
+      <img src="https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat-square" alt="Standard - JavaScript Style Guide" />
+    </a>
+  </div>
+<div>
+
 # openbikes.co
 
-[![JavaScript Style Guide](https://cdn.rawgit.com/feross/standard/master/badge.svg)](https://github.com/feross/standard)
+## Development
 
-> OpenBikes frontend
+You'll need to run an instance of the [OpenBikes API](https://github.com/OpenBikes/api.openbikes.co) on your local machine. You can also change the `/api` proxy in the `config/index.js` file to directly use the OpenBikes API.
 
-## Build Setup
-
-``` bash
-# install dependencies
+```sh
+# Install dependencies
 npm install
 
-# serve with hot reload at localhost:8080
+# Serve with hot reload at localhost:8080
 npm run dev
 
-# build for production with minification
+# Build for production with minification
 npm run build
 
-# run all tests
+# Run all tests
 npm test
 ```
 
-For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+## Production
+
+- Build the app for production with `npm run build`
+- Deploy with `npm deploy`
