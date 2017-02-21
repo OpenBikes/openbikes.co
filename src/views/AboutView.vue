@@ -1,6 +1,13 @@
 <template>
   <div class="container">
     <div class="row">
+      <div class="col">
+        <p>OpenBikes est un projet alimenté par les étudiants en sciences de données et de business intelligence de l'Université Paul Sabatier - Toulouse III</p>
+        <p>Les vélos en libre-partage font partie de l’écosystème urbain dans le monde entier. Nous voulons rendre le transport en vélo un jeu d’enfant.</p>
+        <p>Notre système est construit avec des outils open-source et l’état de l’art des technologies requises.</p>
+      </div>
+    </div>
+    <div class="row">
       <div class="col offset-s2 s8 m5">
         <div class="card">
           <div class="card-image waves-effect waves-block waves-light">
@@ -15,7 +22,8 @@
             <span class="card-title">
               <i class="material-icons left">close</i> Max Halford
             </span>
-            <p>Here is some more information about this product that is only revealed once clicked on.</p>
+            <h3>Fondateur</h3>
+            <p>OpenBikes est une excellente opportunité pour moi de me parfaire en mathématiques et en informatiques. Je trouve cela intéressant de pouvoir prédire des choses à l’avance. Je prend aussi de plaisir à résoudre les problèmes algorithmiques auxquels nous devons faire face, par exemple la récupération des données en temps réel et la gestion d’une grande base de donnée noSQL.</p>
           </div>
           <div class="card-action" style="padding-bottom: 5px;">
             <div class="row">
@@ -42,7 +50,8 @@
             <span class="card-title">
               <i class="material-icons left">close</i> Axel Bellec
             </span>
-            <p>Here is some more information about this product that is only revealed once clicked on.</p>
+            <h3>Collaborateur</h3>
+            <p>Je suis un étudiant en sciences de données qui a une passion pour l’analyse des données et la programmation. Je suis aussi intéressé par la data-visualisation. Je suis fasciné par les langages de programmation tel que R et Python.</p>
           </div>
           <div class="card-action" style="padding-bottom: 5px;">
             <div class="row">

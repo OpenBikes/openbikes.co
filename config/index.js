@@ -25,7 +25,7 @@ module.exports = {
       // Proxy all requests starting with "/api" to "api.openbikes.co" or to "localhost:5000"
       // depending on the environment.
       '/api': {
-        target: process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'apiprod' ? 'http://api.openbikes.co' : 'http://localhost:5000',
+        target: process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'apiprod' ? 'https://api.openbikes.co' : 'http://localhost:5000',
         changeOrigin: true,
         pathRewrite: {
           '^/api': ''

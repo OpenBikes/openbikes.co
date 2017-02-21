@@ -13,7 +13,7 @@
 
 ## Development
 
-You'll need to run an instance of the [OpenBikes API](https://github.com/OpenBikes/api.openbikes.co) on your local machine. You can also change the `/api` proxy in the `config/index.js` file to directly use the OpenBikes API.
+You'll need to run an instance of the [OpenBikes API](https://github.com/OpenBikes/api.openbikes.co) on your local machine. You can also change the `/api` proxy in the `config/index.js` file to directly use the OpenBikes API : `NODE_ENV=apiprod npm run dev`.
 
 ```sh
 # Install dependencies
